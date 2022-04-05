@@ -3,7 +3,7 @@ Cosmoscope
 
 The Cosmoscope aims to be a small and simple graphic programming language that aims to draw beautiful geometric shapes. The main idea relies on a concept similar to the spirograph : we compose 2D parametric **functions** by linking the origin of the coordinate system of one function to another function. Doing so, those functions are traced relatively to their origin shift, which is why I called them **relative functions**. 
 
-This concept is a wide generalization of the spirograph : every function traced by the spirograph can be traced by the cosmoscope but the cosmoscope can trace theoretically any computable 2D parametric function, using composition more as a tool rather than a constraint (contrarily to the spirograph).
+This concept is a wide generalization of the spirograph : every function traced by the spirograph can be traced by the cosmoscope but the cosmoscope can trace theoretically any computable 2D parametric function, using composition more as a tool rather than a constraint (contrarly to the spirograph).
 
 Units
 --------
