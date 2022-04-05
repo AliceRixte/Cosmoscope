@@ -10,6 +10,8 @@ Relative functions use the **time** elapsed since the beginning of the program t
 
 The length are described using a *percentage* of the half of the window's diagonal. The angle use degrees, with 0° being the horizontal and using the trigonometric direction. As a consequence, for any square window, the position of the right top corner is ``(r,th) = (100,45)`` or, in cartesian style ``(x,y) = (sin(45)*100, cos(45)*100)`` , the top left corner is ``(r,th) = (100,135)``, the bottom left corner is ``(r,th) = (100,225) = (100,-135)`` and the bottom right corner is ``(r,th) = (100,315) = (100,-45)``.
 
+As a consequence, ``x``, ``y`` and ``r`` all evolve between ``-100`` and ``+100``. Even in that range, a lot of points are actually outside of the window and won't be drawn, but this allows to make the Cosmoscope programs independent from the window in which they will be executed.
+
 Syntax 
 ---------------
 
@@ -45,14 +47,37 @@ The origin and colors can be modified as it is showed in the next example. Color
 
 ````JSON
 {
-  "origin" : {
-    "x" : -100,
-    "y" : 100
-  }
   "func_list" : [
     {
       "id" : 0,
-      
-      
+      "parent" : -1,
+      "intervals" : [
+        {
+          "begin" : 0 , 
+          "end" : 10,
+          "start" : {
+            "x" : 50,
+            "y" : -25
+          },
+          "finish" : {
+            "r" : 20,
+            "th" : 315
+          }
+        },
+        {
+          "begin" : 10 , 
+          "end" : 20  ,
+          "loop" : 5  ,
+          "tt" : "sqrt(t)",
+          "x" : "sin(t)",
+          "y" : "t*t",
+          "color" : [0,0,"x + t",1] 
+        }
+      ]
+    }
+  ]
+}
       
 ````
+
+sup : -1 infinity, -2
