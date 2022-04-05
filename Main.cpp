@@ -2,6 +2,7 @@
 #include <iostream>
 #include "FuncTree.h"
 #include <cmath>
+#include "style.h"
 
 Cosmoscope::Position line(Cosmoscope::Time t) {
     return Cosmoscope::Position{ 100,t };
@@ -29,6 +30,8 @@ int main(int argc, char* argv[])
     }
     SDL_SetWindowTitle(main_window, "Cosmoscope");
 
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+
  
 
     SDL_Event event;
@@ -43,6 +46,10 @@ int main(int argc, char* argv[])
 
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderDrawLine(renderer, 0,0,100,100);
+    SDL_SetRenderDrawColor(renderer,0, 0, 255, 0);
+
+    DrawEllipse(renderer, SDL_Rect{ 100,100,200,400 }, SDL_Color{ 255,0,0,255 },0.9);
+    
 
     while (app_running) {
         SDL_Event event;
