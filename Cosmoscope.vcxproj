@@ -142,19 +142,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CosmosToSDL.cpp" />
     <ClCompile Include="FuncTree.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="RelativeFunc.cpp" />
     <ClCompile Include="CallbackFuncs.cpp" />
     <ClCompile Include="Brushes.cpp" />
     <ClCompile Include="CoorSystem.cpp" />
+    <ClCompile Include="Style.cpp" />
+    <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CosmosToSDL.h" />
     <ClInclude Include="FuncTree.h" />
     <ClInclude Include="RelativeFunc.h" />
     <ClInclude Include="CallbackFuncs.h" />
     <ClInclude Include="Brushes.h" />
     <ClInclude Include="CoorSystem.h" />
+    <ClInclude Include="Style.h" />
+    <ClInclude Include="Time.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

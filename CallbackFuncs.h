@@ -11,32 +11,20 @@
 #pragma once
 
 #include <functional>
-#include <cstdint>
 
 #include "CoorSystem.h"
+#include "Time.h"
+#include "Style.h"
 
 namespace cosmoscope {
 
-/// @brief A structure used to store a drawing style (color, transparency and hardness). All values range from 0.0 to 1.0
-	struct Style {
-		/// @brief red : ranges from 0.0 to 1.0
-		double r;
-		/// @brief green: ranges from 0.0 to 1.0
-		double g;
-		/// @brief blue : ranges from 0.0 to 1.0
-		double b; 
-		/// @brief alpha (transparency) : ranges from 0.0 to 1.0
-		double a;
-		/// @brief hardness : how hard the brush is applied. Ranges from 0.0 to 1.0. When set to -1.0, the function is not drawn.
-		double h;
-	};
 
-/// @brief An alias for time
-using Time = double;
 /// @brief An alias for parametric callbacks
 using ParamCallback = std::function<Position(Time)>;
 /// @brief An alias for style callbacks
 using StyleCallback = std::function<Style(Time)>;
+/// @brief An alias for time callbacks
+using TimeCallback = std::function<Time(Time)>;
 
 /// @brief A wrapper class for parametric callbacks
 /// This allows to deal with coordinate system changes in particular.

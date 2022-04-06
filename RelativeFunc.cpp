@@ -9,10 +9,13 @@ namespace cosmoscope {
 	}
 
 
-	Position RelativeFunc::ComputePos(const Time& t, const Position& origin) {
+	Position RelativeFunc::ComputePos(Time t, const Position& origin) {
 		return m_paramFunc.Compute(t) + origin;
 	}
 
+	Style RelativeFunc::ComputeStyle(Time t) {
+		return m_styleFunc.Compute(t);
+	}
 
 	int RelativeFunc::GetParent() {
 		return this->m_parent;

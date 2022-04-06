@@ -37,8 +37,13 @@ namespace cosmoscope {
         /// @param t  The current time
         /// @param origin The relative origin of the function. 
         /// This should be the result of the ComputePos method of the parent relative function, or (0,0) if the parent id is ``-1``.
-        /// @return The current absolute position of the function
-        Position ComputePos(const Time& t, const Position& origin);
+        /// @return The absolute position of the function at time **t**
+        Position ComputePos(Time t, const Position& origin);
+
+        /// @brief Compute the style of the relative function at a time **t**
+        /// @param t  The current time
+        /// @return The style of the function at time **t**
+        Style ComputeStyle(Time t);
 
     private:
 

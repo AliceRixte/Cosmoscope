@@ -47,6 +47,11 @@ namespace cosmoscope {
 		/// @return A vector containing the position of each relative function
 		std::vector<Position> ComputeAllPos(Time t);
 
+		/// @brief Computes all the syules of the relative functions at a time **t**
+		/// @param t The current time
+		/// @return A vector containing the style of each relative function
+		std::vector<Style> ComputeAllStyle(Time t);
+
 		/// @brief Adds a new relative function to the tree.
 		/// @param parent_id The ID of the parent relative function, or -1, if it's bound to the origin
 		/// @param param_cb The parametric callback function 
@@ -54,7 +59,7 @@ namespace cosmoscope {
 		/// @param style The style of the function. This will create a constant style function
 		/// @return The ID of the newly added relative function.
 		int AddParamCallback(int parent_id, const ParamCallback& param_cb, 
-				CoorSystem coor = CoorSystem::Cartesian, const Style& style = { 255,255,255,255 });
+				CoorSystem coor = CoorSystem::Cartesian, const Style& style = {1.0,1.0,1.0,1.0,1.0});
 
 
 		/// @brief Sets the default origin. This corresponds to the "-1" parent

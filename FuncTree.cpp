@@ -38,6 +38,16 @@ namespace cosmoscope {
 		return res;
 	}
 
+	std::vector<Style> FuncTree::ComputeAllStyle(Time t) {
+		std::vector<Style> res;
+		for (auto f : funcs) {
+			res.push_back(f->ComputeStyle(t));
+		}
+		return res;
+	}
+
+
+
 	int FuncTree::AddParamCallback(int parent_id, const ParamCallback& param_cb, CoorSystem coor, const Style& style){
 		funcs.push_back(new RelativeFunc{parent_id,param_cb,coor,style});
 		return funcs.size() - 1;

@@ -3,6 +3,7 @@
 #include "FuncTree.h"
 #include <cmath>
 #include "brushes.h"
+#include "CosmosToSDL.h"
 
 cosmoscope::Position line(cosmoscope::Time t) {
     return cosmoscope::Position{t,t};
@@ -42,7 +43,9 @@ int main(int argc, char* argv[])
     ftree.AddParamCallback(0,&circle,cosmoscope::CoorSystem::Polar);
 
     double t = 0;
-    std::vector<cosmoscope::Position> frame;
+    std::vector<cosmoscope::Position> frame_pos;
+    std::vector<cosmoscope::Style>    frame_style;
+
 
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
@@ -64,16 +67,23 @@ int main(int argc, char* argv[])
         }
 
 
-        frame = ftree.ComputeAllPos(t);
+        frame_pos = ftree.ComputeAllPos(t);
+        frame_style = ftree.ComputeAllStyle(t);
 
-        for (auto pos : frame) {
 
-            DrawEllipse(renderer, SDL_Rect{ static_cast<int>(pos.x) - 2,static_cast<int>(pos.y) - 2,5,5}, SDL_Color{ 255,0,0,255 }, 0.0);
+        for (int i = 0; i < frame_pos.size(); i++) {
+            cosmoscope::Position pos = frame_pos[i];
+            cosmoscope::Style style = frame_style[i];
+            if (style.h >= 0.0) {
+                draw_SDL::DrawEllipse(renderer, SDL_Rect{ static_cast<int>(pos.x) - 2,static_cast<int>(pos.y) - 2,5,5 },
+                    cosmoscope_SDL::styleToColor(style), style.h);
+            }
+            
         }
         
         
         SDL_RenderPresent(renderer);
-        SDL_Delay(1);
+        SDL_Delay(100);
         t++;
 
     }
