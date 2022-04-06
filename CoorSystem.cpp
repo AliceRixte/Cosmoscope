@@ -1,4 +1,3 @@
-
 #include "CoorSystem.h"
 
 #define PI 3.1415965359

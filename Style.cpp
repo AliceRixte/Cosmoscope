@@ -9,7 +9,7 @@ double distance(double x0, double y0, double x1, double y1) {
 }
 
 int DrawEllipse(SDL_Renderer* renderer, const SDL_Rect& ellipseRect, const SDL_Color& color, double plainPercent) {
-	if (plainPercent < 0.0 || plainPercent > 1.0) {
+	if (plainPercent < 0.0 || plainPercent > 100.0) {
 		return -1;
 	}
 
@@ -37,10 +37,9 @@ int DrawEllipse(SDL_Renderer* renderer, const SDL_Rect& ellipseRect, const SDL_C
 		f2y -= c;
 	}
 
-	double plain_dist = 2*c + (ellipse_dist - 2*c) * plainPercent;
+	double plain_dist = 2*c + (ellipse_dist - 2*c) * plainPercent / 100.0;
 
 	
-	//cout << "ellipse_dist: " << ellipse_dist << " f1x: " << f1x << "f1y: " << f1y << " a: " << a << endl;
 	for (int x = 0; x < ellipseRect.w; x++) {
 		for (int y = 0; y < ellipseRect.h; y++) {
 
@@ -57,7 +56,6 @@ int DrawEllipse(SDL_Renderer* renderer, const SDL_Rect& ellipseRect, const SDL_C
 			else {
 				transparency = 255.0 * (1.0 - (dist - plain_dist) / (ellipse_dist - plain_dist));
 			}
-			//cout << "x: "<<x<<" y: "<<y<< "   dist: "<<dist<< " transp: "<< transparency << endl;
 			
 			SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b,static_cast<Uint8>(transparency));
 			SDL_RenderDrawPoint(renderer, ellipseRect.x + x, ellipseRect.y + y);
