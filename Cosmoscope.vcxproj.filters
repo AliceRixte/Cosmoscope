@@ -24,10 +24,13 @@
     <ClCompile Include="FuncTree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ColorFunc.cpp">
+    <ClCompile Include="CallbackFuncs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Style.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CoorSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,10 +41,13 @@
     <ClInclude Include="FuncTree.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="ColorFunc.h">
+    <ClInclude Include="CallbackFuncs.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Style.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CoorSystem.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

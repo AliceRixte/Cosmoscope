@@ -1,21 +1,16 @@
 #include "RelativeFunc.h"
 
-namespace Cosmoscope {
+namespace cosmoscope {
 
-	RelativeFunc::RelativeFunc(const std::function<TraceData(Time)>& colorFunc, const int id_parent) 
-		: m_parent(id_parent) {
-		m_colorFunc = new ColorCallback{ colorFunc };
+	RelativeFunc::RelativeFunc(const int id_parent, const ParamCallback& param_cb, const CoorSystem& coor, const Color& color) :
+		m_parent(id_parent),
+		m_paramFunc(ParamFunc{ param_cb, coor }),
+		m_colorFunc(color) {
 	}
 
-	RelativeFunc::RelativeFunc(const std::function<Position(Time)>& paramFunc, const int id_parent, const Color& color)
-		: m_parent(id_parent) {
-		m_colorFunc = new ParamCallback{ paramFunc, color };
 
-	}
-
-	TraceData RelativeFunc::Compute(const Time& t, const Position& origin) {
-		TraceData res =m_colorFunc->Compute(t);
-		return TraceData{ res.pos + origin , res.c };
+	Position RelativeFunc::ComputePos(const Time& t, const Position& origin) {
+		return m_paramFunc.Compute(t) + origin;
 	}
 
 
@@ -27,7 +22,4 @@ namespace Cosmoscope {
 		this->m_parent = new_parent;
 	}
 
-	RelativeFunc::~RelativeFunc() {
-		delete this->m_colorFunc;
-	}
 }

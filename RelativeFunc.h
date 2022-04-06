@@ -1,27 +1,27 @@
 #pragma once
 
 #include<functional>
-#include "ColorFunc.h"
+#include "CallbackFuncs.h"
 
-namespace Cosmoscope {
+namespace cosmoscope {
 
     class RelativeFunc {
     public:
-        explicit RelativeFunc(const std::function<TraceData(Time)>& colorFunc, const int id_parent);
-        explicit RelativeFunc(const std::function<Position(Time)>& paramFunc, const int id_parent, const Color& color);
+        explicit RelativeFunc(const int id_parent, const ParamCallback& param_cb,
+                const CoorSystem& coor = CoorSystem::Cartesian, 
+                const Color& color = Color {255,255,255,255});
+
 
         int GetParent();
         void SetParent(const int id_parent);
        
-        TraceData Compute(const Time& t, const Position& origin);
-
-
-        ~RelativeFunc();
+        Position ComputePos(const Time& t, const Position& origin);
 
     private:
 
         int m_parent;
-        ColorFunc* m_colorFunc;
+        ParamFunc m_paramFunc;
+        ColorFunc m_colorFunc;
 
     };
 

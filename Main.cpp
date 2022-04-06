@@ -4,12 +4,12 @@
 #include <cmath>
 #include "style.h"
 
-Cosmoscope::Position line(Cosmoscope::Time t) {
-    return Cosmoscope::Position{ 100,t };
+cosmoscope::Position line(cosmoscope::Time t) {
+    return cosmoscope::Position{ t,t };
 }
 
-Cosmoscope::Position circle(Cosmoscope::Time t) {
-    return Cosmoscope::Position{100*std::sin(t),100*std::cos(t)};
+cosmoscope::Position circle(cosmoscope::Time t) {
+    return cosmoscope::Position{100*std::sin(t),100*std::cos(t)};
 }
 
 int main(int argc, char* argv[])
@@ -37,18 +37,18 @@ int main(int argc, char* argv[])
     SDL_Event event;
     bool app_running = true;
 
-    Cosmoscope::FuncTree ftree;
-    ftree.AddParamCallback(&line);
-    ftree.AddParamCallback(&circle);
+    cosmoscope::FuncTree ftree{cosmoscope::Position{300,300}};
+    ftree.AddParamCallback(-1,&line);
+    ftree.AddParamCallback(-1,&circle);
 
     double t = 0;
-    std::vector<Cosmoscope::TraceData> frame;
+    std::vector<cosmoscope::Position> frame;
 
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderDrawLine(renderer, 0,0,100,100);
+
     SDL_SetRenderDrawColor(renderer,0, 0, 255, 0);
 
-    DrawEllipse(renderer, SDL_Rect{ 100,100,200,400 }, SDL_Color{ 255,0,0,255 },0.9);
+    //DrawEllipse(renderer, SDL_Rect{ 100,100,200,400 }, SDL_Color{ 255,0,0,255 },0.9);
     
 
     while (app_running) {
@@ -64,11 +64,11 @@ int main(int argc, char* argv[])
         }
 
 
-        frame = ftree.ComputeFuncs(t, Cosmoscope::Position{ 300,300 });
+        frame = ftree.ComputeAllPos(t);
 
-        for (auto td : frame) {
-            SDL_SetRenderDrawColor(renderer, td.c.r, td.c.g, td.c.b , td.c.a);
-            SDL_RenderDrawPoint(renderer, td.pos.x, td.pos.y);
+        for (auto pos : frame) {
+
+            DrawEllipse(renderer, SDL_Rect{ static_cast<int>(pos.x) - 5,static_cast<int>(pos.y) - 5,10,10}, SDL_Color{ 255,0,0,255 }, 0.0);
         }
         
         
