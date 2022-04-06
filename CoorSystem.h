@@ -1,5 +1,5 @@
 /// @file CoorSystem.h
-/// @brief This header allows the Cosmoscope to use different types coordonate systems, for now cartesian and polar systems. 
+/// @brief This header allows the Cosmoscope to use different types coordinate systems, for now cartesian and polar systems. 
 /// 
 /// **Angles** should be measured with *degrees* with 0° being the horizontal and using the trigonometric direction.\n\n
 /// 
@@ -44,10 +44,11 @@ namespace cosmoscope {
 
 	/// @brief This enumeration is used to specify the wanted coordinate system.
 	enum class CoorSystem { 
-		/// Cartesian coordonate system
+		/// Cartesian coordinate system
 		Cartesian, 
-		/// Polar coordonate sytem
-		Polar };
+		/// Polar coordinate sytem
+		Polar
+	};
 
 	/// @brief Converts cartesian coordinates to polar coordinates.
 	/// @param pos A position using cartesian coordinates.

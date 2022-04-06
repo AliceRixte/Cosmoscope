@@ -2,7 +2,7 @@
 
 namespace cosmoscope {
 
-	////////////////////////////////////// BadFuncOrdering /////////////////////////////////////////////////
+	//---------------------------- BadFuncOrdering --------------------------------------
 	BadFuncOrdering::BadFuncOrdering(int id_problem, int parent_problem) :
 		m_idProblem(id_problem), m_parentProblem(parent_problem) {
 
@@ -14,7 +14,7 @@ namespace cosmoscope {
 	}
 
 
-	////////////////////////////////////// FuncTree  //////////////////////////////////////////////////
+	//---------------------------------- FuncTree  --------------------------------------
 	FuncTree::FuncTree(const Position& origin) : m_origin(origin) {
 
 	}
