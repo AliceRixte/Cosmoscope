@@ -62,4 +62,24 @@ public:
 private:
 	StyleCallback m_styleCb;
 };
+
+
+/// @brief A wraper class for time callbacks
+/// This allows to deal with all the time distortion part
+	class TimeFunc {
+	public:
+		/// @brief This constructor creates an identity function : time is not modified
+		explicit TimeFunc();
+		/// @brief Creates a time function out of a time callback
+		/// @param time_cb The time callback tied to the class
+		explicit TimeFunc(const TimeCallback& time_cb);
+
+		/// @brief Computes the time function at a time **t**
+		/// @param t The current time
+		/// @return The new time ``tt``
+		Time Compute(Time t);
+	private:
+		TimeCallback m_timeCb;
+};
+
 }

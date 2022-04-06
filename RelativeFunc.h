@@ -25,6 +25,23 @@ namespace cosmoscope {
                 const CoorSystem& coor = CoorSystem::Cartesian, 
                 const Style& style = Style {255,255,255,255});
 
+        /// @brief A constructor allowing to create a polychrome relative function.
+        /// @param id_parent The id of the parent relative function. Set to -1 to tie to the main origin.
+        /// @param param_cb A parametric callback function
+        /// @param coor The coordinate system type
+        /// @param style_cb A style callback function
+        explicit RelativeFunc(int id_parent, const ParamCallback& param_cb, const CoorSystem& coor, const StyleCallback& style_cb);
+
+        /// @brief A constructor allowing to create a fully customized relative function
+        /// @param id_parent The id of the parent relative function. Set to -1 to tie to the main origin.
+        /// @param param_cb A parametric callback function
+        /// @param coor The coordinate system type
+        /// @param style_cb A style callback function
+        /// @param time_cb A time callback function
+        explicit RelativeFunc(int id_parent, const ParamCallback& param_cb, const CoorSystem& coor,
+            const StyleCallback& style_cb,
+            const TimeCallback& time_cb);
+            
         /// @brief Get the relative function's parent id.
         /// @return The parent id of the function
         int GetParent();
@@ -50,6 +67,7 @@ namespace cosmoscope {
         int m_parent;
         ParamFunc m_paramFunc;
         StyleFunc m_styleFunc;
+        TimeFunc  m_timeFunc;
 
     };
 

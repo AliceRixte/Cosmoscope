@@ -28,5 +28,17 @@ namespace cosmoscope {
 		return m_styleCb(t);
 	}
 
+	TimeFunc::TimeFunc() :
+		m_timeCb([](Time t) {return t;}) {
+	}
+
+	TimeFunc::TimeFunc(const TimeCallback& timeFunc)
+		: m_timeCb(timeFunc) {
+	}
+
+	Time TimeFunc::Compute(Time t) {
+		return m_timeCb(t);
+	}
+
 	
 }

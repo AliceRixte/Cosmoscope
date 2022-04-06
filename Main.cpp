@@ -6,11 +6,29 @@
 #include "CosmosToSDL.h"
 
 cosmoscope::Position line(cosmoscope::Time t) {
-    return cosmoscope::Position{t,t};
+    return cosmoscope::Position{200,t};
 }
 
 cosmoscope::Position circle(cosmoscope::Time t) {
-    return cosmoscope::Position{100,t/10.0};
+    return cosmoscope::Position{150,t/150.0};
+}
+cosmoscope::Position circle2(cosmoscope::Time t) {
+    return cosmoscope::Position{ 60,t/60 };
+}
+
+cosmoscope::Position circle3(cosmoscope::Time t) {
+    return cosmoscope::Position{ 10,t/2 };
+}
+
+cosmoscope::Position circle4(cosmoscope::Time t) {
+    return cosmoscope::Position{ 60,-t };
+}
+
+cosmoscope::Style style1(cosmoscope::Time t) {
+    return cosmoscope::Style{ 0,(static_cast<int>(t)%20000)/20000.0,0.8,1.,0.9};
+}
+cosmoscope::Style style2(cosmoscope::Time t) {
+    return cosmoscope::Style{ 0,1.0-(static_cast<int>(t) % 20000) / 20000.0,0.8,1.,-1};
 }
 
 int main(int argc, char* argv[])
@@ -25,7 +43,7 @@ int main(int argc, char* argv[])
     //main window creation
     SDL_Window* main_window; 
     SDL_Renderer* renderer;
-    if (SDL_CreateWindowAndRenderer(600, 600, SDL_WINDOW_RESIZABLE, &main_window, &renderer) < 0) {
+    if (SDL_CreateWindowAndRenderer(900,900, SDL_WINDOW_RESIZABLE, &main_window, &renderer) < 0) {
         printf("Error in window/renderer creation: %s", SDL_GetError());
         return EXIT_FAILURE;
     }
@@ -33,14 +51,18 @@ int main(int argc, char* argv[])
 
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 
- 
+    SDL_Color ctest = cosmoscope_SDL::styleToColor(cosmoscope::Style{ 1.0,0.0,1.,1.,1 });
+    std::cout << static_cast<int>(ctest.r) << std::endl;
 
     SDL_Event event;
     bool app_running = true;
 
-    cosmoscope::FuncTree ftree{cosmoscope::Position{0,0}};
-    ftree.AddParamCallback(-1,&line);
-    ftree.AddParamCallback(0,&circle,cosmoscope::CoorSystem::Polar);
+    cosmoscope::FuncTree ftree{cosmoscope::Position{450,450}};
+    ftree.AddMonochromeFunc(-1,&line, cosmoscope::CoorSystem::Polar, cosmoscope::Style{ 1.,0.,0.,1.,-1.});
+    ftree.AddPolychromeFunc(0, &circle,  cosmoscope::CoorSystem::Polar, &style2);
+    ftree.AddMonochromeFunc(1, &circle4, cosmoscope::CoorSystem::Polar, cosmoscope::Style{ 0.9,0.1,0.2,1.,});
+   // ftree.AddPolychromeFunc(1, &circle3, cosmoscope::CoorSystem::Polar, &style1);
+    //ftree.AddPolychromeFunc(2, &circle3, cosmoscope::CoorSystem::Polar, &style2);
 
     double t = 0;
     std::vector<cosmoscope::Position> frame_pos;
@@ -49,10 +71,7 @@ int main(int argc, char* argv[])
 
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
-    SDL_SetRenderDrawColor(renderer,0, 0, 255, 0);
-
-    //DrawEllipse(renderer, SDL_Rect{ 100,100,200,400 }, SDL_Color{ 255,0,0,255 },0.9);
-    
+    SDL_SetRenderDrawColor(renderer, 0, 0, 255, 0);    
 
     while (app_running) {
         SDL_Event event;
@@ -75,7 +94,7 @@ int main(int argc, char* argv[])
             cosmoscope::Position pos = frame_pos[i];
             cosmoscope::Style style = frame_style[i];
             if (style.h >= 0.0) {
-                draw_SDL::DrawEllipse(renderer, SDL_Rect{ static_cast<int>(pos.x) - 2,static_cast<int>(pos.y) - 2,5,5 },
+                draw_SDL::DrawEllipse(renderer, SDL_Rect{ static_cast<int>(pos.x) - 1,static_cast<int>(pos.y) - 1,3,3},
                     cosmoscope_SDL::styleToColor(style), style.h);
             }
             
@@ -83,7 +102,7 @@ int main(int argc, char* argv[])
         
         
         SDL_RenderPresent(renderer);
-        SDL_Delay(100);
+        SDL_Delay(1);
         t++;
 
     }
