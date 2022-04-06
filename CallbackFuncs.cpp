@@ -6,7 +6,7 @@ namespace cosmoscope {
 		: m_paramCb(paramFunc), m_coor(coor) {
 	}
 
-	Position ParamFunc::Compute(const Time t) {
+	Position ParamFunc::Compute(Time t) {
 		switch (m_coor) {
 		case CoorSystem::Cartesian:
 			return m_paramCb(t);
@@ -18,14 +18,13 @@ namespace cosmoscope {
 
 	ColorFunc::ColorFunc(const Color& color) :
 		m_colorCb([color](Time t) {return color; }) {
-
 	}
 
 	ColorFunc::ColorFunc(const ColorCallback& colorFunc) 
 		: m_colorCb(colorFunc) {
 	}
 
-	Color ColorFunc::Compute(const Time t) {
+	Color ColorFunc::Compute(Time t) {
 		return m_colorCb(t);
 	}
 

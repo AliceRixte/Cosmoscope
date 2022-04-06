@@ -2,7 +2,7 @@
 
 namespace cosmoscope {
 
-	RelativeFunc::RelativeFunc(const int id_parent, const ParamCallback& param_cb, const CoorSystem& coor, const Color& color) :
+	RelativeFunc::RelativeFunc(int id_parent, const ParamCallback& param_cb, const CoorSystem& coor, const Color& color) :
 		m_parent(id_parent),
 		m_paramFunc(ParamFunc{ param_cb, coor }),
 		m_colorFunc(color) {
@@ -18,7 +18,7 @@ namespace cosmoscope {
 		return this->m_parent;
 	}
 
-	void RelativeFunc::SetParent(const int new_parent) {
+	void RelativeFunc::SetParent(int new_parent) {
 		this->m_parent = new_parent;
 	}
 

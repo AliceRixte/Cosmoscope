@@ -35,7 +35,7 @@ namespace cosmoscope {
 
 		//Adds a parametric function of parent parent_id, white by default
 		//returs id of the new function
-		int AddParamCallback(const int parent_id, const ParamCallback& param_cb, 
+		int AddParamCallback(int parent_id, const ParamCallback& param_cb, 
 				CoorSystem coor = CoorSystem::Cartesian, const Color& color = { 255,255,255,255 });
 
 

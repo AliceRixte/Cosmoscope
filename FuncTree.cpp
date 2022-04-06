@@ -38,7 +38,7 @@ namespace cosmoscope {
 		return res;
 	}
 
-	int FuncTree::AddParamCallback(const int parent_id, const ParamCallback& param_cb, CoorSystem coor, const Color& color){
+	int FuncTree::AddParamCallback(int parent_id, const ParamCallback& param_cb, CoorSystem coor, const Color& color){
 		funcs.push_back(new RelativeFunc{parent_id,param_cb,coor,color});
 		return funcs.size() - 1;
 	}

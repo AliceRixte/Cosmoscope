@@ -21,7 +21,7 @@ using ColorCallback = std::function<Color(Time)>;
 class ParamFunc {
 public:
 	explicit ParamFunc(const ParamCallback& param_func, CoorSystem coor = CoorSystem::Cartesian);
-	Position Compute(const Time t);
+	Position Compute(Time t);
 private:
 	ParamCallback m_paramCb;
 	CoorSystem m_coor;
@@ -32,7 +32,7 @@ class ColorFunc {
 public:
 	explicit ColorFunc(const Color& color);
 	explicit ColorFunc(const ColorCallback& color_cb);
-	Color Compute(const Time t);
+	Color Compute(Time t);
 private:
 	ColorCallback m_colorCb;
 };
