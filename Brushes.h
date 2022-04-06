@@ -1,4 +1,4 @@
-/// @file Style.h
+/// @file Brushes.h
 /// @brief Contains all functions related to brushes to display the Cosmoscope using SDL2.0.
 ///
 /// @author Alice Rixte

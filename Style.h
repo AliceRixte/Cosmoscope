@@ -1,4 +1,4 @@
-/// @file CallbackFuncs.h
+/// @file Style.h
 /// @brief Contains structures used to describe drawing style in the cosmoscope
 /// 
 /// @author Alice Rixte
