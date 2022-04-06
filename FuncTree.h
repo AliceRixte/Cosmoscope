@@ -51,10 +51,10 @@ namespace cosmoscope {
 		/// @param parent_id The ID of the parent relative function, or -1, if it's bound to the origin
 		/// @param param_cb The parametric callback function 
 		/// @param coor The coordinate system type
-		/// @param color The color of the function. This will create a constant color function
+		/// @param style The style of the function. This will create a constant style function
 		/// @return The ID of the newly added relative function.
 		int AddParamCallback(int parent_id, const ParamCallback& param_cb, 
-				CoorSystem coor = CoorSystem::Cartesian, const Color& color = { 255,255,255,255 });
+				CoorSystem coor = CoorSystem::Cartesian, const Style& style = { 255,255,255,255 });
 
 
 		/// @brief Sets the default origin. This corresponds to the "-1" parent

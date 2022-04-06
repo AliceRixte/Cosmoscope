@@ -2,7 +2,7 @@
 #include <iostream>
 #include "FuncTree.h"
 #include <cmath>
-#include "style.h"
+#include "brushes.h"
 
 cosmoscope::Position line(cosmoscope::Time t) {
     return cosmoscope::Position{t,t};

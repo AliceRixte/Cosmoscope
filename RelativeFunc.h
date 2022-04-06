@@ -13,17 +13,17 @@
 namespace cosmoscope {
 
     /// @brief A relative function that relies on a parent function to be traced.
-    /// The relative function uses callbacks to be able to, at each moment in time, compute its position, its color and its own time distortion.
+    /// The relative function uses callbacks to be able to, at each moment in time, compute its position, its style and its own time distortion.
     class RelativeFunc {
     public:
         /// @brief A constructor allowing to create a monochrome relative function
         /// @param id_parent The id of the parent relative function. Set to -1 to tie to the main origin.
         /// @param param_cb A parametric callback function
         /// @param coor The coordinate system type
-        /// @param color The color of the function
+        /// @param style The style of the function
         explicit RelativeFunc(int id_parent, const ParamCallback& param_cb,
                 const CoorSystem& coor = CoorSystem::Cartesian, 
-                const Color& color = Color {255,255,255,255});
+                const Style& style = Style {255,255,255,255});
 
         /// @brief Get the relative function's parent id.
         /// @return The parent id of the function
@@ -44,7 +44,7 @@ namespace cosmoscope {
 
         int m_parent;
         ParamFunc m_paramFunc;
-        ColorFunc m_colorFunc;
+        StyleFunc m_styleFunc;
 
     };
 

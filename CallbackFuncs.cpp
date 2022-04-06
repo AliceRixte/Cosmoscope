@@ -16,16 +16,16 @@ namespace cosmoscope {
 		}
 	}
 
-	ColorFunc::ColorFunc(const Color& color) :
-		m_colorCb([color](Time t) {return color; }) {
+	StyleFunc::StyleFunc(const Style& style) :
+		m_styleCb([style](Time t) {return style; }) {
 	}
 
-	ColorFunc::ColorFunc(const ColorCallback& colorFunc) 
-		: m_colorCb(colorFunc) {
+	StyleFunc::StyleFunc(const StyleCallback& styleFunc) 
+		: m_styleCb(styleFunc) {
 	}
 
-	Color ColorFunc::Compute(Time t) {
-		return m_colorCb(t);
+	Style StyleFunc::Compute(Time t) {
+		return m_styleCb(t);
 	}
 
 	

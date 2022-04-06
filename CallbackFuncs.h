@@ -3,7 +3,7 @@
 /// 
 /// There are 3 types of callback functions : 
 /// * Parametric callbacks : they are parametric functions, which associate to any time **t** a 2D position.
-/// * Color callbacks : thay associate to any time **t** a color. This is not passed on to the children of the relative function.
+/// * Style callbacks : thay associate to any time **t** a style. This is not passed on to the children of the relative function.
 /// * Time callbacks : they associate to any time **t** a new time **tt**. This allows to distort time depending on the relative function. 
 /// This is passed on to the children of the relative function which uses this callback : it can be composed.
 /// @author Alice Rixte
@@ -17,24 +17,26 @@
 
 namespace cosmoscope {
 
-/// @brief A structure used to store a color. All values range between 0.0 and 1.0
-	struct Color {
-		/// @brief red : ranges between 0.0 and 1.0
+/// @brief A structure used to store a drawing style (color, transparency and hardness). All values range from 0.0 to 1.0
+	struct Style {
+		/// @brief red : ranges from 0.0 to 1.0
 		double r;
-		/// @brief green: ranges between 0.0 and 1.0
+		/// @brief green: ranges from 0.0 to 1.0
 		double g;
-		/// @brief blue : ranges between 0.0 and 1.0
+		/// @brief blue : ranges from 0.0 to 1.0
 		double b; 
-		/// @brief alpha (transparency) : ranges between 0.0 and 1.0
+		/// @brief alpha (transparency) : ranges from 0.0 to 1.0
 		double a;
+		/// @brief hardness : how hard the brush is applied. Ranges from 0.0 to 1.0. When set to -1.0, the function is not drawn.
+		double h;
 	};
 
 /// @brief An alias for time
 using Time = double;
 /// @brief An alias for parametric callbacks
 using ParamCallback = std::function<Position(Time)>;
-/// @brief An alias for color callbacks
-using ColorCallback = std::function<Color(Time)>;
+/// @brief An alias for style callbacks
+using StyleCallback = std::function<Style(Time)>;
 
 /// @brief A wrapper class for parametric callbacks
 /// This allows to deal with coordinate system changes in particular.
@@ -54,22 +56,22 @@ private:
 	CoorSystem m_coor;
 };
 
-/// @brief A wraper class fo color callbacks
-/// This allows to deal with the possibility to use more arguments tto determine the color
-class ColorFunc {
+/// @brief A wraper class for style callbacks
+/// This allows to deal with the possibility to use more arguments tto determine the style
+class StyleFunc {
 public:
-	/// @brief This constructor creates a constant (over time) color function using **color**
-	/// @param color The unique color of the color function
-	explicit ColorFunc(const Color& color);
-	/// @brief Creates a color function out of a color callback
-	/// @param color_cb The color callback tied to the class
-	explicit ColorFunc(const ColorCallback& color_cb);
+	/// @brief This constructor creates a constant (over time) style function using **style**
+	/// @param style The unique style of the style function
+	explicit StyleFunc(const Style& style);
+	/// @brief Creates a style function out of a style callback
+	/// @param style_cb The style callback tied to the class
+	explicit StyleFunc(const StyleCallback& style_cb);
 
-	/// @brief Computes the color function at a time **t**
+	/// @brief Computes the style function at a time **t**
 	/// @param t The current time
-	/// @return The current color
-	Color Compute(Time t);
+	/// @return The current style
+	Style Compute(Time t);
 private:
-	ColorCallback m_colorCb;
+	StyleCallback m_styleCb;
 };
 }

@@ -27,7 +27,7 @@
     <ClCompile Include="CallbackFuncs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Style.cpp">
+    <ClCompile Include="Brushes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CoorSystem.cpp">
@@ -44,7 +44,7 @@
     <ClInclude Include="CallbackFuncs.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Style.h">
+    <ClInclude Include="Brushes.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="CoorSystem.h">

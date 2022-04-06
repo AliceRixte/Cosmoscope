@@ -146,14 +146,14 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="RelativeFunc.cpp" />
     <ClCompile Include="CallbackFuncs.cpp" />
-    <ClCompile Include="Style.cpp" />
+    <ClCompile Include="Brushes.cpp" />
     <ClCompile Include="CoorSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FuncTree.h" />
     <ClInclude Include="RelativeFunc.h" />
     <ClInclude Include="CallbackFuncs.h" />
-    <ClInclude Include="Style.h" />
+    <ClInclude Include="Brushes.h" />
     <ClInclude Include="CoorSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,5 +1,5 @@
 /// @file Style.h
-/// @brief Contains all functions related to displaying the cosmoscope using the library SDL2
+/// @brief Contains all functions related to brushes to display the Cosmoscope using SDL2.0.
 ///
 /// @author Alice Rixte
 /// @date 05/04/2022

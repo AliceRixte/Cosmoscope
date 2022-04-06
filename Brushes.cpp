@@ -1,4 +1,4 @@
-#include "style.h"
+#include "brushes.h"
 
 #include <iostream>
 using namespace std;
