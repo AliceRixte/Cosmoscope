@@ -18,46 +18,49 @@
 #include <cmath>
 
 namespace cosmoscope {
+
 	/// @brief Converts degrees to radians
 	/// @param angle An angle in degrees.
 	/// @return The same angle in radians.
-	double degreesToRadian(double angle);
+	//double degreesToRadian(double angle);
 
 	/// @brief Converts radians to degrees
 	/// @param angle An angle in radians.
 	/// @return The same angle in radians.
-	double radianToDegrees(double angle);
+	//double radianToDegrees(double angle);
 
-	/// @brief Position container using a cartesian (x,y) notation
-	///
-	/// This structure is also used to contain polar coordinates, the ``x`` parameter then should be considered as ``r`` and the ``y`` as ``th`` (theta).
-	struct Position {
-		/// The abscissa of the position, or the radius if we are in polar coordinates.
+	/// @brief Cartesuan position container using a cartesian (x,y) notation
+	struct CartesianPos {
+		/// The abscissa of the position
 		double x; 
-		/// The ordinate of the position, or the angle theta if we are in polar coordinates.
+		/// The ordinate of the position
 		double y; 
-		/// @brief Adds two coordinates in a cartesian style. This should not be used if the structure is containing polar coordinates.
+		/// @brief Adds two coordinates in a cartesian style.
 		/// @param pos Position to be added to **this** 
 		/// @return  The sum of the positions (x0+x1, y0+y1)
-		Position operator +(const Position& pos); /// 
+		CartesianPos operator +(const CartesianPos& pos); /// 
 	};
 
-	/// @brief This enumeration is used to specify the wanted coordinate system.
-	enum class CoorSystem { 
-		/// Cartesian coordinate system
-		Cartesian, 
-		/// Polar coordinate sytem
-		Polar
+	/// @brief Polar position container using a cartesian (r,th) notation
+	/// 
+	struct PolarPos {
+		/// The radius coordinate of the polar position
+		double r;
+		/// The angle ``theta`` of the polar coordinate. ``1`` corresponds to a whole circular rotation of 360 degrees
+		/// followinfg trigonometric diredction.
+		/// Hence 2 are two complete rotations, and so on
+		double th;
 	};
+
 
 	/// @brief Converts cartesian coordinates to polar coordinates.
 	/// @param pos A position using cartesian coordinates.
 	/// @return The same position using polar coordinates.
-	Position cartesianToPolar(const Position& pos);
+	PolarPos cartesianToPolar(const CartesianPos& cart_pos);
 
 	/// @brief Converts polar coordinates to cartesian coordinates.
 	/// @param pos A position using polar coordinates.
 	/// @return The same position using cartesian coordinates.
-	Position polarToCartesian(const Position& pos);
+	CartesianPos polarToCartesian(const PolarPos& pol_pos);
 }
 

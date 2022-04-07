@@ -15,17 +15,17 @@ namespace cosmoscope {
 
 
 	//---------------------------------- FuncTree  --------------------------------------
-	FuncTree::FuncTree(const Position& origin) : m_origin(origin) {
+	FuncTree::FuncTree(const CartesianPos& origin) : m_origin(origin) {
 
 	}
 
 
-	std::vector<Position> FuncTree::ComputeAllPos(Time t) const {
-		std::vector<Position> res;
+	std::vector<CartesianPos> FuncTree::ComputeAllPos(Time t) const {
+		std::vector<CartesianPos> res;
 		for (int i = 0; i < funcs.size(); i++) {
 			int parent = funcs[i]->GetParent();
 
-			Position rel_origin = m_origin; 
+			CartesianPos rel_origin = m_origin; 
 			//the default origin will stay if the parent id is -1
 			if (parent >= i) {
 				throw BadFuncOrdering(i,parent);
@@ -48,18 +48,28 @@ namespace cosmoscope {
 
 
 
-	int FuncTree::AddMonochromeFunc(int parent_id, const ParamCallback& param_cb, CoorSystem coor, const Style& style){
-		funcs.push_back(new RelativeFunc{parent_id,param_cb,coor,style});
+	int FuncTree::AddMonochromeCartesian(int parent_id, const CartesianCallback& cartesian_cb, const Style& style){
+		funcs.push_back(new RelativeFunc{parent_id,cartesian_cb,style});
 		return funcs.size() - 1;
 	}
 
-	int FuncTree::AddPolychromeFunc(int parent_id, const ParamCallback& param_cb, CoorSystem coor, const StyleCallback& style_cb) {
-		funcs.push_back(new RelativeFunc{parent_id,param_cb,coor,style_cb});
+	int FuncTree::AddMonochromePolar(int parent_id, const PolarCallback& polar_cb, const Style& style) {
+		funcs.push_back(new RelativeFunc{ parent_id,polar_cb,style });
+		return funcs.size() - 1;
+	}
+
+	int FuncTree::AddPolychromeCartesian(int parent_id, const CartesianCallback& cartesian_cb, const StyleCallback& style_cb) {
+		funcs.push_back(new RelativeFunc{parent_id,cartesian_cb,style_cb});
+		return funcs.size() - 1;
+	}
+
+	int FuncTree::AddPolychromePolar(int parent_id, const PolarCallback& polar_cb, const StyleCallback& style_cb) {
+		funcs.push_back(new RelativeFunc{ parent_id,polar_cb,style_cb });
 		return funcs.size() - 1;
 	}
 
 
-	void FuncTree::SetOrigin(const Position& origin) {
+	void FuncTree::SetOrigin(const CartesianPos& origin) {
 		m_origin = origin;
 	}
 

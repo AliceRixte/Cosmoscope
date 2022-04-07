@@ -2,19 +2,21 @@
 
 namespace cosmoscope {
 
-	ParamFunc::ParamFunc(const ParamCallback& paramFunc, CoorSystem coor)
-		: m_paramCb(paramFunc), m_coor(coor) {
+	ParamFunc::ParamFunc(const CartesianCallback& cartesian_cb)
+		: m_paramCb(cartesian_cb) {
 	}
 
-#define TWOPI 6.28318530718
+	ParamFunc::ParamFunc(const PolarCallback& polar_cb)
+		: m_paramCb(polar_cb) {
+	}
 
-	Position ParamFunc::Compute(Time t) {
-		switch (m_coor) {
-		case CoorSystem::Cartesian:
-			return m_paramCb(t);
-		case CoorSystem::Polar:
-			Position polar_res = m_paramCb(t);
-			return Position{ polar_res.x * sin(polar_res.y*TWOPI), polar_res.x * cos(polar_res.y*TWOPI) };
+
+	CartesianPos ParamFunc::Compute(Time t) {
+		if (std::holds_alternative<CartesianCallback>(m_paramCb)) {
+			return std::get<CartesianCallback>(m_paramCb)(t);
+		}
+		else{
+			return polarToCartesian(std::get<PolarCallback>(m_paramCb)(t));
 		}
 	}
 

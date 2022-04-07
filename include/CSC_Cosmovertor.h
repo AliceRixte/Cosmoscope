@@ -39,7 +39,7 @@ namespace cosmoscope {
 			/// The generated callback MUST be deleted, which is why this class is private in the cosmoscope namespace
 			/// @param param_cb A parametric (cartesian) callback function
 			/// @return A new callback function (to be deleted)
-			cosmoscope::ParamCallback* cartesianCbToCosmos(cosmoscope::ParamCallback param_cb);
+			cosmoscope::CartesianCallback* cartesianCbToCosmos(cosmoscope::CartesianCallback param_cb);
 
 
 			/// @brief This is the SDL length of  the virtual ``1.0`` Cosmscope length

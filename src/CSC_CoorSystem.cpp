@@ -1,28 +1,28 @@
 #include "CSC_CoorSystem.h"
 
-#define PI 3.1415965359
+#define TWOPI 6.28318530718
 
 namespace cosmoscope {
 
-	double degreesToRadian(double angle) {
+	/*double degreesToRadian(double angle) {
 		return angle * PI / 180.0;
 	}
 
 	double radianToDegrees(double angle) {
 		return angle * 180.0 / PI;
-	}
+	}*/
 
-	Position Position::operator +(const Position& a)
+	CartesianPos CartesianPos::operator +(const CartesianPos& a)
 	{
-		return Position{ a.x + x, a.y + y };
+		return CartesianPos{ a.x + x, a.y + y };
 	}
 
-	Position cartesianToPolar(const Position& pos) {
-		return Position{ sqrt(pos.x * pos.x + pos.y * pos.y), atan(pos.y / pos.x) };
+	PolarPos cartesianToPolar(const CartesianPos& pos) {
+		return PolarPos{ sqrt(pos.x * pos.x + pos.y * pos.y), atan(pos.y / pos.x) };
 	}
 
-	Position polarToCartesian(const Position& pos) {
-		return Position{ pos.x * sin(degreesToRadian(pos.y)),pos.x * cos(degreesToRadian(pos.y)) };
+	CartesianPos polarToCartesian(const PolarPos& pos) {
+		return CartesianPos{ pos.r * sin(pos.th*TWOPI),pos.r * cos(pos.th*TWOPI) };
 	}
 
 }

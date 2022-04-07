@@ -23,10 +23,10 @@ namespace cosmoscope {
 		return cosmic_angle * m_angleScale;
 	}
 
-	ParamCallback* Cosmovertor::cartesianCbToCosmos(ParamCallback param_cb) {
-		return new ParamCallback{ [this,param_cb](Time t) {
-				Position res = param_cb(t);
-				return Position{lengthToCosmos(res.x), lengthToCosmos(res.y) };
+	CartesianCallback* Cosmovertor::cartesianCbToCosmos(CartesianCallback param_cb) {
+		return new CartesianCallback{ [this,param_cb](Time t) {
+				CartesianPos res = param_cb(t);
+				return CartesianPos{lengthToCosmos(res.x), lengthToCosmos(res.y) };
 			}
 		};
 

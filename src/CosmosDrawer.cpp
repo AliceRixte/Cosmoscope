@@ -43,11 +43,11 @@ namespace cosmoscope_SDL {
 
     int CosmosDrawer::UpdateFrame() {
 
-        std::vector<cosmoscope::Position> frame_pos = m_funcTree->ComputeAllPos(t);
+        std::vector<cosmoscope::CartesianPos> frame_pos = m_funcTree->ComputeAllPos(t);
         std::vector<cosmoscope::Style>    frame_style = m_funcTree->ComputeAllStyle(t);
 
         for (int i = 0; i < frame_pos.size(); i++) {
-            cosmoscope::Position pos = frame_pos[i];
+            cosmoscope::CartesianPos pos = frame_pos[i];
             cosmoscope::Style style = frame_style[i];
             if (style.h >= 0.0) {
                 draw_SDL::DrawEllipse(m_renderer, SDL_Rect{ static_cast<int>(pos.x) - 1,static_cast<int>(pos.y) - 1,3,3 },

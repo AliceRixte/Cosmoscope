@@ -16,31 +16,49 @@ namespace cosmoscope {
     /// The relative function uses callbacks to be able to, at each moment in time, compute its position, its style and its own time distortion.
     class RelativeFunc {
     public:
-        /// @brief A constructor allowing to create a monochrome relative function
+        /// @brief A constructor allowing to create a monochrome cartesian relative function
         /// @param id_parent The id of the parent relative function. Set to -1 to tie to the main origin.
-        /// @param param_cb A parametric callback function
-        /// @param coor The coordinate system type
+        /// @param cartesian_cb A cartesian parametric callback function
         /// @param style The style of the function
-        explicit RelativeFunc(int id_parent, const ParamCallback& param_cb,
-                const CoorSystem& coor = CoorSystem::Cartesian, 
-                const Style& style = Style {255,255,255,255});
+        explicit RelativeFunc(int id_parent, const CartesianCallback& cartesian_cb, const Style& style = Style {255,255,255,255});
 
-        /// @brief A constructor allowing to create a polychrome relative function.
+        /// @brief A constructor allowing to create a monochrome polar relative function
         /// @param id_parent The id of the parent relative function. Set to -1 to tie to the main origin.
-        /// @param param_cb A parametric callback function
-        /// @param coor The coordinate system type
+        /// @param polar_cb A polar parametric callback function
+        /// @param style The style of the function
+        explicit RelativeFunc(int id_parent, const PolarCallback& polar_cb, const Style& style = Style{ 255,255,255,255});
+
+
+
+        /// @brief A constructor allowing to create a polychrome cartesian relative function.
+        /// @param id_parent The id of the parent relative function. Set to -1 to tie to the main origin.
+        /// @param param_cb A cartesian parametric callback function
         /// @param style_cb A style callback function
-        explicit RelativeFunc(int id_parent, const ParamCallback& param_cb, const CoorSystem& coor, const StyleCallback& style_cb);
+        explicit RelativeFunc(int id_parent, const CartesianCallback& cartesian_cb, const StyleCallback& style_cb);
 
-        /// @brief A constructor allowing to create a fully customized relative function
+        // @brief A constructor allowing to create a polychrome polar relative function.
         /// @param id_parent The id of the parent relative function. Set to -1 to tie to the main origin.
-        /// @param param_cb A parametric callback function
-        /// @param coor The coordinate system type
+        /// @param polar_cb A polar parametric callback function
+        /// @param style_cb A style callback function
+        explicit RelativeFunc(int id_parent, const PolarCallback& polar_cb, const StyleCallback& style_cb);
+
+
+
+        /// @brief A constructor allowing to create a fully customized cartesian relative function
+        /// @param id_parent The id of the parent relative function. Set to -1 to tie to the main origin.
+        /// @param cartesian_cb A cartesian parametric callback function
         /// @param style_cb A style callback function
         /// @param time_cb A time callback function
-        explicit RelativeFunc(int id_parent, const ParamCallback& param_cb, const CoorSystem& coor,
-            const StyleCallback& style_cb,
-            const TimeCallback& time_cb);
+        explicit RelativeFunc(int id_parent, const CartesianCallback& cartesian_cb, const StyleCallback& style_cb, const TimeCallback& time_cb);
+
+       /// @brief A constructor allowing to create a fully customized polar relative function
+       /// @param id_parent The id of the parent relative function. Set to -1 to tie to the main origin.
+       /// @param polar_cb A cartesian parametric callback function
+       /// @param style_cb A style callback function
+       /// @param time_cb A time callback function
+        explicit RelativeFunc(int id_parent, const PolarCallback& polar_cb, const StyleCallback& style_cb, const TimeCallback& time_cb);
+
+
             
         /// @brief Get the relative function's parent id.
         /// @return The parent id of the function
@@ -55,7 +73,7 @@ namespace cosmoscope {
         /// @param origin The relative origin of the function. 
         /// This should be the result of the ComputePos method of the parent relative function, or (0,0) if the parent id is ``-1``.
         /// @return The absolute position of the function at time **t**
-        Position ComputePos(Time t, const Position& origin);
+        CartesianPos ComputePos(Time t, const CartesianPos& origin);
 
         /// @brief Compute the style of the relative function at a time **t**
         /// @param t  The current time
