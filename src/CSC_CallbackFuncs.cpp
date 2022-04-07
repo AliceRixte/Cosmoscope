@@ -6,13 +6,15 @@ namespace cosmoscope {
 		: m_paramCb(paramFunc), m_coor(coor) {
 	}
 
+#define TWOPI 6.28318530718
+
 	Position ParamFunc::Compute(Time t) {
 		switch (m_coor) {
 		case CoorSystem::Cartesian:
 			return m_paramCb(t);
 		case CoorSystem::Polar:
 			Position polar_res = m_paramCb(t);
-			return Position{ polar_res.x * sin(polar_res.y), polar_res.x * cos(polar_res.y) };
+			return Position{ polar_res.x * sin(polar_res.y*TWOPI), polar_res.x * cos(polar_res.y*TWOPI) };
 		}
 	}
 

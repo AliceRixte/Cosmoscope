@@ -7,24 +7,26 @@
 
 #include "CSC_CallbackFuncs.h"
 
+#define TWOPI 6.28318530718
+
 namespace cosmoscope {
     Position line(Time t) {
-        return Position{ 200,t };
+        return Position{ 200,t/TWOPI};
     }
 
     Position circle(Time t) {
-        return Position{ 150,t / 150.0 };
+        return Position{ 150,t / 150.0 /TWOPI };
     }
     Position circle2(Time t) {
-        return Position{ 60,t / 60 };
+        return Position{ 60,t / 60 /TWOPI };
     }
 
     Position circle3(Time t) {
-        return Position{ 10,t / 2 };
+        return Position{ 10,t / 2/TWOPI};
     }
 
     Position circle4(Time t) {
-        return Position{ 60,-t };
+        return Position{ 60,-t/TWOPI};
     }
 
     Style style1(Time t) {

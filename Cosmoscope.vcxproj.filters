@@ -66,6 +66,9 @@
     <ClCompile Include="src\Brushes.cpp">
       <Filter>Header Files\DrawSDL</Filter>
     </ClCompile>
+    <ClCompile Include="src\CSC_Cosmovertor.cpp">
+      <Filter>Header Files\Cosmoscope</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\CSC_CallbackFuncs.h">
@@ -97,6 +100,9 @@
     </ClInclude>
     <ClInclude Include="include\CallbackExamples.h">
       <Filter>Header Files\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CSC_Cosmovertor.h">
+      <Filter>Source Files\Cosmoscope</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
