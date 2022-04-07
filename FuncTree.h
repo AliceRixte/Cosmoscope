@@ -45,12 +45,12 @@ namespace cosmoscope {
 		/// @brief Computes all the positions of the relative functions at a time **t**
 		/// @param t The current time
 		/// @return A vector containing the position of each relative function
-		std::vector<Position> ComputeAllPos(Time t);
+		std::vector<Position> ComputeAllPos(Time t) const;
 
 		/// @brief Computes all the syules of the relative functions at a time **t**
 		/// @param t The current time
 		/// @return A vector containing the style of each relative function
-		std::vector<Style> ComputeAllStyle(Time t);
+		std::vector<Style> ComputeAllStyle(Time t) const;
 
 		/// @brief Adds a new monochrome relative function to the tree.
 		/// @param parent_id The ID of the parent relative function, or -1, if it's bound to the origin

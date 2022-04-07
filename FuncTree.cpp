@@ -20,7 +20,7 @@ namespace cosmoscope {
 	}
 
 
-	std::vector<Position> FuncTree::ComputeAllPos(Time t) {
+	std::vector<Position> FuncTree::ComputeAllPos(Time t) const {
 		std::vector<Position> res;
 		for (int i = 0; i < funcs.size(); i++) {
 			int parent = funcs[i]->GetParent();
@@ -38,7 +38,7 @@ namespace cosmoscope {
 		return res;
 	}
 
-	std::vector<Style> FuncTree::ComputeAllStyle(Time t) {
+	std::vector<Style> FuncTree::ComputeAllStyle(Time t) const {
 		std::vector<Style> res;
 		for (auto f : funcs) {
 			res.push_back(f->ComputeStyle(t));

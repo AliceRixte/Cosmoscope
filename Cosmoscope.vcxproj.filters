@@ -13,60 +13,87 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Cosmoscope">
+      <UniqueIdentifier>{d918d751-f056-44bd-a0ae-cc5577e90526}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CosmoscopeSDL">
+      <UniqueIdentifier>{2aac1f6c-d2af-4abc-8571-e6d6af4ae6cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DrawSDL">
+      <UniqueIdentifier>{700b32d9-a8cc-4d27-9870-d6f785e03787}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Cosmoscope">
+      <UniqueIdentifier>{7179e95a-2757-4947-bfd9-b5e3b94b9b96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\CosmoscopeSDL">
+      <UniqueIdentifier>{de235cc9-1a28-41e8-a3a8-4fba02274526}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DrawSDL">
+      <UniqueIdentifier>{f03e4743-e51d-452b-91e6-d3e0c0ca9609}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RelativeFunc.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FuncTree.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Brushes.cpp">
+      <Filter>Source Files\DrawSDL</Filter>
     </ClCompile>
     <ClCompile Include="CallbackFuncs.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Brushes.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Cosmoscope</Filter>
     </ClCompile>
     <ClCompile Include="CoorSystem.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Cosmoscope</Filter>
     </ClCompile>
     <ClCompile Include="CosmosToSDL.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\CosmoscopeSDL</Filter>
+    </ClCompile>
+    <ClCompile Include="FuncTree.cpp">
+      <Filter>Source Files\Cosmoscope</Filter>
+    </ClCompile>
+    <ClCompile Include="RelativeFunc.cpp">
+      <Filter>Source Files\Cosmoscope</Filter>
     </ClCompile>
     <ClCompile Include="Style.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Cosmoscope</Filter>
     </ClCompile>
     <ClCompile Include="Time.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Cosmoscope</Filter>
+    </ClCompile>
+    <ClCompile Include="CosmosDrawer.cpp">
+      <Filter>Source Files\CosmoscopeSDL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="RelativeFunc.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FuncTree.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="CallbackFuncs.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Brushes.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Cosmoscope</Filter>
     </ClInclude>
     <ClInclude Include="CoorSystem.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Cosmoscope</Filter>
     </ClInclude>
-    <ClInclude Include="CosmosToSDL.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="FuncTree.h">
+      <Filter>Header Files\Cosmoscope</Filter>
+    </ClInclude>
+    <ClInclude Include="RelativeFunc.h">
+      <Filter>Header Files\Cosmoscope</Filter>
     </ClInclude>
     <ClInclude Include="Style.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Cosmoscope</Filter>
     </ClInclude>
     <ClInclude Include="Time.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Cosmoscope</Filter>
+    </ClInclude>
+    <ClInclude Include="CosmosToSDL.h">
+      <Filter>Header Files\CosmoscopeSDL</Filter>
+    </ClInclude>
+    <ClInclude Include="Brushes.h">
+      <Filter>Header Files\DrawSDL</Filter>
+    </ClInclude>
+    <ClInclude Include="CallbackExamples.h">
+      <Filter>Header Files\Cosmoscope</Filter>
+    </ClInclude>
+    <ClInclude Include="CosmosDrawer.h">
+      <Filter>Header Files\CosmoscopeSDL</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
