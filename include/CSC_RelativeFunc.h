@@ -1,4 +1,4 @@
-/// @file RelativeFunc.h
+/// @file CSC_RelativeFunc.h
 /// @brief Contains the class RelativeFunc, which ties each function to another function, called the parent function. 
 /// The origin of the coordinate system of the child function is most of the time moving.
 /// The main origin, at a position of (0,0), is represented by ``id = -1``
@@ -8,7 +8,7 @@
 #pragma once
 
 #include<functional>
-#include "CallbackFuncs.h"
+#include "CSC_CallbackFuncs.h"
 
 namespace cosmoscope {
 

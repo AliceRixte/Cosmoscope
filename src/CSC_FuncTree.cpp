@@ -1,4 +1,4 @@
-#include "FuncTree.h"
+#include "CSC_FuncTree.h"
 
 namespace cosmoscope {
 

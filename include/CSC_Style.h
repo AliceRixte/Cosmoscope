@@ -1,4 +1,4 @@
-/// @file Style.h
+/// @file CSC_Style.h
 /// @brief Contains structures used to describe drawing style in the cosmoscope
 /// 
 /// @author Alice Rixte

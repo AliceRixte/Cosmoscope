@@ -1,6 +1,6 @@
 #include <SDL.h>
 #include <iostream>
-#include "FuncTree.h"
+#include "CSC_FuncTree.h"
 #include <cmath>
 #include "brushes.h"
 #include "CosmosToSDL.h"

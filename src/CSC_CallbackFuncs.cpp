@@ -1,4 +1,4 @@
-#include "CallbackFuncs.h"
+#include "CSC_CallbackFuncs.h"
 
 namespace cosmoscope {
 

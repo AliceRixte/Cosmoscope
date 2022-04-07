@@ -5,7 +5,7 @@
 /// @date 07/04/2022
 #pragma once
 #include <SDL.h>
-#include "funcTree.h"
+#include "CSC_funcTree.h"
 
 namespace cosmoscope_SDL {
 	/// @brief This contains a whole cosmoscope with its own renderer and window

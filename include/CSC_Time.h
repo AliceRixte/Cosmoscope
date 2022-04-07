@@ -1,4 +1,4 @@
-/// @file Time.h
+/// @file CSC_Time.h
 /// @brief Allows the Cosmoscope to deal with its own time, and to dilate it as it wishes
 ///
 /// @author Alice Rixte

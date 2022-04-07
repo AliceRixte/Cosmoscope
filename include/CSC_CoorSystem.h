@@ -1,4 +1,4 @@
-/// @file CoorSystem.h
+/// @file CSC_CoorSystem.h
 /// @brief This header allows the Cosmoscope to use different types coordinate systems, for now cartesian and polar systems. 
 /// 
 /// **Angles** should be measured with *degrees* with 0° being the horizontal and using the trigonometric direction.\n\n

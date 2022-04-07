@@ -1,4 +1,4 @@
-#include "RelativeFunc.h"
+#include "CSC_RelativeFunc.h"
 
 namespace cosmoscope {
 

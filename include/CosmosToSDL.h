@@ -6,9 +6,9 @@
 #pragma once
 
 #include <SDL.h>
-#include "Time.h"
-#include "CoorSystem.h"
-#include "Style.h"
+#include "CSC_Time.h"
+#include "CSC_CoorSystem.h"
+#include "CSC_Style.h"
 
 namespace cosmoscope_SDL {
 	SDL_Color styleToColor(cosmoscope::Style style);

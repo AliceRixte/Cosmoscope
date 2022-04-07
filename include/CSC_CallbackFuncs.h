@@ -1,4 +1,4 @@
-/// @file CallbackFuncs.h
+/// @file CSC_CallbackFuncs.h
 /// @brief Contains wrappers to use callback functions that are necessary for relative functions.
 /// 
 /// There are 3 types of callback functions : 
@@ -12,9 +12,9 @@
 
 #include <functional>
 
-#include "CoorSystem.h"
-#include "Time.h"
-#include "Style.h"
+#include "CSC_CoorSystem.h"
+#include "CSC_Time.h"
+#include "CSC_Style.h"
 
 namespace cosmoscope {
 

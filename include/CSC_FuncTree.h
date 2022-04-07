@@ -1,4 +1,4 @@
-/// @file FuncTree.h
+/// @file CSC_FuncTree.h
 /// @brief Contains the FuncTree class, which organises all the relative functions so they can be executed.
 /// @author Alice Rixte
 /// @date 05/04/2022
@@ -10,8 +10,8 @@
 #include<vector>
 #include<functional>
 
-#include "RelativeFunc.h"
-#include "CoorSystem.h"
+#include "CSC_RelativeFunc.h"
+#include "CSC_CoorSystem.h"
 
 
 // This class regroups all the relative functions. Their frame is tied to their parent function or to the chosen origin if their parent id is -1

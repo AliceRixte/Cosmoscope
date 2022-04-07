@@ -5,7 +5,7 @@
 /// @date 07/04/2022
 #pragma once
 
-#include "CallbackFuncs.h"
+#include "CSC_CallbackFuncs.h"
 
 namespace cosmoscope {
     Position line(Time t) {
