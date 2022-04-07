@@ -7,7 +7,9 @@ namespace cosmoscope_SDL {
 
     CosmosDrawer::CosmosDrawer(const char* window_name, int width, int height, const cosmoscope::FuncTree* func_tree) : 
         m_funcTree(func_tree),
-        m_isAppRunning(true) {
+        m_isWindowOpen(true),
+        m_window(NULL), m_renderer(NULL), t(0)
+    {
 
         //SDL initialisation
         SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
@@ -31,7 +33,7 @@ namespace cosmoscope_SDL {
             switch (event.type) {
             case SDL_WINDOWEVENT:
                 if (event.window.event == SDL_WINDOWEVENT_CLOSE) {
-                    m_isAppRunning = false; //window closing
+                    m_isWindowOpen = false; //window closing
                 }
                 break;
             }
@@ -40,9 +42,9 @@ namespace cosmoscope_SDL {
     }
 
     int CosmosDrawer::UpdateFrame() {
-        frame_pos = m_funcTree->ComputeAllPos(t);
-        frame_style = m_funcTree->ComputeAllStyle(t);
 
+        std::vector<cosmoscope::Position> frame_pos = m_funcTree->ComputeAllPos(t);
+        std::vector<cosmoscope::Style>    frame_style = m_funcTree->ComputeAllStyle(t);
 
         for (int i = 0; i < frame_pos.size(); i++) {
             cosmoscope::Position pos = frame_pos[i];
@@ -51,10 +53,7 @@ namespace cosmoscope_SDL {
                 draw_SDL::DrawEllipse(m_renderer, SDL_Rect{ static_cast<int>(pos.x) - 1,static_cast<int>(pos.y) - 1,3,3 },
                     cosmoscope_SDL::styleToColor(style), style.h);
             }
-
         }
-
-
         SDL_RenderPresent(m_renderer);
         SDL_Delay(1);
         t++;
@@ -62,13 +61,17 @@ namespace cosmoscope_SDL {
         return 0;
     }
 
+
+    bool CosmosDrawer::IsWindowOpen() const {
+        return m_isWindowOpen;
+    }
+
+
     CosmosDrawer::~CosmosDrawer() {
         SDL_DestroyWindow(m_window);
         SDL_DestroyRenderer(m_renderer);
-
         SDL_Quit();
     }
-
 
 }
 

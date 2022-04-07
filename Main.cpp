@@ -29,12 +29,16 @@ int main(int argc, char* argv[])
 
 
 
-    cosmoscope_SDL::CosmosDrawer cosmosDrawer{ "Cosmoscope",900,900,&ftree};
+    cosmoscope_SDL::CosmosDrawer cosmosDrawer1{ "Cosmoscope",900,900,&ftree};
+    cosmoscope_SDL::CosmosDrawer cosmosDrawer2{ "Cosmoscope",900,900,&ftree };
 
 
-    while (cosmosDrawer.m_isAppRunning) {
-        cosmosDrawer.ProcessEvents();
-        cosmosDrawer.UpdateFrame();
+    while (cosmosDrawer1.IsWindowOpen()&& cosmosDrawer2.IsWindowOpen()) {
+        cosmosDrawer1.ProcessEvents();
+        cosmosDrawer1.UpdateFrame();
+
+        cosmosDrawer2.ProcessEvents();
+        cosmosDrawer2.UpdateFrame();
 
     }
 
