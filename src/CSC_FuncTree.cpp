@@ -48,25 +48,16 @@ namespace cosmoscope {
 
 
 
-	int FuncTree::AddMonochromeCartesian(int parent_id, const CartesianCallback& cartesian_cb, const Style& style){
-		funcs.push_back(new RelativeFunc{parent_id,cartesian_cb,style});
+	int FuncTree::AddMonochromeFunc(int parent_id, const ParamCallback& param_cb, const Style& style){
+		funcs.push_back(new RelativeFunc{parent_id,param_cb,style});
 		return funcs.size() - 1;
 	}
 
-	int FuncTree::AddMonochromePolar(int parent_id, const PolarCallback& polar_cb, const Style& style) {
-		funcs.push_back(new RelativeFunc{ parent_id,polar_cb,style });
+	int FuncTree::AddPolychromeFunc(int parent_id, const ParamCallback& param_cb, const StyleCallback& style_cb) {
+		funcs.push_back(new RelativeFunc{parent_id,param_cb,style_cb});
 		return funcs.size() - 1;
 	}
 
-	int FuncTree::AddPolychromeCartesian(int parent_id, const CartesianCallback& cartesian_cb, const StyleCallback& style_cb) {
-		funcs.push_back(new RelativeFunc{parent_id,cartesian_cb,style_cb});
-		return funcs.size() - 1;
-	}
-
-	int FuncTree::AddPolychromePolar(int parent_id, const PolarCallback& polar_cb, const StyleCallback& style_cb) {
-		funcs.push_back(new RelativeFunc{ parent_id,polar_cb,style_cb });
-		return funcs.size() - 1;
-	}
 
 
 	void FuncTree::SetOrigin(const CartesianPos& origin) {

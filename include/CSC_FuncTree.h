@@ -52,33 +52,20 @@ namespace cosmoscope {
 		/// @return A vector containing the style of each relative function
 		std::vector<Style> ComputeAllStyle(Time t) const;
 
-		/// @brief Adds a new monochrome cartesian relative function to the tree.
+		/// @brief Adds a new monochrome relative function to the tree.
 		/// @param parent_id The ID of the parent relative function, or -1, if it's bound to the origin
-		/// @param param_cb The cartesian parametric callback function 
+		/// @param param_cb The parametric callback function 
 		/// @param style The style of the function. This will create a constant style function
 		/// @return The ID of the newly added relative function.
-		int AddMonochromeCartesian(int parent_id, const CartesianCallback& cartesian_cb, const Style& style = {1.0,1.0,1.0,1.0,1.0});
-
-		/// @brief Adds a new monochrome polar relative function to the tree.
-		/// @param parent_id The ID of the parent relative function, or -1, if it's bound to the origin
-		/// @param param_cb The polar parametric callback function 
-		/// @param style The style of the function. This will create a constant style function
-		/// @return The ID of the newly added relative function.
-		int AddMonochromePolar(int parent_id, const PolarCallback& polar_cb, const Style& style = { 1.0,1.0,1.0,1.0,1.0 });
+		int AddMonochromeFunc(int parent_id, const ParamCallback& param_cb, const Style& style = {1.0,1.0,1.0,1.0,1.0});
 
 		/// @brief Adds a new polychrome relative function to the tree.
 		/// @param parent_id The ID of the parent relative function, or -1, if it's bound to the origin
-		/// @param param_cb A cartesesian parametric callback function 
+		/// @param param_cb A parametric callback function 
 		/// @param style_cb A style callback function.
 		/// @return The ID of the newly added relative function.
-		int AddPolychromeCartesian(int parent_id, const CartesianCallback& cartesian_cb, const StyleCallback& style_cb);
+		int AddPolychromeFunc(int parent_id, const ParamCallback& param_cb, const StyleCallback& style_cb);
 
-		/// @brief Adds a new polychrome polar relative function to the tree.
-		/// @param parent_id The ID of the parent relative function, or -1, if it's bound to the origin
-		/// @param polar_cb A polar parametric callback function 
-		/// @param style_cb A style callback function.
-		/// @return The ID of the newly added relative function.
-		int AddPolychromePolar(int parent_id, const PolarCallback& polar_cb, const StyleCallback& style_cb);
 
 
 		/// @brief Sets the default origin. This corresponds to the "-1" parent

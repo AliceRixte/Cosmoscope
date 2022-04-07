@@ -2,12 +2,9 @@
 
 namespace cosmoscope {
 
-	ParamFunc::ParamFunc(const CartesianCallback& cartesian_cb)
-		: m_paramCb(cartesian_cb) {
-	}
+	ParamFunc::ParamFunc(const std::variant<CartesianCallback, PolarCallback>& param_cb)
+		: m_paramCb(param_cb) {
 
-	ParamFunc::ParamFunc(const PolarCallback& polar_cb)
-		: m_paramCb(polar_cb) {
 	}
 
 

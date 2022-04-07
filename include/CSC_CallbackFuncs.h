@@ -25,6 +25,9 @@ namespace cosmoscope {
 using CartesianCallback = std::function<CartesianPos(Time)>;
 /// @brief An alias for parametric polar callbacks
 using PolarCallback = std::function<PolarPos(Time)>;
+/// @brief An alias for parametric callbacks (no matter the coordinate system)
+using ParamCallback = std::variant<CartesianCallback, PolarCallback>;
+
 /// @brief An alias for style callbacks
 using StyleCallback = std::function<Style(Time)>;
 /// @brief An alias for time callbacks
@@ -34,13 +37,11 @@ using TimeCallback = std::function<Time(Time)>;
 /// This allows to deal with coordinate system changes in particular.
 class ParamFunc {
 public:
-	/// @brief The main constructor, asking for the parametric callback and the coordonate system type
-	/// @param param_func The parametric callback tied to the class
-	explicit ParamFunc(const CartesianCallback& param_cb);
+
 
 	/// @brief The main constructor, asking for the parametric callback and the coordonate system type
-	/// @param param_func The parametric callback tied to the class
-	explicit ParamFunc(const PolarCallback& param_cb);
+	/// @param param_cb The (polar or cartesian) parametric callback representing this function
+	explicit ParamFunc(const ParamCallback& param_cb);
 
 	/// @brief Computes the parametric function at a time **t**
 	/// @param t The current time
