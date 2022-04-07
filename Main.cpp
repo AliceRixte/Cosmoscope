@@ -5,6 +5,16 @@
 #include "brushes.h"
 #include "CosmosToSDL.h"
 
+
+
+
+#include <filesystem>
+#include <string>
+
+namespace fs = std::filesystem;
+
+using std::filesystem::current_path;
+
 cosmoscope::Position line(cosmoscope::Time t) {
     return cosmoscope::Position{200,t};
 }
@@ -51,8 +61,25 @@ int main(int argc, char* argv[])
 
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 
-    SDL_Color ctest = cosmoscope_SDL::styleToColor(cosmoscope::Style{ 1.0,0.0,1.,1.,1 });
-    std::cout << static_cast<int>(ctest.r) << std::endl;
+   
+    std::cout << "Current working directory: " << std::filesystem::current_path() << std::endl;
+
+    SDL_Surface* img = SDL_LoadBMP("Screenshots/sample_640x426.bmp");
+    if (!img)
+    {
+        printf("Erreur de chargement de l'image : %s", SDL_GetError());
+        return -1;
+    }
+    SDL_Texture* monImage = SDL_CreateTextureFromSurface(renderer, img);
+    
+    SDL_FreeSurface(img);
+    SDL_Rect position;
+    position.x = 100;
+    position.y = 200;
+    SDL_QueryTexture(monImage, NULL, NULL, &position.w, &position.h);
+    SDL_RenderCopy(renderer, monImage, NULL, &position);
+    SDL_RenderPresent(renderer);
+
 
     SDL_Event event;
     bool app_running = true;
