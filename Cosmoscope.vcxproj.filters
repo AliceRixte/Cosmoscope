@@ -69,6 +69,9 @@
     <ClCompile Include="src\CSC_Cosmovertor.cpp">
       <Filter>Header Files\Cosmoscope</Filter>
     </ClCompile>
+    <ClCompile Include="src\CSC_CallbackTools.cpp">
+      <Filter>Header Files\Cosmoscope</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\CSC_CallbackFuncs.h">
@@ -102,6 +105,9 @@
       <Filter>Header Files\Test</Filter>
     </ClInclude>
     <ClInclude Include="include\CSC_Cosmovertor.h">
+      <Filter>Source Files\Cosmoscope</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CSC_CallbackTools.h">
       <Filter>Source Files\Cosmoscope</Filter>
     </ClInclude>
   </ItemGroup>

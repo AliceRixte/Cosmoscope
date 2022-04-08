@@ -145,6 +145,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Brushes.cpp" />
+    <ClCompile Include="src\CSC_CallbackTools.cpp" />
     <ClCompile Include="src\CSC_CallbackFuncs.cpp" />
     <ClCompile Include="src\CSC_CoorSystem.cpp" />
     <ClCompile Include="src\CosmosDrawer.cpp" />
@@ -159,6 +160,7 @@
   <ItemGroup>
     <ClInclude Include="include\Brushes.h" />
     <ClInclude Include="include\CallbackExamples.h" />
+    <ClInclude Include="include\CSC_CallbackTools.h" />
     <ClInclude Include="include\CSC_CallbackFuncs.h" />
     <ClInclude Include="include\CSC_CoorSystem.h" />
     <ClInclude Include="include\CosmosDrawer.h" />

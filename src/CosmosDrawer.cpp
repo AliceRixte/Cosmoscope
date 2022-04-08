@@ -50,7 +50,7 @@ namespace cosmoscope_SDL {
             cosmoscope::CartesianPos pos = frame_pos[i];
             cosmoscope::Style style = frame_style[i];
             if (style.h >= 0.0) {
-                draw_SDL::DrawEllipse(m_renderer, SDL_Rect{ static_cast<int>(pos.x) - 1,static_cast<int>(pos.y) - 1,3,3 },
+                draw_SDL::DrawEllipse(m_renderer, SDL_Rect{ static_cast<int>(pos.x) - 1,static_cast<int>(pos.y) - 1,3,3},
                     cosmoscope_SDL::styleToColor(style), style.h);
             }
         }

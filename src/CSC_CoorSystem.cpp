@@ -1,6 +1,5 @@
 #include "CSC_CoorSystem.h"
 
-#define TWOPI 6.28318530718
 
 namespace cosmoscope {
 

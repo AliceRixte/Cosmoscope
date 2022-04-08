@@ -18,6 +18,9 @@
 #include <cmath>
 
 namespace cosmoscope {
+	namespace {
+		#define TWOPI 6.28318530718
+	}
 
 	/// @brief Converts degrees to radians
 	/// @param angle An angle in degrees.
