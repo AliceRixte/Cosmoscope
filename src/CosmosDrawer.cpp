@@ -6,7 +6,7 @@
 namespace cosmoscope_SDL {
 
     CosmosDrawer::CosmosDrawer(const char* window_name, int width, int height, const cosmoscope::FuncTree* func_tree) : 
-        m_funcTree(func_tree),
+        m_funcTree(func_tree), m_snapQueue(),
         m_isWindowOpen(true),
         m_window(NULL), m_renderer(NULL), t(0), m_altKeyDown(false)
     {
@@ -58,12 +58,11 @@ namespace cosmoscope_SDL {
 
     int CosmosDrawer::UpdateFrame() {
 
-        std::vector<cosmoscope::CartesianPos> frame_pos = m_funcTree->ComputeAllPos(t);
-        std::vector<cosmoscope::Style>    frame_style = m_funcTree->ComputeAllStyle(t);
+        m_funcTree->ComputeAll(t,&m_snapQueue);
 
-        for (int i = 0; i < frame_pos.size(); i++) {
-            cosmoscope::CartesianPos pos = frame_pos[i];
-            cosmoscope::Style style = frame_style[i];
+        for (int i = 0; i < m_funcTree->Size(); i++) {
+            cosmoscope::CartesianPos pos = m_snapQueue.GetSnap(0)[i].p;
+            cosmoscope::Style style = m_snapQueue.GetSnap(0)[i].s;
             if (style.brush.h >= 0.0) {
                 int diam_brush = 3;
                 draw_SDL::DrawEllipse(m_renderer, 

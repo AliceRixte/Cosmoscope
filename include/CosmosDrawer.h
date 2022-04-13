@@ -44,6 +44,7 @@ namespace cosmoscope_SDL {
 		bool m_altKeyDown;
 
 		const cosmoscope::FuncTree* m_funcTree;
+		cosmoscope::SnapQueue m_snapQueue;
 		double t;
 		
 		

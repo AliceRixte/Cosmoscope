@@ -152,6 +152,7 @@
     <ClCompile Include="src\CosmosToSDL.cpp" />
     <ClCompile Include="src\CSC_Cosmovertor.cpp" />
     <ClCompile Include="src\CSC_FuncTree.cpp" />
+    <ClCompile Include="src\CSC_SnapQueue.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\CSC_RelativeFunc.cpp" />
     <ClCompile Include="src\CSC_Style.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="include\CSC_RelativeFunc.h" />
     <ClInclude Include="include\CSC_Style.h" />
     <ClInclude Include="include\CSC_Time.h" />
+    <ClInclude Include="include\CSC_SnapQueue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

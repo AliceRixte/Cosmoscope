@@ -72,6 +72,9 @@
     <ClCompile Include="src\CSC_CallbackTools.cpp">
       <Filter>Header Files\Cosmoscope</Filter>
     </ClCompile>
+    <ClCompile Include="src\CSC_SnapQueue.cpp">
+      <Filter>Header Files\Cosmoscope</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\CSC_CallbackFuncs.h">
@@ -108,6 +111,9 @@
       <Filter>Source Files\Cosmoscope</Filter>
     </ClInclude>
     <ClInclude Include="include\CSC_CallbackTools.h">
+      <Filter>Source Files\Cosmoscope</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CSC_SnapQueue.h">
       <Filter>Source Files\Cosmoscope</Filter>
     </ClInclude>
   </ItemGroup>

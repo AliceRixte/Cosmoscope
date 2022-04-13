@@ -13,6 +13,8 @@
 #include "CSC_RelativeFunc.h"
 #include "CSC_CoorSystem.h"
 
+#include "CSC_SnapQueue.h"
+
 
 // This class regroups all the relative functions. Their frame is tied to their parent function or to the chosen origin if their parent id is -1
 namespace cosmoscope {
@@ -27,10 +29,8 @@ namespace cosmoscope {
 		BadFuncOrdering(int id_problem, int parent_problem);
 		virtual const char* what() const throw();
 	private:
-		/// @brief Id of the problematic relative function
-		int m_idProblem;
-		/// @brief Id of the inaccessible parent it refers to
-		int m_parentProblem;
+		/// @brief Message showing IDs of problematic paire of function
+		std::string m_message;
 	};
 
 
@@ -45,12 +45,8 @@ namespace cosmoscope {
 		/// @brief Computes all the positions of the relative functions at a time **t**
 		/// @param t The current time
 		/// @return A vector containing the position of each relative function
-		std::vector<CartesianPos> ComputeAllPos(Time t) const;
-
-		/// @brief Computes all the syules of the relative functions at a time **t**
-		/// @param t The current time
-		/// @return A vector containing the style of each relative function
-		std::vector<Style> ComputeAllStyle(Time t) const;
+		//void ComputeAll(Time t, SnapQueue* snap_q) const;
+		void ComputeAll(Time t, SnapQueue* snap_q) const;
 
 		/// @brief Adds a new monochrome relative function to the tree.
 		/// @param parent_id The ID of the parent relative function, or -1, if it's bound to the origin
@@ -67,10 +63,13 @@ namespace cosmoscope {
 		int AddPolychromeFunc(int parent_id, const ParamCallback& param_cb, const StyleCallback& style_cb);
 
 
-
 		/// @brief Sets the default origin. This corresponds to the "-1" parent
 		/// @param origin The position corresponding to the point (0,0) of the Cosmoscope main cartesian system
 		void SetOrigin(const CartesianPos& origin);
+
+		/// @brief Returns the number of relative functions inside the tree
+		/// @return Number of relative functions in the tree
+		int Size() const;
 
 		~FuncTree();
 
@@ -78,6 +77,7 @@ namespace cosmoscope {
 	private:
 		std::vector<RelativeFunc*> funcs;
 		CartesianPos m_origin;
+		
 	};
 
 }
