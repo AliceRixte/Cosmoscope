@@ -64,11 +64,11 @@ namespace cosmoscope_SDL {
         for (int i = 0; i < frame_pos.size(); i++) {
             cosmoscope::CartesianPos pos = frame_pos[i];
             cosmoscope::Style style = frame_style[i];
-            if (style.h >= 0.0) {
+            if (style.brush.h >= 0.0) {
                 int diam_brush = 3;
                 draw_SDL::DrawEllipse(m_renderer, 
                     SDL_Rect{ static_cast<int>(pos.x) - diam_brush/2+1,static_cast<int>(pos.y) - diam_brush/2+1,diam_brush+1,diam_brush+1},
-                    cosmoscope_SDL::styleToColor(style), style.h);
+                    cosmoscope_SDL::colorToSDL(style.color), style.brush.h);
             }
         }
         SDL_RenderPresent(m_renderer);

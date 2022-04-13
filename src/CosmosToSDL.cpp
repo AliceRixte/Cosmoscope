@@ -8,11 +8,11 @@ namespace cosmoscope_SDL {
 		return static_cast<Uint8>(255 * v);
 	}
 
-	SDL_Color styleToColor(cosmoscope::Style style) {
-		return SDL_Color{	double01to255(style.r),
-							double01to255(style.g),
-							double01to255(style.b),
-							double01to255(style.a) 
+	SDL_Color colorToSDL(cosmoscope::Color color) {
+		return SDL_Color{	double01to255(color.r),
+							double01to255(color.g),
+							double01to255(color.b),
+							double01to255(color.a) 
 		};
 	}
 }

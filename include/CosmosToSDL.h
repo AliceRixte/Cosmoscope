@@ -10,5 +10,6 @@
 
 
 namespace cosmoscope_SDL {
-	SDL_Color styleToColor(cosmoscope::Style style);
+	SDL_Color colorToSDL(cosmoscope::Color c);
+
 }

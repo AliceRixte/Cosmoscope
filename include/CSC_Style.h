@@ -5,11 +5,15 @@
 /// @date 05/04/2022
 #pragma once
 
+#include <cstdint>
 
 namespace cosmoscope {
 
-	/// @brief A structure used to store a drawing style (color, transparency and hardness). All values range from 0.0 to 1.0
-	struct Style {
+	/// @brief A structure used to store a drawing color All values range from 0.0 to 1.0
+	struct Color {
+		Color(double r, double g, double b, double a = 1.0);
+		Color(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 255);
+
 		/// @brief red : ranges from 0.0 to 1.0
 		double r;
 		/// @brief green: ranges from 0.0 to 1.0
@@ -18,7 +22,26 @@ namespace cosmoscope {
 		double b;
 		/// @brief alpha (transparency) : ranges from 0.0 to 1.0
 		double a;
+	};
+
+	struct BrushStyle {
 		/// @brief hardness : how hard the brush is applied. Ranges from 0.0 to 1.0. When set to -1.0, the function is not drawn.
 		double h;
+		/// @brief radius of the brush. Ranges from 0.0 to 1.0 
+		double radius;
+	};
+
+	/// @brief A structure used to store a drawing style (color, transparency and hardness). All values range from 0.0 to 1.0
+	struct Style {
+		Style(Color c, BrushStyle b);
+		Style(Color c, BrushStyle b, Color c2);
+		/// @brief Main color of the style
+		Color color;
+		/// @brief Secondary color of the style
+		Color color2;
+
+		/// @brief Additional values to personalize the brush
+		BrushStyle brush;
+		
 	};
 }

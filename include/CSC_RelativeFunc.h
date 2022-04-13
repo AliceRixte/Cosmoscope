@@ -20,7 +20,7 @@ namespace cosmoscope {
         /// @param id_parent The id of the parent relative function. Set to -1 to tie to the main origin.
         /// @param param_cb A cartesian parametric callback function
         /// @param style The style of the function
-        explicit RelativeFunc(int id_parent, const ParamCallback& param_cb, const Style& style = Style {255,255,255,255});
+        explicit RelativeFunc(int id_parent, const ParamCallback& param_cb, const Style& style);
 
         // @brief A constructor allowing to create a polychrome relative function.
         /// @param id_parent The id of the parent relative function. Set to -1 to tie to the main origin.

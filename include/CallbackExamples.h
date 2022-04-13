@@ -14,13 +14,22 @@ using namespace cosmoscope;
 
 
 Style style1(Time t) {
-    return Style{ 0,(static_cast<int>(t) % 20000) / 20000.0,0.8,1.,0.2 };
+    return Style{
+        Color{0,(static_cast<int>(t) % 20000) / 20000.0,0.8,1.},
+        BrushStyle{0.2,0.5}
+    };
 }
 Style style2(Time t) {
-    return Style{ 0,1.0 - (static_cast<int>(t)%2000 <= 999 ? static_cast<int>(t) % 1000 : 1.0 - static_cast<int>(t) % 1000) / 1000.0,0.8,1., };
+    return Style{ 
+        Color{0,1.0 - (static_cast<int>(t) % 2000 <= 999 ? static_cast<int>(t) % 1000 : 1.0 - static_cast<int>(t) % 1000) / 1000.0,0.8,1.},
+        BrushStyle{0.2,0.5}
+     };
 }
 
 Style style3(Time t) {
     double coeff = std::fmod(t,42.5 * TWOPI)/ (42.5 * TWOPI);
-    return Style{ 0.00, coeff ,0.5 + 0.5*coeff,1.,0. };
+    return Style{ 
+        Color{0.00, coeff ,0.5 + 0.5 * coeff,1.},
+        BrushStyle{0.,0.5}
+    };
 }

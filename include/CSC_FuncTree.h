@@ -57,7 +57,7 @@ namespace cosmoscope {
 		/// @param param_cb The parametric callback function 
 		/// @param style The style of the function. This will create a constant style function
 		/// @return The ID of the newly added relative function.
-		int AddMonochromeFunc(int parent_id, const ParamCallback& param_cb, const Style& style = {1.0,1.0,1.0,1.0,1.0});
+		int AddMonochromeFunc(int parent_id, const ParamCallback& param_cb, const Style& style);
 
 		/// @brief Adds a new polychrome relative function to the tree.
 		/// @param parent_id The ID of the parent relative function, or -1, if it's bound to the origin
