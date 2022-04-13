@@ -8,7 +8,7 @@ namespace cosmoscope_SDL {
     CosmosDrawer::CosmosDrawer(const char* window_name, int width, int height, const cosmoscope::FuncTree* func_tree) : 
         m_funcTree(func_tree),
         m_isWindowOpen(true),
-        m_window(NULL), m_renderer(NULL), t(0)
+        m_window(NULL), m_renderer(NULL), t(0), m_altKeyDown(false)
     {
 
         //SDL initialisation
@@ -36,7 +36,22 @@ namespace cosmoscope_SDL {
                     m_isWindowOpen = false; //window closing
                 }
                 break;
+            case SDL_KEYDOWN:
+                if (event.key.keysym.sym == SDLK_LALT) {
+                    m_altKeyDown = true;
+                }else if (event.key.keysym.sym == SDLK_s && m_altKeyDown) {
+                    TakeScreenshot();
+                }
+                break;
+            case SDL_KEYUP:
+                if (event.key.keysym.sym == SDLK_LALT) {
+                    m_altKeyDown = false;
+                }
             }
+              
+            
+
+
         }
         return 0;
     }
@@ -50,7 +65,9 @@ namespace cosmoscope_SDL {
             cosmoscope::CartesianPos pos = frame_pos[i];
             cosmoscope::Style style = frame_style[i];
             if (style.h >= 0.0) {
-                draw_SDL::DrawEllipse(m_renderer, SDL_Rect{ static_cast<int>(pos.x) - 1,static_cast<int>(pos.y) - 1,3,3},
+                int diam_brush = 3;
+                draw_SDL::DrawEllipse(m_renderer, 
+                    SDL_Rect{ static_cast<int>(pos.x) - diam_brush/2+1,static_cast<int>(pos.y) - diam_brush/2+1,diam_brush+1,diam_brush+1},
                     cosmoscope_SDL::styleToColor(style), style.h);
             }
         }
@@ -66,6 +83,15 @@ namespace cosmoscope_SDL {
         return m_isWindowOpen;
     }
 
+    int CosmosDrawer::TakeScreenshot() const {
+        int w, h = 0;
+        SDL_GetWindowSize(m_window,&w,&h);
+        SDL_Surface* sshot = SDL_CreateRGBSurface(0, w, h, 32, 0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000);
+        SDL_RenderReadPixels(m_renderer, NULL, SDL_PIXELFORMAT_ARGB8888, sshot->pixels, sshot->pitch);
+        SDL_SaveBMP(sshot, "screenshots/cosmoscope.bmp");
+        SDL_FreeSurface(sshot);
+        return 0;
+    }
 
     CosmosDrawer::~CosmosDrawer() {
         SDL_DestroyWindow(m_window);
