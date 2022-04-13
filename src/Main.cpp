@@ -10,7 +10,7 @@ using namespace cosmoscope;
 
 int main(int argc, char* argv[])
 {
-    cosmoscope::FuncTree ftree{ cosmoscope::CartesianPos{495,495},450};
+    cosmoscope::FuncTree ftree{ cosmoscope::CartesianPos{495,495}};
     ftree.AddMonochromeFunc(-1, createCircle(200.0,1.0), cosmoscope::Style{1.,0.,0.,1.,-1.});
     ftree.AddMonochromeFunc(0,  createCircle(150.0,1/150.0), cosmoscope::Style{1.,0.,0.,1.,-1.});
     ftree.AddPolychromeFunc(1, createCircle(60.0,-1.0), &style1); //cosmoscope::Style{ 0.9,0.1,0.2,1.,0.0});

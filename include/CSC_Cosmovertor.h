@@ -8,7 +8,6 @@
 #include "CSC_CallbackFuncs.h"
 
 namespace cosmoscope {
-	namespace {
 		/// @brief This class aims to facilitate the conversions between real life units and the cosmoscope's narmalized units
 		struct Cosmovertor {
 			/// @brief  Creates a cosmovertor 
@@ -48,6 +47,5 @@ namespace cosmoscope {
 			/// In degrees, this should be 360, in radians, this should be 2*PI.
 			double m_angleScale;
 		};
-	}
 }
 
