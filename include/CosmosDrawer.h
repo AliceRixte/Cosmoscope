@@ -32,6 +32,8 @@ namespace cosmoscope_SDL {
 		/// @return Switches to false when user closes the window
 		bool IsWindowOpen() const;
 
+		int TakeScreenshot() const;
+
 		~CosmosDrawer();
 	private:
 
@@ -39,6 +41,7 @@ namespace cosmoscope_SDL {
 		SDL_Window* m_window;
 
 		bool m_isWindowOpen;
+		bool m_altKeyDown;
 
 		const cosmoscope::FuncTree* m_funcTree;
 		double t;
