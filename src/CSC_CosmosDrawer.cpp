@@ -5,7 +5,7 @@
 namespace cosmoscope_SDL {
 
     CosmosDrawer::CosmosDrawer(const char* window_name, int width, int height, const cosmoscope::FuncTree* func_tree) : 
-        m_funcTree(func_tree), m_snapQueue(),m_cosmovertor(func_tree,1.0),
+        m_funcTree(func_tree), m_snapQueue(2),m_cosmovertor(func_tree,0.5),
         m_isWindowOpen(true),
         m_window(NULL), m_renderer(NULL), t(0), m_altKeyDown(false)
     {
@@ -57,16 +57,18 @@ namespace cosmoscope_SDL {
 
     int CosmosDrawer::UpdateFrame() {
 
-        m_funcTree->ComputeAll(t,&m_snapQueue);
+       // m_funcTree->ComputeAll(t,&m_snapQueue);
+        m_cosmovertor.ComputeAndConvert(t, &m_snapQueue);
 
         for (int i = 0; i < m_funcTree->Size(); i++) {
-            cosmoscope::CartesianPos pos = m_snapQueue.GetSnap(0)[i].p;
-            cosmoscope::Style style = m_snapQueue.GetSnap(0)[i].s;
+            SDL_Point pos = m_snapQueue.GetSnap(0)[i].p;
+            cosmovertorSDL::StyleSDL style = m_snapQueue.GetSnap(0)[i].s;
+
             if (style.brush.h >= 0.0) {
                 int diam_brush = 3;
                 draw_SDL::DrawEllipse(m_renderer, 
                     SDL_Rect{ static_cast<int>(pos.x) - diam_brush/2+1,static_cast<int>(pos.y) - diam_brush/2+1,diam_brush+1,diam_brush+1},
-                    m_cosmovertor.ColorToSDL(style.color), style.brush.h);
+                    style.color, style.brush.h);
             }
         }
         SDL_RenderPresent(m_renderer);

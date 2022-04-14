@@ -69,7 +69,7 @@ namespace cosmoscope {
 	}
 
 	int FuncTree::GetRecurrenceDepth() const {
-		return 0;
+		return 1;
 	}
 
 	FuncTree::~FuncTree() {

@@ -6,7 +6,7 @@ namespace cosmovertorSDL {
 	
 
 	Cosmovertor::Cosmovertor(const cosmoscope::FuncTree* func_tree, double length_scale) :
-		m_funcTree(func_tree), m_lengthScale(length_scale), m_snapQ(func_tree->GetRecurrenceDepth()) {
+		m_funcTree(func_tree), m_lengthScale(length_scale), m_snapQ(func_tree->GetRecurrenceDepth()+1) {
 
 	}
 

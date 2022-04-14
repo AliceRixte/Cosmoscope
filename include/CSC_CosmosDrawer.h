@@ -45,7 +45,7 @@ namespace cosmoscope_SDL {
 		bool m_altKeyDown;
 
 		const cosmoscope::FuncTree* m_funcTree;
-		cosmoscope::SnapQueue m_snapQueue;
+		cosmovertorSDL::SnapQueueSDL m_snapQueue;
 		cosmovertorSDL::Cosmovertor m_cosmovertor;
 		//cosmoscope::SnapQueueSDL m_snapQueue;
 

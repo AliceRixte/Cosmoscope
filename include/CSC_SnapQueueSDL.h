@@ -35,6 +35,7 @@ namespace cosmovertorSDL {
 		void WriteSnap(const TreeSnapSDL& tree_snap);
 
 		TreeSnapSDL GetSnap(unsigned int snape_age) const;
+		int Size();
 
 
 	private:

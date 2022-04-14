@@ -18,5 +18,8 @@ namespace cosmovertorSDL {
 		m_history[m_start] = tree_snap;
 	}
 
+	int SnapQueueSDL::Size() {
+		return m_history.size();
+	}
 
 }

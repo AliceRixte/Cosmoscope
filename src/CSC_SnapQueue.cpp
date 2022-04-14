@@ -23,7 +23,7 @@ namespace cosmoscope {
 	}
 
 	void SnapQueue::WriteSnap(const TreeSnap& tree_snap) {
-		m_start = m_start == 0 ? static_cast<int>(m_history.size()) - 1 : m_start - 1;
+		m_start = NextIndex(m_start);
 		m_history[m_start] = tree_snap;
 	}
 
@@ -32,8 +32,9 @@ namespace cosmoscope {
 			return false;
 		}
 		else {
-			*tree_snap = m_history[m_readIndex];
 			m_readIndex = NextIndex(m_readIndex);
+			*tree_snap = m_history[m_readIndex];
+			
 			return true;
 		}
 	}
