@@ -34,6 +34,12 @@
     <Filter Include="Source Files\CosmosDrawerSDL">
       <UniqueIdentifier>{3dec1231-1b59-4e22-9f22-4e3753ccc8aa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\SDL_SavePNG">
+      <UniqueIdentifier>{56726aa1-8e93-4354-9ec0-3f93be745369}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SDL_SavePNG">
+      <UniqueIdentifier>{a16d249a-a3cb-4451-89b9-cc6292dd596a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Main.cpp">
@@ -80,6 +86,9 @@
     </ClCompile>
     <ClCompile Include="src\CSC_SnapQueueSDL.cpp">
       <Filter>Source Files\CosmoscopeSDL</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_SavePNG\savepng.c">
+      <Filter>Source Files\SDL_SavePNG</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -128,5 +137,11 @@
     <ClInclude Include="include\FloatPixels.h">
       <Filter>Header Files\CosmosDrawerSDL</Filter>
     </ClInclude>
+    <ClInclude Include="SDL_SavePNG\savepng.h">
+      <Filter>Header Files\SDL_SavePNG</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

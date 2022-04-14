@@ -78,8 +78,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>F:\VClibs\SDL2\SDL2-2.0.20\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\VClibs\SDL2\SDL2-2.0.20\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>F:\VClibs\libpng-1.6.37;F:\VClibs\SDL2\SDL2-2.0.20\include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\VClibs\libpng-1.6.37\projects\vstudio\x64\Debug;F:\VClibs\SDL2\SDL2-2.0.20\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -119,12 +119,12 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>E:\Documents\Projets\Cosmoscope\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\Documents\Projets\Cosmoscope\SDL_SavePNG;E:\Documents\Projets\Cosmoscope\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -144,6 +144,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="SDL_SavePNG\savepng.c" />
     <ClCompile Include="src\Brushes.cpp" />
     <ClCompile Include="src\CSC_CallbackTools.cpp" />
     <ClCompile Include="src\CSC_CallbackFuncs.cpp" />
@@ -176,8 +177,19 @@
     <ClInclude Include="include\CSC_SnapQueueSDL.h" />
     <ClInclude Include="include\CSC_StyleSDL.h" />
     <ClInclude Include="include\FloatPixels.h" />
+    <ClInclude Include="SDL_SavePNG\savepng.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="packages\libpng-msvc-x64.1.6.33.8807\build\native\libpng-msvc-x64.targets" Condition="Exists('packages\libpng-msvc-x64.1.6.33.8807\build\native\libpng-msvc-x64.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\libpng-msvc-x64.1.6.33.8807\build\native\libpng-msvc-x64.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\libpng-msvc-x64.1.6.33.8807\build\native\libpng-msvc-x64.targets'))" />
+  </Target>
 </Project>
