@@ -34,11 +34,15 @@ namespace cosmoscope {
 		void WriteSnap(const TreeSnap& tree_snap);
 
 		TreeSnap GetSnap(unsigned int snape_age) const;
+		bool ReadSnap(TreeSnap* p_tree_snap);
 
 
 	private:
 		int m_start;
+		int m_readIndex;
 		std::vector<TreeSnap> m_history;
+
+		int NextIndex(int i);
 
 	};
 }

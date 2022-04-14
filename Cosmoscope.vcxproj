@@ -148,11 +148,13 @@
     <ClCompile Include="src\CSC_CallbackTools.cpp" />
     <ClCompile Include="src\CSC_CallbackFuncs.cpp" />
     <ClCompile Include="src\CSC_CoorSystem.cpp" />
-    <ClCompile Include="src\CosmosDrawer.cpp" />
-    <ClCompile Include="src\CosmosToSDL.cpp" />
-    <ClCompile Include="src\CSC_Cosmovertor.cpp" />
+    <ClCompile Include="src\CSC_CosmosDrawer.cpp" />
+    <ClCompile Include="src\CSC_CosmovertorSDL.cpp" />
     <ClCompile Include="src\CSC_FuncTree.cpp" />
     <ClCompile Include="src\CSC_SnapQueue.cpp" />
+    <ClCompile Include="src\CSC_SnapQueueSDL.cpp" />
+    <ClCompile Include="src\CSC_StyleSDL.cpp" />
+    <ClCompile Include="src\FloatPixel.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\CSC_RelativeFunc.cpp" />
     <ClCompile Include="src\CSC_Style.cpp" />
@@ -164,14 +166,16 @@
     <ClInclude Include="include\CSC_CallbackTools.h" />
     <ClInclude Include="include\CSC_CallbackFuncs.h" />
     <ClInclude Include="include\CSC_CoorSystem.h" />
-    <ClInclude Include="include\CosmosDrawer.h" />
-    <ClInclude Include="include\CosmosToSDL.h" />
-    <ClInclude Include="include\CSC_Cosmovertor.h" />
+    <ClInclude Include="include\CSC_CosmosDrawer.h" />
+    <ClInclude Include="include\CSC_CosmovertorSDL.h" />
     <ClInclude Include="include\CSC_FuncTree.h" />
     <ClInclude Include="include\CSC_RelativeFunc.h" />
     <ClInclude Include="include\CSC_Style.h" />
     <ClInclude Include="include\CSC_Time.h" />
     <ClInclude Include="include\CSC_SnapQueue.h" />
+    <ClInclude Include="include\CSC_SnapQueueSDL.h" />
+    <ClInclude Include="include\CSC_StyleSDL.h" />
+    <ClInclude Include="include\FloatPixels.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

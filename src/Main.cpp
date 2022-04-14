@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "CSC_FuncTree.h"
-#include "CosmosDrawer.h"
+#include "CSC_CosmosDrawer.h"
 
 #include "CallbackExamples.h"
 #include "CSC_CallbackTools.h"

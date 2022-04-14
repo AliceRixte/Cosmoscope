@@ -67,6 +67,11 @@ namespace cosmoscope {
 		/// @param origin The position corresponding to the point (0,0) of the Cosmoscope main cartesian system
 		void SetOrigin(const CartesianPos& origin);
 
+		/// @brief This returns the number of older frames needed to compute a new frame. 
+		/// This is set to 0 if no history is needed.
+		/// @return Number of older frames necessary to compute the current frame
+		int GetRecurrenceDepth() const;
+
 		/// @brief Returns the number of relative functions inside the tree
 		/// @return Number of relative functions in the tree
 		int Size() const;

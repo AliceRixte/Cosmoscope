@@ -68,6 +68,10 @@ namespace cosmoscope {
 		m_origin = origin;
 	}
 
+	int FuncTree::GetRecurrenceDepth() const {
+		return 0;
+	}
+
 	FuncTree::~FuncTree() {
 	for (auto f : funcs) {
 		delete f;

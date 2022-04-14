@@ -1,4 +1,4 @@
-/// @file CosmosDrawer.h
+/// @file CSC_CosmosDrawer.h
 /// @brief Contains the main SDL class handling all the display of the cosmoscope with the SDL library
 /// 
 /// @author Alice Rixte
@@ -6,6 +6,7 @@
 #pragma once
 #include <SDL.h>
 #include "CSC_funcTree.h"
+#include "CSC_CosmovertorSDL.h"
 
 namespace cosmoscope_SDL {
 	/// @brief This contains a whole cosmoscope with its own renderer and window
@@ -45,6 +46,10 @@ namespace cosmoscope_SDL {
 
 		const cosmoscope::FuncTree* m_funcTree;
 		cosmoscope::SnapQueue m_snapQueue;
+		cosmovertorSDL::Cosmovertor m_cosmovertor;
+		//cosmoscope::SnapQueueSDL m_snapQueue;
+
+
 		double t;
 		
 		
