@@ -1,11 +1,13 @@
 #include "CSC_CosmosDrawer.h"
 
 #include "Brushes.h"
+#include <cmath>
 
 namespace cosmoscope_SDL {
 
     CosmosDrawer::CosmosDrawer(const char* window_name, int width, int height, const cosmoscope::FuncTree* func_tree) : 
-        m_funcTree(func_tree), m_snapQueue(2),m_cosmovertor(func_tree,0.5),
+        m_funcTree(func_tree), m_snapQueue(2),
+        m_cosmovertor(func_tree,2.5,floatpix::Position(width/2.0,height/2.0)),
         m_isWindowOpen(true),
         m_window(NULL), m_renderer(NULL), t(0), m_altKeyDown(false)
     {
@@ -65,7 +67,7 @@ namespace cosmoscope_SDL {
             cosmovertorSDL::StyleSDL style = m_snapQueue.GetSnap(0)[i].s;
 
             if (style.brush.h >= 0.0) {
-                int diam_brush = 3;
+                int diam_brush = 4;
                 draw_SDL::DrawEllipse(m_renderer, 
                     SDL_Rect{ static_cast<int>(pos.x) - diam_brush/2+1,static_cast<int>(pos.y) - diam_brush/2+1,diam_brush+1,diam_brush+1},
                     style.color, style.brush.h);

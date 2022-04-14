@@ -15,11 +15,14 @@ int main(int argc, char* argv[])
         cosmoscope::BrushStyle{-1.,0.}
     };
 
-    cosmoscope::FuncTree ftree{ cosmoscope::CartesianPos{495,495}};
+    cosmoscope::Color red{ 0.9,0.1,0.2,0.5};
+    cosmoscope::BrushStyle soft_brush{ 0.0,0.5 };
+
+    cosmoscope::FuncTree ftree;
 
     ftree.AddMonochromeFunc(-1, createCircle(200.0, 1.0), invisible);
     ftree.AddMonochromeFunc(0,  createCircle(150.0,1/150.0), invisible);
-    ftree.AddPolychromeFunc(1, createCircle(60.0,-1.0), &style1); //cosmoscope::Style{ 0.9,0.1,0.2,1.,0.0});
+    ftree.AddMonochromeFunc(1, createCircle(60.0,-1.0),cosmoscope::Style{red,soft_brush});// &style1); 
 
     //ftree.AddMonochromeFunc(-1, createCircle(300,1/401.0), cosmoscope::Style{1.,0.,0.,1.,-1.});
     //ftree.AddPolychromeFunc(0, createCircle(190,1/170.0), &style3);

@@ -52,10 +52,10 @@ int DrawEllipse(SDL_Renderer* renderer, const SDL_Rect& ellipseRect, const SDL_C
 				transparency = 0.0;
 			}
 			else if (dist <= plain_dist) {
-				transparency = 255.0;
+				transparency = color.a;
 			}
 			else {
-				transparency = 255.0 * (1.0 - (dist - plain_dist) / (ellipse_dist - plain_dist));
+				transparency = color.a * (1.0 - (dist - plain_dist) / (ellipse_dist - plain_dist));
 			}
 
 			SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, static_cast<Uint8>(transparency));

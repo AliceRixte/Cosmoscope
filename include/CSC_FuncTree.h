@@ -40,7 +40,7 @@ namespace cosmoscope {
 	public:
 		/// @brief Simple constructor only specifying the main origin point
 		/// @param origin The position corresponding to the point (0,0) of the Cosmoscope main cartesian system
-		FuncTree(const CartesianPos& origin);
+		FuncTree();
 
 		/// @brief Computes all the positions of the relative functions at a time **t**
 		/// @param t The current time
@@ -62,11 +62,6 @@ namespace cosmoscope {
 		/// @return The ID of the newly added relative function.
 		int AddPolychromeFunc(int parent_id, const ParamCallback& param_cb, const StyleCallback& style_cb);
 
-
-		/// @brief Sets the default origin. This corresponds to the "-1" parent
-		/// @param origin The position corresponding to the point (0,0) of the Cosmoscope main cartesian system
-		void SetOrigin(const CartesianPos& origin);
-
 		/// @brief This returns the number of older frames needed to compute a new frame. 
 		/// This is set to 0 if no history is needed.
 		/// @return Number of older frames necessary to compute the current frame
@@ -81,7 +76,6 @@ namespace cosmoscope {
 
 	private:
 		std::vector<RelativeFunc*> funcs;
-		CartesianPos m_origin;
 		
 	};
 

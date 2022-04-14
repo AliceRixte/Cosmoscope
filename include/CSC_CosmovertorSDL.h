@@ -19,7 +19,8 @@ namespace cosmovertorSDL {
 		/// @param length_scale This is the SDL length of  the virtual ``1.0`` Cosmscope length
 		/// @param angle_scale This is the angle measure of a complete 360 degrees rotation. 
 		/// In degrees, this should be 360, in radians, this should be 2*PI.
-		Cosmovertor(const cosmoscope::FuncTree* m_func_tree, double length_scale);
+		/// @param origin The location of the screen of the origin of the relative func tree
+		Cosmovertor(const cosmoscope::FuncTree* m_func_tree, double length_scale, floatpix::Position origin);
 
 		/// @brief Converts the cosmic snapqueue to an SDL snapqueue.
 		/// @param snap_q_sdl 
@@ -82,6 +83,7 @@ namespace cosmovertorSDL {
 
 		/// @brief This is the SDL length of  the virtual ``1.0`` Cosmscope length
 		double m_lengthScale;
+		floatpix::Position m_origin;
 
 		cosmoscope::SnapQueue m_snapQ;
 		const cosmoscope::FuncTree* m_funcTree;

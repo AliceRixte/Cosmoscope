@@ -5,8 +5,11 @@ namespace cosmovertorSDL {
 	//converts a double ranging from 0 to 1 to an integer ranging from 0 to 255
 	
 
-	Cosmovertor::Cosmovertor(const cosmoscope::FuncTree* func_tree, double length_scale) :
-		m_funcTree(func_tree), m_lengthScale(length_scale), m_snapQ(func_tree->GetRecurrenceDepth()+1) {
+	Cosmovertor::Cosmovertor(const cosmoscope::FuncTree* func_tree, double length_scale, floatpix::Position origin) :
+		m_funcTree(func_tree), 
+		m_lengthScale(length_scale),
+		m_origin(origin),
+		m_snapQ(func_tree->GetRecurrenceDepth()+1) {
 
 	}
 
@@ -27,10 +30,11 @@ namespace cosmovertorSDL {
 	floatpix::Distance Cosmovertor::CosmosToDistance(double cosmic_length) const {
 		return cosmic_length * m_lengthScale;
 	}
+
 	SDL_Point Cosmovertor::PositionToSDL(const cosmoscope::CartesianPos& pos) const {
 		return SDL_Point{
-			static_cast<int>(CosmosToDistance(pos.x)),
-			static_cast<int>(CosmosToDistance(pos.y))
+			static_cast<int>(CosmosToDistance(pos.x) + m_origin.x),
+			static_cast<int>(CosmosToDistance(pos.y) + m_origin.y)
 		};
 	}
 

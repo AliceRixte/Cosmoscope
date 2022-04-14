@@ -18,7 +18,7 @@ namespace cosmoscope {
 
 
 	//---------------------------------- FuncTree  --------------------------------------
-	FuncTree::FuncTree(const CartesianPos& origin) : m_origin(origin) {
+	FuncTree::FuncTree() {
 
 	}
 
@@ -29,7 +29,7 @@ namespace cosmoscope {
 		for (int i = 0; i < funcs.size(); i++) {
 			int parent = funcs[i]->GetParent();
 
-			CartesianPos rel_origin = m_origin; 
+			CartesianPos rel_origin{0.0,0.0};
 			//the default origin will stay if the parent id is -1
 			if (parent >= i) {
 				throw BadFuncOrdering(i,parent);
@@ -64,9 +64,6 @@ namespace cosmoscope {
 		return static_cast<int>(funcs.size());
 	}
 
-	void FuncTree::SetOrigin(const CartesianPos& origin) {
-		m_origin = origin;
-	}
 
 	int FuncTree::GetRecurrenceDepth() const {
 		return 1;
