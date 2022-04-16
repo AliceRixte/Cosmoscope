@@ -1,7 +1,7 @@
 #include "CSC_StyleSDL.h"
 
 
-namespace cosmovertorSDL {
+namespace cosmoscopeSDL {
 
 	StyleSDL::StyleSDL(SDL_Color c, BrushStyleSDL b) :
 		color(c), brush(b), color2(c) {

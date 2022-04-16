@@ -12,7 +12,7 @@
 #include "CSC_StyleSDL.h"
 
 
-namespace cosmovertorSDL {
+namespace cosmoscopeSDL {
 
 	/// @brief Regroups all data needed to display a function at a precise moment of time (snapshot)
 	struct FuncSnapSDL {

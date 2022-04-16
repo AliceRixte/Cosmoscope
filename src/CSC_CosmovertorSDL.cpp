@@ -1,11 +1,11 @@
 #include "CSC_CosmovertorSDL.h"
 
-namespace cosmovertorSDL {
+namespace cosmoscopeSDL {
 
 	//converts a double ranging from 0 to 1 to an integer ranging from 0 to 255
 	
 
-	Cosmovertor::Cosmovertor(const cosmoscope::FuncTree* func_tree, double length_scale, floatpix::Position origin) :
+	CosmovertorSDL::CosmovertorSDL(const cosmoscope::FuncTree* func_tree, double length_scale, floatpix::Position origin) :
 		m_funcTree(func_tree), 
 		m_lengthScale(length_scale),
 		m_origin(origin),
@@ -13,7 +13,7 @@ namespace cosmovertorSDL {
 
 	}
 
-	void Cosmovertor::ComputeAndConvert(double t, SnapQueueSDL* snap_q) {
+	void CosmovertorSDL::ComputeAndConvert(double t, SnapQueueSDL* snap_q) {
 		m_funcTree->ComputeAll(t, &m_snapQ);
 		cosmoscope::TreeSnap ts;
 		while (m_snapQ.ReadSnap(&ts)) {
@@ -23,15 +23,15 @@ namespace cosmovertorSDL {
 
 
 
-	double Cosmovertor::DistanceToCosmos(floatpix::Distance  length) const {
+	double CosmovertorSDL::DistanceToCosmos(floatpix::Distance  length) const {
 		return length / m_lengthScale;
 	}
 
-	floatpix::Distance Cosmovertor::CosmosToDistance(double cosmic_length) const {
+	floatpix::Distance CosmovertorSDL::CosmosToDistance(double cosmic_length) const {
 		return cosmic_length * m_lengthScale;
 	}
 
-	SDL_Point Cosmovertor::PositionToSDL(const cosmoscope::CartesianPos& pos) const {
+	SDL_Point CosmovertorSDL::PositionToSDL(const cosmoscope::CartesianPos& pos) const {
 		return SDL_Point{
 			static_cast<int>(CosmosToDistance(pos.x) + m_origin.x),
 			static_cast<int>(CosmosToDistance(pos.y) + m_origin.y)
@@ -43,7 +43,7 @@ namespace cosmovertorSDL {
 	Uint8 double01to255(double v) {
 		return static_cast<Uint8>(255 * v);
 	}
-	SDL_Color Cosmovertor::ColorToSDL(const cosmoscope::Color& color) const  {
+	SDL_Color CosmovertorSDL::ColorToSDL(const cosmoscope::Color& color) const  {
 		return SDL_Color{ double01to255(color.r),
 							double01to255(color.g),
 							double01to255(color.b),
@@ -51,11 +51,11 @@ namespace cosmovertorSDL {
 		};
 	}	
 
-	double Cosmovertor::TimeToSDL(const cosmoscope::Time& t) const  {
+	double CosmovertorSDL::TimeToSDL(const cosmoscope::Time& t) const  {
 		return t;
 	}
 
-	StyleSDL Cosmovertor::StyleToSDL(const cosmoscope::Style& style) const {
+	StyleSDL CosmovertorSDL::StyleToSDL(const cosmoscope::Style& style) const {
 		return StyleSDL{
 			ColorToSDL(style.color),
 			BrushStyleSDL{
@@ -66,7 +66,7 @@ namespace cosmovertorSDL {
 		};
 	}
 
-	FuncSnapSDL Cosmovertor::FuncSnapToSDL(const cosmoscope::FuncSnap& fs) const {
+	FuncSnapSDL CosmovertorSDL::FuncSnapToSDL(const cosmoscope::FuncSnap& fs) const {
 		return FuncSnapSDL{
 			TimeToSDL(fs.tt),
 			PositionToSDL(fs.p),
@@ -74,7 +74,7 @@ namespace cosmovertorSDL {
 		};
 	}
 
-	TreeSnapSDL Cosmovertor::TreeSnapToSDL(const cosmoscope::TreeSnap& ts) const {
+	TreeSnapSDL CosmovertorSDL::TreeSnapToSDL(const cosmoscope::TreeSnap& ts) const {
 		TreeSnapSDL res;
 		for (auto fs : ts) {
 			res.push_back(FuncSnapToSDL(fs));

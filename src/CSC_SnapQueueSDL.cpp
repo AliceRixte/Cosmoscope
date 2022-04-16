@@ -1,6 +1,6 @@
 #include "CSC_SnapQueueSDL.h"
 
-namespace cosmovertorSDL {
+namespace cosmoscopeSDL {
 
 	SnapQueueSDL::SnapQueueSDL(unsigned int history_size) :
 		m_start(0),

@@ -5,8 +5,7 @@
 
 
 WindowManager::WindowManager(const char* window_name, int width, int height, const cosmoscope::FuncTree* func_tree) : 
-    m_funcTree(func_tree), m_snapQueue(2),
-    m_cosmovertor(func_tree,sqrt(width*width + height+height)/2.0, floatpix::Position(width / 2.0, height / 2.0)),
+    m_cosmosDrawer(func_tree,sqrt(width*width + height*height)/2.0,floatpix::Position{static_cast<float>(width/2.0),static_cast<float>(height/2.0)}),
     m_isWindowOpen(true),
     m_window(NULL), m_renderer(NULL), t(0), m_altKeyDown(false)
 {
@@ -39,7 +38,8 @@ int WindowManager::ProcessEvents() {
         case SDL_KEYDOWN:
             if (event.key.keysym.sym == SDLK_LALT) {
                 m_altKeyDown = true;
-            }else if (event.key.keysym.sym == SDLK_s && m_altKeyDown) {
+            }
+            else if (event.key.keysym.sym == SDLK_s && m_altKeyDown) {
                 TakeScreenshot();
             }
             break;
@@ -48,30 +48,12 @@ int WindowManager::ProcessEvents() {
                 m_altKeyDown = false;
             }
         }
-              
-            
-
-
     }
     return 0;
 }
 
 int WindowManager::UpdateFrame() {
-
-    // m_funcTree->ComputeAll(t,&m_snapQueue);
-    m_cosmovertor.ComputeAndConvert(t, &m_snapQueue);
-
-    for (int i = 0; i < m_funcTree->Size(); i++) {
-        SDL_Point pos = m_snapQueue.GetSnap(0)[i].p;
-        cosmovertorSDL::StyleSDL style = m_snapQueue.GetSnap(0)[i].s;
-
-        if (style.brush.h >= 0.0) {
-            int diam_brush = style.brush.radius;
-            draw_SDL::DrawEllipse(m_renderer, 
-                SDL_Rect{ static_cast<int>(pos.x) - diam_brush/2+1,static_cast<int>(pos.y) - diam_brush/2+1,diam_brush+1,diam_brush+1},
-                style.color, style.brush.h,15.0);
-        }
-    }
+    m_cosmosDrawer.DrawSnap(t, m_renderer);
     SDL_RenderPresent(m_renderer);
     SDL_Delay(1);
     t++;

@@ -11,24 +11,20 @@
 #include "CSC_SnapQueueSDL.h"
 #include "FloatPixels.h"
 
-namespace cosmovertorSDL {
+namespace cosmoscopeSDL {
 	/// @brief This class aims to facilitate the conversions between real life units and the cosmoscope's narmalized units
-	class Cosmovertor {
+	class CosmovertorSDL {
 	public :
-		/// @brief  Creates a cosmovertor 
+		/// @brief  Creates an SDL cosmovertor 
 		/// @param length_scale This is the SDL length of  the virtual ``1.0`` Cosmscope length
 		/// @param angle_scale This is the angle measure of a complete 360 degrees rotation. 
 		/// In degrees, this should be 360, in radians, this should be 2*PI.
 		/// @param origin The location of the screen of the origin of the relative func tree
-		Cosmovertor(const cosmoscope::FuncTree* m_func_tree, double length_scale, floatpix::Position origin);
+		CosmovertorSDL(const cosmoscope::FuncTree* m_func_tree, double length_scale, floatpix::Position origin);
 
 		/// @brief Converts the cosmic snapqueue to an SDL snapqueue.
 		/// @param snap_q_sdl 
 		void ComputeAndConvert(double t, SnapQueueSDL* snap_q_sdl);
-
-
-
-
 
 
 		/// @brief Converts an application length to a cosmic length
@@ -75,9 +71,6 @@ namespace cosmovertorSDL {
 		/// @return An SDL cosmic function snapshot
 		TreeSnapSDL TreeSnapToSDL(const cosmoscope::TreeSnap& fs) const ;
 
-
-
-		
 
 	private :
 

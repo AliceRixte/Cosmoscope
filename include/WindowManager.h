@@ -1,5 +1,5 @@
 /// @file WindowManager.h
-/// @brief Contains the main SDL class handling all the display of the cosmoscope with the SDL library
+/// @brief Contains the main class handling all the SDL window related events
 /// 
 /// @author Alice Rixte
 /// @date 07/04/2022
@@ -8,6 +8,7 @@
 
 #include "CSC_funcTree.h"
 #include "CSC_CosmovertorSDL.h"
+#include "CSC_CosmosDrawerSDL.h"
 #include "savepng.h"
 
 
@@ -47,9 +48,11 @@ private:
 	bool m_isWindowOpen;
 	bool m_altKeyDown;
 
-	const cosmoscope::FuncTree* m_funcTree;
-	cosmovertorSDL::SnapQueueSDL m_snapQueue;
-	cosmovertorSDL::Cosmovertor m_cosmovertor;
+
+	cosmoscopeSDL::CosmosDrawerSDL m_cosmosDrawer;
+ 	//const cosmoscope::FuncTree* m_funcTree;
+	//cosmovertorSDL::SnapQueueSDL m_snapQueue;
+	//cosmovertorSDL::Cosmovertor m_cosmovertor;
 	//cosmoscope::SnapQueueSDL m_snapQueue;
 
 
