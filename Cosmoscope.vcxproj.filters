@@ -72,7 +72,7 @@
     <ClCompile Include="src\Brushes.cpp">
       <Filter>Source Files\CosmosDrawerSDL</Filter>
     </ClCompile>
-    <ClCompile Include="src\CSC_CosmosDrawer.cpp">
+    <ClCompile Include="src\WindowManager.cpp">
       <Filter>Source Files\CosmosDrawerSDL</Filter>
     </ClCompile>
     <ClCompile Include="src\CSC_CosmovertorSDL.cpp">
@@ -125,7 +125,7 @@
     <ClInclude Include="include\Brushes.h">
       <Filter>Header Files\CosmosDrawerSDL</Filter>
     </ClInclude>
-    <ClInclude Include="include\CSC_CosmosDrawer.h">
+    <ClInclude Include="include\WindowManager.h">
       <Filter>Header Files\CosmosDrawerSDL</Filter>
     </ClInclude>
     <ClInclude Include="include\CSC_SnapQueueSDL.h">

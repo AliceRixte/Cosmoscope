@@ -13,12 +13,45 @@
 using namespace cosmoscope;
 
 
-Style style1(Time t) {
+Style styleFrozen(Time t) {
     return Style{
-        Color{0,(static_cast<int>(t) % 20000) / 20000.0,0.8,1.},
-        BrushStyle{0.2,0.5}
+        Color{0,std::fmod(t,100.0) / 1000.0,0.8,1.0},
+        BrushStyle{0.2,0.002}
     };
 }
+
+Style styleRedBlue(Time t) {
+    float freq = 940.0;
+    float mod = std::fmod(t+150.0, freq);
+    float grad = 0.0;
+    if (mod < freq / 2.0) {
+        grad = 2.0 * mod / freq;
+    }
+    else {
+        grad = 2.0 * (freq - mod) / freq;
+    }
+    return Style{
+        Color{ grad,0.1,(1.0 - grad)* 0.8,1.0},
+        BrushStyle{0.0,0.05}
+    };
+}
+
+Style styleRedCyan(Time t) {
+    float freq = 940.0;
+    float mod = std::fmod(t + 150.0, freq);
+    float grad = 0.0;
+    if (mod < freq / 2.0) {
+        grad = 2.0 * mod / freq;
+    }
+    else {
+        grad = 2.0 * (freq - mod) / freq;
+    }
+    return Style{
+        Color{ pow(grad,2.0),0.5*pow(1.0-grad,2.0),pow(1.0 - grad,2.0) * 0.9,1.0},
+        BrushStyle{0.0,0.05}
+    };
+}
+
 Style style2(Time t) {
     return Style{ 
         Color{0,1.0 - (static_cast<int>(t) % 2000 <= 999 ? static_cast<int>(t) % 1000 : 1.0 - static_cast<int>(t) % 1000) / 1000.0,0.8,1.},

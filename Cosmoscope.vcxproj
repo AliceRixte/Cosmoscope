@@ -149,7 +149,7 @@
     <ClCompile Include="src\CSC_CallbackTools.cpp" />
     <ClCompile Include="src\CSC_CallbackFuncs.cpp" />
     <ClCompile Include="src\CSC_CoorSystem.cpp" />
-    <ClCompile Include="src\CSC_CosmosDrawer.cpp" />
+    <ClCompile Include="src\WindowManager.cpp" />
     <ClCompile Include="src\CSC_CosmovertorSDL.cpp" />
     <ClCompile Include="src\CSC_FuncTree.cpp" />
     <ClCompile Include="src\CSC_SnapQueue.cpp" />
@@ -167,7 +167,7 @@
     <ClInclude Include="include\CSC_CallbackTools.h" />
     <ClInclude Include="include\CSC_CallbackFuncs.h" />
     <ClInclude Include="include\CSC_CoorSystem.h" />
-    <ClInclude Include="include\CSC_CosmosDrawer.h" />
+    <ClInclude Include="include\WindowManager.h" />
     <ClInclude Include="include\CSC_CosmovertorSDL.h" />
     <ClInclude Include="include\CSC_FuncTree.h" />
     <ClInclude Include="include\CSC_RelativeFunc.h" />
