@@ -7,7 +7,7 @@
 
 #include <SDL.h>
 
-namespace cosmovertorSDL {
+namespace cosmoscopeSDL {
 
 
 	/// @brief Contains generic values to control hardness and radius of the drawing brush

@@ -28,17 +28,17 @@
     <Filter Include="Header Files\CosmoscopeSDL">
       <UniqueIdentifier>{2aac1f6c-d2af-4abc-8571-e6d6af4ae6cd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\CosmosDrawerSDL">
-      <UniqueIdentifier>{51c1dbce-6423-4380-b2b0-b1ae26b58796}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\CosmosDrawerSDL">
-      <UniqueIdentifier>{3dec1231-1b59-4e22-9f22-4e3753ccc8aa}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\SDL_SavePNG">
       <UniqueIdentifier>{56726aa1-8e93-4354-9ec0-3f93be745369}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\SDL_SavePNG">
       <UniqueIdentifier>{a16d249a-a3cb-4451-89b9-cc6292dd596a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DrawSDL">
+      <UniqueIdentifier>{51c1dbce-6423-4380-b2b0-b1ae26b58796}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DrawSDL">
+      <UniqueIdentifier>{3dec1231-1b59-4e22-9f22-4e3753ccc8aa}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -70,10 +70,10 @@
       <Filter>Source Files\Cosmoscope</Filter>
     </ClCompile>
     <ClCompile Include="src\Brushes.cpp">
-      <Filter>Source Files\CosmosDrawerSDL</Filter>
+      <Filter>Source Files\DrawSDL</Filter>
     </ClCompile>
     <ClCompile Include="src\WindowManager.cpp">
-      <Filter>Source Files\CosmosDrawerSDL</Filter>
+      <Filter>Source Files\DrawSDL</Filter>
     </ClCompile>
     <ClCompile Include="src\CSC_CosmovertorSDL.cpp">
       <Filter>Source Files\CosmoscopeSDL</Filter>
@@ -82,13 +82,16 @@
       <Filter>Source Files\CosmoscopeSDL</Filter>
     </ClCompile>
     <ClCompile Include="src\FloatPixel.cpp">
-      <Filter>Source Files\CosmosDrawerSDL</Filter>
+      <Filter>Source Files\DrawSDL</Filter>
     </ClCompile>
     <ClCompile Include="src\CSC_SnapQueueSDL.cpp">
       <Filter>Source Files\CosmoscopeSDL</Filter>
     </ClCompile>
     <ClCompile Include="SDL_SavePNG\savepng.c">
       <Filter>Source Files\SDL_SavePNG</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CSC_CosmosDrawerSDL.cpp">
+      <Filter>Source Files\CosmoscopeSDL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -123,10 +126,10 @@
       <Filter>Header Files\CosmoscopeSDL</Filter>
     </ClInclude>
     <ClInclude Include="include\Brushes.h">
-      <Filter>Header Files\CosmosDrawerSDL</Filter>
+      <Filter>Header Files\DrawSDL</Filter>
     </ClInclude>
     <ClInclude Include="include\WindowManager.h">
-      <Filter>Header Files\CosmosDrawerSDL</Filter>
+      <Filter>Header Files\DrawSDL</Filter>
     </ClInclude>
     <ClInclude Include="include\CSC_SnapQueueSDL.h">
       <Filter>Header Files\CosmoscopeSDL</Filter>
@@ -135,10 +138,13 @@
       <Filter>Header Files\CosmoscopeSDL</Filter>
     </ClInclude>
     <ClInclude Include="include\FloatPixels.h">
-      <Filter>Header Files\CosmosDrawerSDL</Filter>
+      <Filter>Header Files\DrawSDL</Filter>
     </ClInclude>
     <ClInclude Include="SDL_SavePNG\savepng.h">
       <Filter>Header Files\SDL_SavePNG</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CSC_CosmosDrawerSDL.h">
+      <Filter>Header Files\CosmoscopeSDL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
