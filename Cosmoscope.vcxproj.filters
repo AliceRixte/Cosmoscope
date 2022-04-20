@@ -81,9 +81,6 @@
     <ClCompile Include="src\CSC_StyleSDL.cpp">
       <Filter>Source Files\CosmoscopeSDL</Filter>
     </ClCompile>
-    <ClCompile Include="src\FloatPixel.cpp">
-      <Filter>Source Files\DrawSDL</Filter>
-    </ClCompile>
     <ClCompile Include="src\CSC_SnapQueueSDL.cpp">
       <Filter>Source Files\CosmoscopeSDL</Filter>
     </ClCompile>
@@ -137,14 +134,14 @@
     <ClInclude Include="include\CSC_StyleSDL.h">
       <Filter>Header Files\CosmoscopeSDL</Filter>
     </ClInclude>
-    <ClInclude Include="include\FloatPixels.h">
-      <Filter>Header Files\DrawSDL</Filter>
-    </ClInclude>
     <ClInclude Include="SDL_SavePNG\savepng.h">
       <Filter>Header Files\SDL_SavePNG</Filter>
     </ClInclude>
     <ClInclude Include="include\CSC_CosmosDrawerSDL.h">
       <Filter>Header Files\CosmoscopeSDL</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CSC_CoorSystemSDL.h">
+      <Filter>Source Files\CosmoscopeSDL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

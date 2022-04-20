@@ -3,7 +3,7 @@
 namespace cosmoscopeSDL {
 
 
-	CosmovertorSDL::CosmovertorSDL(const cosmoscope::FuncTree* func_tree, double length_scale, floatpix::Position origin, double max_brush_size) :
+	CosmovertorSDL::CosmovertorSDL(const cosmoscope::FuncTree* func_tree, double length_scale, Point origin, double max_brush_size) :
 		m_funcTree(func_tree), 
 		m_lengthScale(length_scale),
 		m_origin(origin),
@@ -22,18 +22,18 @@ namespace cosmoscopeSDL {
 
 
 
-	double CosmovertorSDL::DistanceToCosmos(floatpix::Distance  length) const {
+	double CosmovertorSDL::DistanceToCosmos(double length) const {
 		return length / m_lengthScale;
 	}
 
-	floatpix::Distance CosmovertorSDL::CosmosToDistance(double cosmic_length) const {
+	double CosmovertorSDL::CosmosToDistance(double cosmic_length) const {
 		return cosmic_length * m_lengthScale;
 	}
 
 	SDL_Point CosmovertorSDL::PositionToSDL(const cosmoscope::CartesianPos& pos) const {
 		return SDL_Point{
-			static_cast<int>(CosmosToDistance(pos.x) + m_origin.x),
-			static_cast<int>(CosmosToDistance(pos.y) + m_origin.y)
+			static_cast<int>(CosmosToDistance(pos.x) + m_origin.get<0>()),
+			static_cast<int>(CosmosToDistance(pos.y) + m_origin.get<1>())
 		};
 	}
 
@@ -54,7 +54,7 @@ namespace cosmoscopeSDL {
 		return t;
 	}
 
-	floatpix::Distance CosmovertorSDL::BrushRadiusToSDL(double br) const {
+	double CosmovertorSDL::BrushRadiusToSDL(double br) const {
 		return br * m_maxBrushSize;
 	}
 

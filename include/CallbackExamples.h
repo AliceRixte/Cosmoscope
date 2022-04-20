@@ -21,9 +21,9 @@ Style styleFrozen(Time t) {
 }
 
 Style styleRedBlue(Time t) {
-    float freq = 940.0;
-    float mod = std::fmod(t+150.0, freq);
-    float grad = 0.0;
+    double freq = 940;
+    double mod = std::fmod(t+150.0, freq);
+    double grad = 0;
     if (mod < freq / 2.0) {
         grad = 2.0 * mod / freq;
     }
@@ -37,9 +37,9 @@ Style styleRedBlue(Time t) {
 }
 
 Style styleRedCyan(Time t) {
-    float freq = 940.0;
-    float mod = std::fmod(t + 150.0, freq);
-    float grad = 0.0;
+    double freq = 940.0;
+    double mod = std::fmod(t + 150.0, freq);
+    double grad = 0.0;
     if (mod < freq / 2.0) {
         grad = 2.0 * mod / freq;
     }
