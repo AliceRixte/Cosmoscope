@@ -30,7 +30,7 @@ namespace cosmoscope {
 
 	class SnapQueue {
 	public:
-		SnapQueue(unsigned int history_size = 2);
+		explicit SnapQueue(unsigned int history_size = 2) ;
 		void WriteSnap(const TreeSnap& tree_snap);
 
 		TreeSnap GetSnap(unsigned int snape_age) const;

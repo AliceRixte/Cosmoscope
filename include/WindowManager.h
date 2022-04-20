@@ -21,7 +21,10 @@ public:
 	/// @param width The width of the window, in pixels
 	/// @param height The height of the window, in pixels
 	/// @param func_tree A tree of relative functions
-	WindowManager(const char* window_name, int width, int height, const cosmoscope::FuncTree* func_tree);
+	WindowManager(const char* window_name, int width, int height, 
+		const cosmoscopeSDL::CosmosDrawerSDL& cosmos_drawer, const cosmoscopeSDL::CosmovertorSDL& cosmovertor);
+
+
 
 	//void Play();
 		
@@ -49,11 +52,10 @@ private:
 	bool m_altKeyDown;
 
 
-	cosmoscopeSDL::CosmosDrawerSDL m_cosmosDrawer;
- 	//const cosmoscope::FuncTree* m_funcTree;
-	//cosmovertorSDL::SnapQueueSDL m_snapQueue;
-	//cosmovertorSDL::Cosmovertor m_cosmovertor;
-	//cosmoscope::SnapQueueSDL m_snapQueue;
+	const cosmoscopeSDL::CosmosDrawerSDL& m_cosmosDrawer;
+
+	cosmoscopeSDL::SnapQueueSDL m_snapQueue;
+	cosmoscopeSDL::CosmovertorSDL m_cosmovertor;
 
 
 	double t;

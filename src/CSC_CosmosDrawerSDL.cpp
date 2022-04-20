@@ -4,21 +4,15 @@
 #include <cmath>
 
 namespace cosmoscopeSDL {
-    CosmosDrawerSDL::CosmosDrawerSDL(const cosmoscope::FuncTree* func_tree, double length_scale, floatpix::Position origin) :
-        m_funcTree(func_tree), m_snapQueue(2),
-        m_cosmovertor(func_tree, length_scale, origin) {
-
+    CosmosDrawerSDL::CosmosDrawerSDL() {
     }
 
 
-    void CosmosDrawerSDL::DrawSnap(double time, SDL_Renderer* renderer) {
+    void CosmosDrawerSDL::DrawSnap(const SnapQueueSDL& snap_queue, SDL_Renderer* renderer) const {
 
-        // m_funcTree->ComputeAll(t,&m_snapQueue);
-        m_cosmovertor.ComputeAndConvert(time, &m_snapQueue);
-
-        for (int i = 0; i < m_funcTree->Size(); i++) {
-            SDL_Point pos = m_snapQueue.GetSnap(0)[i].p;
-            StyleSDL style = m_snapQueue.GetSnap(0)[i].s;
+        for (int i = 0; i < snap_queue.GetSnap(0).size(); i++) {
+            SDL_Point pos = snap_queue.GetSnap(0)[i].p;
+            StyleSDL style = snap_queue.GetSnap(0)[i].s;
 
             if (style.brush.h >= 0.0) {
                 int diam_brush = style.brush.radius;
@@ -28,6 +22,7 @@ namespace cosmoscopeSDL {
             }
         }
     }
+
 }
 
 

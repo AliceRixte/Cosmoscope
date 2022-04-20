@@ -12,14 +12,12 @@
 namespace cosmoscopeSDL {
 	class CosmosDrawerSDL {
 	public:
-		CosmosDrawerSDL(const cosmoscope::FuncTree* func_tree, double length_scale, floatpix::Position origin);
+		CosmosDrawerSDL();
 
-		void DrawSnap(double time, SDL_Renderer* renderer);
+		void DrawSnap(const SnapQueueSDL& snap_queue, SDL_Renderer* renderer) const ;
+
 
 	private:
-		const cosmoscope::FuncTree* m_funcTree;
-		SnapQueueSDL m_snapQueue;
-		CosmovertorSDL m_cosmovertor;
 
 	};
 }

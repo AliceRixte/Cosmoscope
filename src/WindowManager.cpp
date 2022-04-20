@@ -4,10 +4,13 @@
 #include <cmath>
 
 
-WindowManager::WindowManager(const char* window_name, int width, int height, const cosmoscope::FuncTree* func_tree) : 
-    m_cosmosDrawer(func_tree,sqrt(width*width + height*height)/2.0,floatpix::Position{static_cast<float>(width/2.0),static_cast<float>(height/2.0)}),
+WindowManager::WindowManager(const char* window_name, int width, int height,
+    const cosmoscopeSDL::CosmosDrawerSDL& cosmos_drawer, const cosmoscopeSDL::CosmovertorSDL& cosmovertor) : 
+    m_cosmosDrawer(cosmos_drawer),
     m_isWindowOpen(true),
-    m_window(NULL), m_renderer(NULL), t(0), m_altKeyDown(false)
+    m_window(NULL), m_renderer(NULL), t(0), m_altKeyDown(false),
+    m_snapQueue(2),
+    m_cosmovertor(cosmovertor)
 {
 
     //SDL initialisation
@@ -53,7 +56,8 @@ int WindowManager::ProcessEvents() {
 }
 
 int WindowManager::UpdateFrame() {
-    m_cosmosDrawer.DrawSnap(t, m_renderer);
+    m_cosmovertor.ComputeAndConvert(t, &m_snapQueue);
+    m_cosmosDrawer.DrawSnap(m_snapQueue, m_renderer);
     SDL_RenderPresent(m_renderer);
     SDL_Delay(1);
     t++;
