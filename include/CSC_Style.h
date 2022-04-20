@@ -37,10 +37,11 @@ namespace cosmoscope {
 
 	/// @brief Contains generic values to control hardness and radius of the drawing brush
 	struct BrushStyle {
-		/// @brief hardness : how hard the brush is applied. Ranges from 0.0 to 1.0. When set to -1.0, the function is not drawn.
-		double h;
 		/// @brief radius of the brush. Ranges from 0.0 to 1.0 
 		double radius;
+		/// @brief hardness : how hard the brush is applied. Ranges from 0.0 to 1.0. When set to -1.0, the function is not drawn.
+		double h;
+
 	};
 
 	/// @brief A structure used to store a drawing style (color, transparency and hardness). All values range from 0.0 to 1.0

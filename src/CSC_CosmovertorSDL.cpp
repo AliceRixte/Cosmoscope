@@ -2,13 +2,12 @@
 
 namespace cosmoscopeSDL {
 
-	//converts a double ranging from 0 to 1 to an integer ranging from 0 to 255
-	
 
-	CosmovertorSDL::CosmovertorSDL(const cosmoscope::FuncTree* func_tree, double length_scale, floatpix::Position origin) :
+	CosmovertorSDL::CosmovertorSDL(const cosmoscope::FuncTree* func_tree, double length_scale, floatpix::Position origin, double max_brush_size) :
 		m_funcTree(func_tree), 
 		m_lengthScale(length_scale),
 		m_origin(origin),
+		m_maxBrushSize(max_brush_size),
 		m_snapQ(func_tree->GetRecurrenceDepth()+1) {
 
 	}
@@ -55,12 +54,16 @@ namespace cosmoscopeSDL {
 		return t;
 	}
 
+	floatpix::Distance CosmovertorSDL::BrushRadiusToSDL(double br) const {
+		return br * m_maxBrushSize;
+	}
+
 	StyleSDL CosmovertorSDL::StyleToSDL(const cosmoscope::Style& style) const {
 		return StyleSDL{
 			ColorToSDL(style.color),
 			BrushStyleSDL{
-				style.brush.h,
-				static_cast<int>(CosmosToDistance(style.brush.radius))
+				BrushRadiusToSDL(style.brush.radius),
+				style.brush.h
 			},
 			ColorToSDL(style.color2)
 		};

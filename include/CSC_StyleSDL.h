@@ -6,16 +6,18 @@
 #pragma once
 
 #include <SDL.h>
+#include <FloatPixels.h>
 
 namespace cosmoscopeSDL {
 
 
 	/// @brief Contains generic values to control hardness and radius of the drawing brush
 	struct BrushStyleSDL {
+		/// @brief radius of the brush in pixels
+		floatpix::Distance radius;
 		/// @brief hardness : how hard the brush is applied. Ranges from 0.0 to 1.0. When set to -1.0, the function is not drawn.
 		double h;
-		/// @brief radius of the brush in pixels
-		int radius;
+		
 	};
 
 	/// @brief A structure used to store a drawing style (color, transparency and hardness). All values range from 0.0 to 1.0
