@@ -50,6 +50,7 @@ private:
 
 	bool m_isWindowOpen;
 	bool m_altKeyDown;
+	bool m_pause;
 
 
 	const cosmoscopeSDL::CosmosDrawerSDL& m_cosmosDrawer;

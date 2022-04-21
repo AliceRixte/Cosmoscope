@@ -8,7 +8,7 @@ WindowManager::WindowManager(const char* window_name, int width, int height,
     const cosmoscopeSDL::CosmosDrawerSDL& cosmos_drawer, const cosmoscopeSDL::CosmovertorSDL& cosmovertor) : 
     m_cosmosDrawer(cosmos_drawer),
     m_isWindowOpen(true),
-    m_window(NULL), m_renderer(NULL), t(0), m_altKeyDown(false),
+    m_window(NULL), m_renderer(NULL), t(0), m_altKeyDown(false), m_pause(false),
     m_snapQueue(2),
     m_cosmovertor(cosmovertor)
 {
@@ -45,23 +45,30 @@ int WindowManager::ProcessEvents() {
             else if (event.key.keysym.sym == SDLK_s && m_altKeyDown) {
                 TakeScreenshot();
             }
+            else if (event.key.keysym.sym == SDLK_SPACE) {
+                m_pause = !m_pause;
+            }
             break;
         case SDL_KEYUP:
             if (event.key.keysym.sym == SDLK_LALT) {
                 m_altKeyDown = false;
             }
         }
+       
     }
     return 0;
 }
 
 int WindowManager::UpdateFrame() {
-    m_cosmovertor.ComputeAndConvert(t, &m_snapQueue);
-    m_cosmosDrawer.DrawSnap(m_snapQueue, m_renderer);
-    SDL_RenderPresent(m_renderer);
+    // if the cosmoscope is not on pause
+    if (!m_pause) {
+        m_cosmovertor.ComputeAndConvert(t, &m_snapQueue);
+        m_cosmosDrawer.DrawSnap(m_snapQueue, m_renderer);
+        SDL_RenderPresent(m_renderer);
+        t++;
+    }
+    
     SDL_Delay(1);
-    t++;
-
     return 0;
 }
 

@@ -73,22 +73,6 @@ int main(int argc, char* argv[])
         windowManager.ProcessEvents();
         windowManager.UpdateFrame();
     }
-    /*class A {
-    public:
-        A() : p(new int(0)) {}
-        ~A() {delete p;}
-    private : 
-        int* p;
-    };
-
-    class B {
-    public : 
-        B(const A& a):m_a(a){}
-    private:
-        A m
-
-    A a;
-    B b(a);*/
 
 
     return 0;
