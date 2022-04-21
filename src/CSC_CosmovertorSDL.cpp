@@ -3,17 +3,25 @@
 namespace cosmoscopeSDL {
 
 
-	CosmovertorSDL::CosmovertorSDL(const cosmoscope::FuncTree* func_tree, double length_scale, Point origin, double max_brush_size) :
-		m_funcTree(func_tree), 
+	CosmovertorSDL::CosmovertorSDL(const cosmoscope::FuncTree& func_tree, double length_scale, Point origin, double max_brush_size) :
 		m_lengthScale(length_scale),
 		m_origin(origin),
 		m_maxBrushSize(max_brush_size),
-		m_snapQ(func_tree->GetRecurrenceDepth()+1) {
+		m_snapQ(func_tree.GetRecurrenceDepth()+1),
+		m_funcTree(func_tree)  {
+	}
+
+	CosmovertorSDL::CosmovertorSDL(cosmoscope::FuncTree&& func_tree, double length_scale, Point origin, double max_brush_size) :
+		m_lengthScale(length_scale),
+		m_origin(origin),
+		m_maxBrushSize(max_brush_size),
+		m_snapQ(func_tree.GetRecurrenceDepth() + 1),
+		m_funcTree(std::move(func_tree)) {
 
 	}
 
 	void CosmovertorSDL::ComputeAndConvert(double t, SnapQueueSDL* snap_q) {
-		m_funcTree->ComputeAll(t, &m_snapQ);
+		m_funcTree.ComputeAll(t, &m_snapQ);
 		cosmoscope::TreeSnap ts;
 		while (m_snapQ.ReadSnap(&ts)) {
 			snap_q->WriteSnap(TreeSnapToSDL(ts));

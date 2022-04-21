@@ -23,6 +23,22 @@ namespace cosmoscope {
 	}
 
 
+	FuncTree::FuncTree(const FuncTree& ft) {
+		std::cout << "Cpy" << std::endl;
+		for (int i = 0; i < ft.funcs.size(); i++) {
+			funcs.push_back(new RelativeFunc(*ft.funcs[i]));
+		}
+	}
+
+	FuncTree::FuncTree(FuncTree&& ft) {
+		std::cout << "Mv" << std::endl;
+		funcs = ft.funcs;
+		for (int i = 0; i < ft.funcs.size(); i++) {
+			ft.funcs[i] = nullptr;
+		}
+	}
+
+
 
 	void FuncTree::ComputeAll(Time t, SnapQueue* snap_q) const {
 		std::vector<FuncSnap> res;

@@ -38,9 +38,11 @@ namespace cosmoscope {
 	/// There should only be one instance of this class
 	class FuncTree {
 	public:
-		/// @brief Simple constructor only specifying the main origin point
-		/// @param origin The position corresponding to the point (0,0) of the Cosmoscope main cartesian system
 		FuncTree();
+
+		FuncTree(const FuncTree& ft);
+
+		FuncTree(FuncTree&& ft);
 
 		/// @brief Computes all the positions of the relative functions at a time **t**
 		/// @param t The current time

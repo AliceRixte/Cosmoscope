@@ -11,6 +11,9 @@
 
 namespace bg = boost::geometry;
 
+using CartesianPoint = boost::geometry::model::point<double, 3, boost::geometry::cs::cartesian>;
+using PolarPoint = boost::geometry::model::point<double, 3, boost::geometry::cs::spherical<boost::geometry::degree>>;
+
 using namespace cosmoscope;
 
 int main(int argc, char* argv[])
@@ -22,8 +25,17 @@ int main(int argc, char* argv[])
 
     linestring ls;
     bg::read_wkt("LINESTRING(0 3, 3 0, 4 0)", ls);
-    SDL_Delay(1000);
-    std::cout << bg::distance(point(0, 0), point(1, 1));
+    std::cout << bg::distance(point(0, 0), point(1, 1))<<std::endl;
+
+    PolarPoint pp{45,0,1.41};
+    CartesianPoint p{2,2,0 };
+    
+
+    bg::transform(pp,p);
+    std::cout << bg::dsv(p) << std::endl;
+    std::cout << bg::dsv(pp) << std::endl;
+
+
     
     
     cosmoscope::Style invisible = cosmoscope::Style{
@@ -52,7 +64,7 @@ int main(int argc, char* argv[])
     int height = 1000;
     int width = 1000;
     cosmoscopeSDL::CosmosDrawerSDL cosmos_drawer;
-    cosmoscopeSDL::CosmovertorSDL cosmovertor{&ftree, sqrt(width * width + height * height) / 2.0,
+    cosmoscopeSDL::CosmovertorSDL cosmovertor{std::move(ftree), sqrt(width * width + height * height) / 2.0,
         cosmoscopeSDL::Point{ static_cast<float>(width / 2.0),static_cast<float>(height / 2.0) }, 100.0 };
 
     WindowManager windowManager{"Cosmoscope",width,height,cosmos_drawer,cosmovertor};
@@ -61,7 +73,23 @@ int main(int argc, char* argv[])
         windowManager.ProcessEvents();
         windowManager.UpdateFrame();
     }
-    
+    /*class A {
+    public:
+        A() : p(new int(0)) {}
+        ~A() {delete p;}
+    private : 
+        int* p;
+    };
+
+    class B {
+    public : 
+        B(const A& a):m_a(a){}
+    private:
+        A m
+
+    A a;
+    B b(a);*/
+
 
     return 0;
 }
