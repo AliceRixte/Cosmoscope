@@ -40,10 +40,10 @@ namespace cosmoscopeSDL {
 		/// @return Application length
 		double CosmosToDistance(double cosmic_length) const;
 
-		/// @brief Converts a cartesian position to an SDL_Point
+		/// @brief Converts a cartesian position to a boost geometry point
 		/// @param pos A cartesian position (using cosmic length)
-		/// @return An SDL_Point position
-		SDL_Point PositionToSDL(const cosmoscope::CartesianPos& pos) const ;
+		/// @return An boost geoimetry point position
+		Point PositionToSDL(const cosmoscope::CartesianPos& pos) const ;
 
 		/// @brief Converts a cartesian position to a float position
 		/// @param pos A cartesian position (using cosmic length)

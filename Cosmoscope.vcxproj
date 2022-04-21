@@ -176,7 +176,7 @@
     <ClInclude Include="include\CSC_RelativeFunc.h" />
     <ClInclude Include="include\CSC_Style.h" />
     <ClInclude Include="include\CSC_Time.h" />
-    <ClInclude Include="include\CSC_SnapQueue.h" />
+    <ClInclude Include="include\CSC_Scheduler.h" />
     <ClInclude Include="include\CSC_SnapQueueSDL.h" />
     <ClInclude Include="include\CSC_StyleSDL.h" />
     <ClInclude Include="SDL_SavePNG\savepng.h" />

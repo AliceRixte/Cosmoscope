@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
         cosmoscopeSDL::Point{ static_cast<float>(width / 2.0),static_cast<float>(height / 2.0) }, 100.0 };
 
     WindowManager windowManager{"Cosmoscope",width,height,cosmos_drawer,cosmovertor};
-
+    
     while (windowManager.IsWindowOpen()) {
         windowManager.ProcessEvents();
         windowManager.UpdateFrame();

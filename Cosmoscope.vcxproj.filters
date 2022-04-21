@@ -116,7 +116,7 @@
     <ClInclude Include="include\CSC_CallbackTools.h">
       <Filter>Header Files\Cosmoscope</Filter>
     </ClInclude>
-    <ClInclude Include="include\CSC_SnapQueue.h">
+    <ClInclude Include="include\CSC_Scheduler.h">
       <Filter>Header Files\Cosmoscope</Filter>
     </ClInclude>
     <ClInclude Include="include\CSC_CosmovertorSDL.h">
@@ -141,7 +141,7 @@
       <Filter>Header Files\CosmoscopeSDL</Filter>
     </ClInclude>
     <ClInclude Include="include\CSC_CoorSystemSDL.h">
-      <Filter>Source Files\CosmoscopeSDL</Filter>
+      <Filter>Header Files\CosmoscopeSDL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

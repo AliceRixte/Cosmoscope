@@ -9,6 +9,8 @@
 
 #include <vector>
 #include <SDL.h>
+
+#include "CSC_CoorSystemSDL.h"
 #include "CSC_StyleSDL.h"
 
 
@@ -19,7 +21,7 @@ namespace cosmoscopeSDL {
 		// @brief The new relative time after calling the time callback function
 		double tt;
 		/// @brief The absolute cartesian position at the time of the snapshot
-		SDL_Point p;
+		Point p;
 		/// @brief The style at the time of the snapshot
 		StyleSDL s;
 	};

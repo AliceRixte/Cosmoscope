@@ -68,6 +68,7 @@ int WindowManager::UpdateFrame() {
         t++;
     }
     
+    //draw_SDL::DrawEllipse(m_renderer, cosmoscopeSDL::Point{ 500,500 }, 150, 200, SDL_Color{255,255,255,255}, 1.0, 15.0);
     SDL_Delay(1);
     return 0;
 }

@@ -6,7 +6,8 @@
 #pragma once
 
 #include<SDL.h>
-#include<cmath>
+#include <cmath>
+#include "CSC_CoorSystemSDL.h"
 
 namespace draw_SDL {
 
@@ -19,6 +20,7 @@ namespace draw_SDL {
 	/// @param plainPercent Describes when the gradient towards transparency starts : if the plain percentage is 1.0, then there is now gradient,
 	/// if it's 0.0, the gradients immediately applies as the points move away from the focuses. 
 	/// @return 0 if everything went fine
-	int DrawEllipse(SDL_Renderer* renderer, const SDL_Rect& ellipseRect, const SDL_Color& color, double plainRatio = 1.0, float grad_steepness=1.0);
+	int DrawEllipse(SDL_Renderer* renderer, const cosmoscopeSDL::Point& pos, double width, double weight,
+		const SDL_Color& color, double plainRatio = 1.0, float grad_steepness=1.0);
 
 }

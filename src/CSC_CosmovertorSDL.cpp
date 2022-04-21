@@ -38,10 +38,10 @@ namespace cosmoscopeSDL {
 		return cosmic_length * m_lengthScale;
 	}
 
-	SDL_Point CosmovertorSDL::PositionToSDL(const cosmoscope::CartesianPos& pos) const {
-		return SDL_Point{
-			static_cast<int>(CosmosToDistance(pos.x) + m_origin.get<0>()),
-			static_cast<int>(CosmosToDistance(pos.y) + m_origin.get<1>())
+	Point CosmovertorSDL::PositionToSDL(const cosmoscope::CartesianPos& pos) const {
+		return Point{
+			CosmosToDistance(pos.x) + m_origin.get<0>(),
+			CosmosToDistance(pos.y) + m_origin.get<1>()
 		};
 	}
 
