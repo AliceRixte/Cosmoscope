@@ -21,14 +21,14 @@ namespace cosmoscope {
 	class Scheduler {
 	public:
 		Scheduler(const FuncTree& func_tree);
+		Scheduler(FuncTree&& func_tree);
+
 		void ComputeSnaps(Time t , int nb_snaps);
 
 		std::vector<TreeSnap> ReadSnaps() ;
 
 
 	private:
-		int m_start; 
-		int m_readIndex;
 		std::vector<TreeSnap> m_snapBuf;
 
 		FuncTree m_ftree;	   

@@ -64,10 +64,11 @@ int main(int argc, char* argv[])
     int height = 1000;
     int width = 1000;
     cosmoscopeSDL::CosmosDrawerSDL cosmos_drawer;
-    cosmoscopeSDL::CosmovertorSDL cosmovertor{std::move(ftree), sqrt(width * width + height * height) / 2.0,
+    cosmoscopeSDL::CosmovertorSDL cosmovertor{sqrt(width * width + height * height) / 2.0,
         cosmoscopeSDL::Point{ static_cast<float>(width / 2.0),static_cast<float>(height / 2.0) }, 100.0 };
+    cosmoscope::Scheduler scheduler{ std::move(ftree) };
 
-    WindowManager windowManager{"Cosmoscope",width,height,cosmos_drawer,cosmovertor};
+    WindowManager windowManager{"Cosmoscope",width,height,cosmos_drawer,cosmovertor, scheduler};
     
     while (windowManager.IsWindowOpen()) {
         windowManager.ProcessEvents();

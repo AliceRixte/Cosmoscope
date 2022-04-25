@@ -170,6 +170,7 @@
     <ClInclude Include="include\CSC_CoorSystem.h" />
     <ClInclude Include="include\CSC_CoorSystemSDL.h" />
     <ClInclude Include="include\CSC_CosmosDrawerSDL.h" />
+    <ClInclude Include="include\CSC_Cosmovertor.h" />
     <ClInclude Include="include\WindowManager.h" />
     <ClInclude Include="include\CSC_CosmovertorSDL.h" />
     <ClInclude Include="include\CSC_FuncTree.h" />

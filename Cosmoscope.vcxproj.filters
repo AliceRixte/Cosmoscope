@@ -143,6 +143,9 @@
     <ClInclude Include="include\CSC_CoorSystemSDL.h">
       <Filter>Header Files\CosmoscopeSDL</Filter>
     </ClInclude>
+    <ClInclude Include="include\CSC_Cosmovertor.h">
+      <Filter>Header Files\Cosmoscope</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

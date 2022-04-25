@@ -3,26 +3,11 @@
 namespace cosmoscopeSDL {
 
 
-	CosmovertorSDL::CosmovertorSDL(const cosmoscope::FuncTree& func_tree, double length_scale, Point origin, double max_brush_size) :
+	CosmovertorSDL::CosmovertorSDL(double length_scale, Point origin, double max_brush_size) :
 		m_lengthScale(length_scale),
 		m_origin(origin),
-		m_maxBrushSize(max_brush_size),
-		m_scheduler(func_tree) {
+		m_maxBrushSize(max_brush_size) {
 	}
-
-	CosmovertorSDL::CosmovertorSDL(cosmoscope::FuncTree&& func_tree, double length_scale, Point origin, double max_brush_size) :
-		m_lengthScale(length_scale),
-		m_origin(origin),
-		m_maxBrushSize(max_brush_size),
-		m_scheduler(std::move(func_tree)) {
-
-	}
-
-	void CosmovertorSDL::ComputeAndConvert(double t, SnapQueueSDL* snap_q) {
-		m_scheduler.ComputeSnaps(t, 1);
-		snap_q->WriteSnap(TreeSnapToSDL(m_scheduler.ReadSnaps()[0]));
-	}
-
 
 
 	double CosmovertorSDL::DistanceToCosmos(double length) const {
@@ -39,7 +24,6 @@ namespace cosmoscopeSDL {
 			CosmosToDistance(pos.y) + m_origin.get<1>()
 		};
 	}
-
 
 
 	Uint8 double01to255(double v) {

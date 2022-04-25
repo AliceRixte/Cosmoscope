@@ -22,13 +22,8 @@ namespace cosmoscopeSDL {
 		/// @param angle_scale This is the angle measure of a complete 360 degrees rotation. 
 		/// In degrees, this should be 360, in radians, this should be 2*PI.
 		/// @param origin The location of the screen of the origin of the relative func tree
-		CosmovertorSDL(const cosmoscope::FuncTree& m_func_tree, double length_scale, Point origin, double max_brush_size);
+		CosmovertorSDL(double length_scale, Point origin, double max_brush_size);
 
-		CosmovertorSDL(cosmoscope::FuncTree&& m_func_tree, double length_scale, Point origin, double max_brush_size);
-
-		/// @brief Converts the cosmic snapqueue to an SDL snapqueue.
-		/// @param snap_q_sdl 
-		void ComputeAndConvert(double t, SnapQueueSDL* snap_q_sdl);
 
 
 		/// @brief Converts an application length to a cosmic length
@@ -40,45 +35,40 @@ namespace cosmoscopeSDL {
 		/// @return Application length
 		double CosmosToDistance(double cosmic_length) const;
 
-		/// @brief Converts a cartesian position to a boost geometry point
-		/// @param pos A cartesian position (using cosmic length)
-		/// @return An boost geoimetry point position
-		Point PositionToSDL(const cosmoscope::CartesianPos& pos) const ;
-
-		/// @brief Converts a cartesian position to a float position
-		/// @param pos A cartesian position (using cosmic length)
-		/// @return An float position
-		//floatpix::Position PositionToFloat(const cosmoscope::CartesianPos& pos) const;
-
 		/// @brief Converts a cosmic color to an SDL_color
 		/// @param c  A cosmic color
 		/// @return An SDL_Color
-		SDL_Color ColorToSDL(const cosmoscope::Color& c) const ;
+		SDL_Color ColorToSDL(const cosmoscope::Color& c) const;
+
+		/// @brief Converts a cartesian position to a boost geometry point
+		/// @param pos A cartesian position (using cosmic length)
+		/// @return An boost geoimetry point position
+		Point PositionToSDL(const cosmoscope::CartesianPos& pos) const;
 
 		/// @brief Converts a cosmic time to a standard time 
 		/// @param c  A cosmic time
 		/// @return A double time
-		double TimeToSDL(const cosmoscope::Time& t) const ;
+		double TimeToSDL(const cosmoscope::Time& t) const;
 
 		/// @brief Converts a cosmic brush radius to an SDL radius
 		/// @param br  A cosmic brush radius
 		/// @return An SDL brush radius
-		double BrushRadiusToSDL(double br) const ; 
+		double BrushRadiusToSDL(double br) const;
 
 		/// @brief Converts a cosmic style to an SDL style
 		/// @param s A cosmic style
 		/// @return An SDL style
-		StyleSDL StyleToSDL(const cosmoscope::Style& s) const ;
+		StyleSDL StyleToSDL(const cosmoscope::Style& s) const;
 
 		/// @brief Converts a cosmic function snapshop to an SDL one
 		/// @param fs A cosmic function snapshot
 		/// @return An SDL function snapshot
-		FuncSnapSDL FuncSnapToSDL(const cosmoscope::FuncSnap& fs) const ;
+		FuncSnapSDL FuncSnapToSDL(const cosmoscope::FuncSnap& fs) const;
 
 		/// @brief Converts a cosmic function tree snapshot  to an SDL one
 		/// @param s A cosmic function tree snapshot
 		/// @return An SDL cosmic function snapshot
-		TreeSnapSDL TreeSnapToSDL(const cosmoscope::TreeSnap& fs) const ;
+		TreeSnapSDL TreeSnapToSDL(const cosmoscope::TreeSnap& fs) const;
 
 
 	private :
@@ -88,7 +78,8 @@ namespace cosmoscopeSDL {
 		double m_maxBrushSize;
 		Point m_origin;
 
-		cosmoscope::Scheduler m_scheduler;
+
+		
 	};
 }
 

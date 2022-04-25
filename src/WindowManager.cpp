@@ -5,12 +5,14 @@
 
 
 WindowManager::WindowManager(const char* window_name, int width, int height,
-    const cosmoscopeSDL::CosmosDrawerSDL& cosmos_drawer, const cosmoscopeSDL::CosmovertorSDL& cosmovertor) : 
+    const cosmoscopeSDL::CosmosDrawerSDL& cosmos_drawer, const cosmoscopeSDL::CosmovertorSDL& cosmovertor,
+    const cosmoscope::Scheduler& scheduler) : 
     m_cosmosDrawer(cosmos_drawer),
     m_isWindowOpen(true),
     m_window(NULL), m_renderer(NULL), t(0), m_altKeyDown(false), m_pause(false),
     m_snapQueue(2),
-    m_cosmovertor(cosmovertor)
+    m_cosmovertor(cosmovertor),
+    m_scheduler(scheduler)
 {
 
     //SDL initialisation
@@ -62,14 +64,15 @@ int WindowManager::ProcessEvents() {
 int WindowManager::UpdateFrame() {
     // if the cosmoscope is not on pause
     if (!m_pause) {
-        m_cosmovertor.ComputeAndConvert(t, &m_snapQueue);
+        m_scheduler.ComputeSnaps(t, 1);
+        m_snapQueue.WriteSnap(m_cosmovertor.TreeSnapToSDL(m_scheduler.ReadSnaps()[0]));
         m_cosmosDrawer.DrawSnap(m_snapQueue, m_renderer);
         SDL_RenderPresent(m_renderer);
         t++;
     }
     
-    //draw_SDL::DrawEllipse(m_renderer, cosmoscopeSDL::Point{ 500,500 }, 150, 200, SDL_Color{255,255,255,255}, 1.0, 15.0);
-    SDL_Delay(1);
+    //std::cout << "t : " << t << " Ticks : "<< SDL_GetTicks() << "  fps : " << t * 1000 / SDL_GetTicks() << std::endl;
+    SDL_Delay(1); 
     return 0;
 }
 
