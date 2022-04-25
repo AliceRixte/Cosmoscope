@@ -40,8 +40,8 @@ namespace cosmoscope {
 
 
 
-	void FuncTree::ComputeAll(Time t, SnapQueue* snap_q) const {
-		std::vector<FuncSnap> res;
+	TreeSnap FuncTree::Compute(Time t) const {
+		TreeSnap res;
 		for (int i = 0; i < funcs.size(); i++) {
 			int parent = funcs[i]->GetParent();
 
@@ -60,7 +60,7 @@ namespace cosmoscope {
 				}
 			);
 		} 
-		snap_q->WriteSnap(res);
+		return res;
 	}
 
 

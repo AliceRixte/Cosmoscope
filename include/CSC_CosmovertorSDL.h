@@ -8,7 +8,7 @@
 #include "SDL.h"
 
 #include "CSC_FuncTree.h"
-#include "CSC_SnapQueue.h"
+#include "CSC_Scheduler.h"
 #include "CSC_SnapQueueSDL.h"
 #include "CSC_CoorSystemSDL.h"
 
@@ -88,8 +88,7 @@ namespace cosmoscopeSDL {
 		double m_maxBrushSize;
 		Point m_origin;
 
-		cosmoscope::SnapQueue m_snapQ;
-		const cosmoscope::FuncTree m_funcTree;
+		cosmoscope::Scheduler m_scheduler;
 	};
 }
 

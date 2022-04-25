@@ -154,7 +154,7 @@
     <ClCompile Include="src\WindowManager.cpp" />
     <ClCompile Include="src\CSC_CosmovertorSDL.cpp" />
     <ClCompile Include="src\CSC_FuncTree.cpp" />
-    <ClCompile Include="src\CSC_SnapQueue.cpp" />
+    <ClCompile Include="src\CSC_Scheduler.cpp" />
     <ClCompile Include="src\CSC_SnapQueueSDL.cpp" />
     <ClCompile Include="src\CSC_StyleSDL.cpp" />
     <ClCompile Include="src\Main.cpp" />

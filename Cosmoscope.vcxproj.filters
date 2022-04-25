@@ -66,7 +66,7 @@
     <ClCompile Include="src\CSC_CallbackTools.cpp">
       <Filter>Source Files\Cosmoscope</Filter>
     </ClCompile>
-    <ClCompile Include="src\CSC_SnapQueue.cpp">
+    <ClCompile Include="src\CSC_Scheduler.cpp">
       <Filter>Source Files\Cosmoscope</Filter>
     </ClCompile>
     <ClCompile Include="src\Brushes.cpp">

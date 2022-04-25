@@ -13,11 +13,26 @@
 #include "CSC_RelativeFunc.h"
 #include "CSC_CoorSystem.h"
 
-#include "CSC_SnapQueue.h"
+//#include "CSC_Scheduler.h"
 
 
 // This class regroups all the relative functions. Their frame is tied to their parent function or to the chosen origin if their parent id is -1
 namespace cosmoscope {
+
+	/// @brief Regroups all data needed to display a function at a precise moment of time (snapshot)
+	struct FuncSnap {
+		// @brief The new relative time after calling the time callback function
+		Time tt;
+		/// @brief The absolute cartesian position at the time of the snapshot
+		CartesianPos p;
+		/// @brief The style at the time of the snapshot
+		Style s;
+	};
+
+	/// @brief All the data needed to display the func tree at a precise moment of time (snapshot)
+	using TreeSnap = std::vector<FuncSnap>;
+
+
 
 	/// @brief An exception used by FuncTree when it is unable to solve parent dependencies between relative functions
 	class BadFuncOrdering : public std::exception
@@ -34,6 +49,8 @@ namespace cosmoscope {
 	};
 
 
+
+
 	/// @brief Organises in a hierarchy all the relative functions of the cosmoscope
 	/// There should only be one instance of this class
 	class FuncTree {
@@ -48,7 +65,7 @@ namespace cosmoscope {
 		/// @param t The current time
 		/// @return A vector containing the position of each relative function
 		//void ComputeAll(Time t, SnapQueue* snap_q) const;
-		void ComputeAll(Time t, SnapQueue* snap_q) const;
+		TreeSnap Compute(Time t) const;
 
 		/// @brief Adds a new monochrome relative function to the tree.
 		/// @param parent_id The ID of the parent relative function, or -1, if it's bound to the origin

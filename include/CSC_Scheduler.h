@@ -1,4 +1,4 @@
-/// @file CSC_SnapQueue.h
+/// @file CSC_Scheduler.h
 /// @brief Contains a circular queue to store the history of relative function computations
 /// 
 /// @author Alice Rixte
@@ -17,33 +17,20 @@
 
 namespace cosmoscope {
 
-	/// @brief Regroups all data needed to display a function at a precise moment of time (snapshot)
-	struct FuncSnap {
-		// @brief The new relative time after calling the time callback function
-		Time tt;
-		/// @brief The absolute cartesian position at the time of the snapshot
-		CartesianPos p;
-		/// @brief The style at the time of the snapshot
-		Style s;
-	};
-	
-	/// @brief All the data needed to display the func tree at a precise moment of time (snapshot)
-	using TreeSnap = std::vector<FuncSnap>;
 
 	class Scheduler {
 	public:
-		Scheduler(const FuncTree func_tree, unsigned int size);
-		void ComputeSnaps(const TreeSnap& tree_snap);
+		Scheduler(const FuncTree& func_tree);
+		void ComputeSnaps(Time t , int nb_snaps);
 
-		void ReadSnaps(TreeSnap* p_tree_snap, int snap_number);
+		std::vector<TreeSnap> ReadSnaps() ;
 
 
 	private:
-		int m_start;
+		int m_start; 
 		int m_readIndex;
-		std::vector<TreeSnap> m_history;
+		std::vector<TreeSnap> m_snapBuf;
 
-		int NextIndex(int i);
-
+		FuncTree m_ftree;	   
 	};
 }
