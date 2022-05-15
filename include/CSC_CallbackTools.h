@@ -9,4 +9,5 @@
 
 namespace cosmoscope {
 	PolarCallback createCircle(double radius, double rotation_speed);
+	TimeCallback timeMultiplier(double time_factor);
 }

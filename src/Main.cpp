@@ -70,6 +70,7 @@ int main(int argc, char* argv[])
     };
 
     cosmoscope::Color red{ 0.9,0.1,0.2,1.0};
+    cosmoscope::Color white{ 1.0,1.0,1.0,0.5 };
     cosmoscope::Color green{ 0.1,0.9,0.2,1.0 };
     cosmoscope::Color yellow{ 1.0,0.9,0.2,1.0 };
     cosmoscope::BrushStyle soft_brush{ 0.7,0.0 };
@@ -85,11 +86,13 @@ int main(int argc, char* argv[])
    // ftree.AddMonochromeFunc(0,  createCircle(150.0,1/150.0), invis ible);
    //  ftree.AddMonochromeFunc(1, createCircle(60.0,-1.0),cosmoscope::Style{red,soft_brush});// &style1); 
 
+ 
+
     float zoom = 0.35;
-    float resolution = 10.0/128.0;
-    ftree.AddMonochromeFunc(-1, createCircle(1.0*zoom, 0.123456 *resolution), invisible);
-    ftree.AddPolychromeFunc(0,  createCircle(0.6 *zoom,1/5.0*resolution), styleRedBlue);
-    ftree.AddPolychromeFunc(1, createCircle(0.2 * zoom, -1 /5.0 * resolution), styleBlackWhite);
+    float resolution = 0.4/128.0;
+    ftree.AddTimedMonochromeFunc(-1,timeMultiplier(resolution), createCircle(1.0 * zoom, 0.1344567), invisible);
+    ftree.AddMonochromeFunc(0,  createCircle(0.6 *zoom,1/5.0), invisible);
+    ftree.AddTimedMonochromeFunc(1, timeMultiplier(4),createCircle(0.3 * zoom, -1 / 5.0),Style {white,soft_brush});
     //ftree.AddMonochromeFunc(2, createCircle(0.3 * zoom, -1 / 32.0 * resolution), invisible);
    // ftree.AddPolychromeFunc(2, createCircle(0.4 * zoom,8.752*128 * resolution), styleRedBlue);//cosmoscope::Style{ r,soft_brush });
    

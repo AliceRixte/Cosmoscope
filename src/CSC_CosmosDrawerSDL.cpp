@@ -23,7 +23,7 @@ namespace cosmoscopeSDL {
                 && pos.get<1>() >= m_minY && pos.get<1>() < m_maxY) {
 
                 //draw_SDL::DrawEllipse(renderer, pos, style.brush.radius, style.brush.radius, style.color, style.brush.h, 15.0);
-                draw_SDL::DrawCircle(renderer, pos, style.brush.radius/4, style.color, style.brush.h, 15.0);
+                draw_SDL::DrawCircle(renderer, pos, style.brush.radius/4, style.color, style.brush.h, 20.0);
             }
         }
     }

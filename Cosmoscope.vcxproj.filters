@@ -91,7 +91,7 @@
       <Filter>Source Files\CosmoscopeSDL</Filter>
     </ClCompile>
     <ClCompile Include="include\CSC_CosmosWindowSDL.cpp">
-      <Filter>Source Files\Cosmoscope</Filter>
+      <Filter>Source Files\CosmoscopeSDL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -145,9 +145,6 @@
     </ClInclude>
     <ClInclude Include="include\CSC_CoorSystemSDL.h">
       <Filter>Header Files\CosmoscopeSDL</Filter>
-    </ClInclude>
-    <ClInclude Include="include\CSC_Cosmovertor.h">
-      <Filter>Header Files\Cosmoscope</Filter>
     </ClInclude>
     <ClInclude Include="include\CSC_CosmosWindowSDL.h">
       <Filter>Header Files\CosmoscopeSDL</Filter>

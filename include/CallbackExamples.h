@@ -12,6 +12,14 @@
 
 using namespace cosmoscope;
 
+Time faster(Time t) {
+    return t + (t * t)/2000;
+}
+
+
+Time slower(Time t) {
+    return 30 * t;
+}
 
 Style styleFrozen(Time t) {
     return Style{
@@ -20,8 +28,10 @@ Style styleFrozen(Time t) {
     };
 }
 
+
+
 Style styleRedBlue(Time t) {
-    double freq = 25000;
+    double freq = 20;
     double mod = std::fmod(t, freq);
     double grad = 0;
     if (mod < freq / 2.0) {
@@ -41,12 +51,12 @@ Style styleRedBlue(Time t) {
     }*/
     return Style{
         Color{ grad,0.1,(1.0 - grad) * 0.8,1.0},// +0.5 * grad2},
-        BrushStyle{0.2,0.0}
+        BrushStyle{0.5,0.0}
     };
 }
 
 Style styleBlackWhite(Time t) {
-    double freq = 25000;
+    double freq = 20000;
     double mod = std::fmod(t, freq);
     double grad = 0;
     if (mod < freq / 2.0) {
@@ -66,7 +76,7 @@ Style styleBlackWhite(Time t) {
      }*/
     return Style{
         Color{ 1.0 - grad*grad,1.0 - grad*grad ,1.0 - grad*grad,1.0 },// +0.5 * grad2
-        BrushStyle{0.2,0.0}
+        BrushStyle{0.5,0.0}
     };
 }
 

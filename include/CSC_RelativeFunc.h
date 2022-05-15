@@ -12,6 +12,20 @@
 
 namespace cosmoscope {
 
+    /// @brief Regroups all data needed to display a function at a precise moment of time (snapshot)
+    struct FuncSnap {
+        // @brief The new relative time after calling the time callback function
+        Time tt;
+        /// @brief The absolute cartesian position at the time of the snapshot
+        CartesianPos p;
+        /// @brief The style at the time of the snapshot
+        Style s;
+    };
+
+    /// @brief All the data needed to display the func tree at a precise moment of time (snapshot)
+    using TreeSnap = std::vector<FuncSnap>;
+
+
     /// @brief A relative function that relies on a parent function to be traced.
     /// The relative function uses callbacks to be able to, at each moment in time, compute its position, its style and its own time distortion.
     class RelativeFunc {
@@ -21,6 +35,13 @@ namespace cosmoscope {
         /// @param param_cb A cartesian parametric callback function
         /// @param style The style of the function
         explicit RelativeFunc(int id_parent, const ParamCallback& param_cb, const Style& style);
+
+        /// @brief A constructor allowing to create a fully customized relative function
+        /// @param id_parent The id of the parent relative function. Set to -1 to tie to the main origin.
+        /// @param param_cb A  parametric callback function
+        /// @param style_cb A style callback function
+        /// @param time_cb A time callback function
+        explicit RelativeFunc(int id_parent, const TimeCallback& time_cb, const ParamCallback& param_cb, const Style& style);
 
         // @brief A constructor allowing to create a polychrome relative function.
         /// @param id_parent The id of the parent relative function. Set to -1 to tie to the main origin.
@@ -33,7 +54,7 @@ namespace cosmoscope {
         /// @param param_cb A  parametric callback function
         /// @param style_cb A style callback function
         /// @param time_cb A time callback function
-        explicit RelativeFunc(int id_parent, const ParamCallback& param_cb, const StyleCallback& style_cb, const TimeCallback& time_cb);
+        explicit RelativeFunc(int id_parent, const TimeCallback& time_cb, const ParamCallback& param_cb, const StyleCallback& style_cb);
 
 
             
@@ -56,6 +77,11 @@ namespace cosmoscope {
         /// @param t  The current time
         /// @return The style of the function at time **t**
         Style ComputeStyle(Time t);
+
+        Time ComputeTime(Time t);
+
+        FuncSnap Compute(const TreeSnap& curSnapshotPart, const std::vector<TreeSnap>& history);
+        FuncSnap Compute(Time t, const CartesianPos& origin);
 
     private:
 

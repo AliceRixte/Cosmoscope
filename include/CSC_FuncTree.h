@@ -19,21 +19,6 @@
 // This class regroups all the relative functions. Their frame is tied to their parent function or to the chosen origin if their parent id is -1
 namespace cosmoscope {
 
-	/// @brief Regroups all data needed to display a function at a precise moment of time (snapshot)
-	struct FuncSnap {
-		// @brief The new relative time after calling the time callback function
-		Time tt;
-		/// @brief The absolute cartesian position at the time of the snapshot
-		CartesianPos p;
-		/// @brief The style at the time of the snapshot
-		Style s;
-	};
-
-	/// @brief All the data needed to display the func tree at a precise moment of time (snapshot)
-	using TreeSnap = std::vector<FuncSnap>;
-
-
-
 	/// @brief An exception used by FuncTree when it is unable to solve parent dependencies between relative functions
 	class BadFuncOrdering : public std::exception
 	{
@@ -74,6 +59,13 @@ namespace cosmoscope {
 		/// @return The ID of the newly added relative function.
 		int AddMonochromeFunc(int parent_id, const ParamCallback& param_cb, const Style& style);
 
+		/// @brief Adds a new monochrome relative function to the tree, with a time calback
+		/// @param parent_id The ID of the parent relative function, or -1, if it's bound to the origin
+		/// @param param_cb A parametric callback function 
+		/// @param style A constant style
+		/// @return The ID of the newly added relative function.
+		int AddTimedMonochromeFunc(int parent_id, const TimeCallback& time_cb, const ParamCallback& param_cb, const Style& style);
+
 		/// @brief Adds a new polychrome relative function to the tree.
 		/// @param parent_id The ID of the parent relative function, or -1, if it's bound to the origin
 		/// @param param_cb A parametric callback function 
@@ -81,10 +73,17 @@ namespace cosmoscope {
 		/// @return The ID of the newly added relative function.
 		int AddPolychromeFunc(int parent_id, const ParamCallback& param_cb, const StyleCallback& style_cb);
 
+		/// @brief Adds a new polychrome relative function to the tree.
+		/// @param parent_id The ID of the parent relative function, or -1, if it's bound to the origin
+		/// @param param_cb A parametric callback function 
+		/// @param style_cb A style callback function.
+		/// @return The ID of the newly added relative function.
+		int AddTimedPolychromeFunc(int parent_id, const TimeCallback& time_cb, const ParamCallback& param_cb, const StyleCallback& style_cb);
+
 		/// @brief This returns the number of older frames needed to compute a new frame. 
 		/// This is set to 0 if no history is needed.
 		/// @return Number of older frames necessary to compute the current frame
-		int GetRecurrenceDepth() const;
+		//int GetRecurrenceDepth() const;
 
 		/// @brief Returns the number of relative functions inside the tree
 		/// @return Number of relative functions in the tree
@@ -94,7 +93,8 @@ namespace cosmoscope {
 
 
 	private:
-		std::vector<RelativeFunc*> funcs;
+		std::vector<RelativeFunc*> m_funcs;
+		std::vector<TreeSnap> m_history;
 		
 	};
 
