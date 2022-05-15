@@ -1,8 +1,11 @@
 #include <iostream>
 
+#include "GL/glew.h"
+#include <SDL_opengl.h>
+
 #include "CSC_FuncTree.h"
-#include "WindowManager.h"
-#include "Brushes.h"
+#include "CSC_CosmosWindowSDL.h"
+//#include "Brushes.h"
 
 #include "CallbackExamples.h"
 #include "CSC_CallbackTools.h"
@@ -10,16 +13,38 @@
 #include "boost/geometry.hpp"
 #include "boost/geometry/geometries/geometries.hpp"
 
+const GLint WIDTH = 800, HEIGHT = 600;
+
 namespace bg = boost::geometry;
 
 using CartesianPoint = boost::geometry::model::point<double, 3, boost::geometry::cs::cartesian>;
 using PolarPoint = boost::geometry::model::point<double, 3, boost::geometry::cs::spherical<boost::geometry::degree>>;
 
 using namespace cosmoscope;
+using namespace cosmoscopeSDL;
 
 int main(int argc, char* argv[])
-
 {
+    if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
+        printf("Erreur d'initialisation de la SDL : %s", SDL_GetError());
+    }
+
+    /*SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 6);
+    SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
+
+    SDL_Window* glwin = SDL_CreateWindow("CosmoscopeGL", 100, 100, WIDTH, HEIGHT, SDL_WINDOW_OPENGL);
+
+    SDL_GLContext context = SDL_GL_CreateContext(glwin);
+
+    glewExperimental = GL_TRUE;
+
+    if (GLEW_OK != glewInit()) {
+        std::cout << "Error in glew initialisation"<< std::endl;
+        return EXIT_FAILURE;
+    }
+    glViewport(0, 0, WIDTH, HEIGHT);*/
 
     using point = bg::model::point <double, 2, bg::cs::cartesian>;
     using linestring = bg::model::linestring<point>;
@@ -81,15 +106,16 @@ int main(int argc, char* argv[])
         sqrt(width * width + height * height) / 2.0, 100.0 };
     cosmoscope::Scheduler scheduler{ std::move(ftree) };
 
-    WindowManager windowManager{"Cosmoscope",width,height,cosmos_drawer,cosmovertor, scheduler};
+    CosmosWindowSDL cosmosWindow{"Cosmoscope",width,height,cosmos_drawer,cosmovertor, scheduler};
     
-    while (windowManager.IsWindowOpen()) {
-        windowManager.ProcessEvents();
-        windowManager.UpdateFrame();
+    while (cosmosWindow.IsWindowOpen()) {
+        cosmosWindow.ProcessEvents();
+        cosmosWindow.UpdateFrame();
     }
 
     
 
+    SDL_Quit();
 
     return 0;
 }

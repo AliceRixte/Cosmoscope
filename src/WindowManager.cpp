@@ -16,13 +16,9 @@ WindowManager::WindowManager(const char* window_name, int width, int height,
     m_previousTick(0)
 {
 
-    //SDL initialisation
-    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        printf("Erreur d'initialisation de la SDL : %s", SDL_GetError());
-    }
+    
     //main window  and renderer creation
-    else if (SDL_CreateWindowAndRenderer(width, height, SDL_WINDOW_RESIZABLE, &m_window, &m_renderer) < 0) {
+    if (SDL_CreateWindowAndRenderer(width, height, SDL_WINDOW_RESIZABLE, &m_window, &m_renderer) < 0) {
         printf("Error in window/renderer creation: %s", SDL_GetError());
     }
     else {
@@ -103,7 +99,6 @@ int WindowManager::TakeScreenshot() const {
 WindowManager::~WindowManager() {
     SDL_DestroyWindow(m_window);
     SDL_DestroyRenderer(m_renderer);
-    SDL_Quit();
 }
 
 

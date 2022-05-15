@@ -78,8 +78,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>F:\VClibs\libpng-1.6.37;F:\VClibs\SDL2\SDL2-2.0.20\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\VClibs\libpng-1.6.37\projects\vstudio\x64\Debug;F:\VClibs\SDL2\SDL2-2.0.20\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>F:\VClibs\OpenGL\GLEW\include;F:\VClibs\libpng-1.6.37;F:\VClibs\SDL2\SDL2-2.0.20\include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\VClibs\OpenGL\GLEW\lib\Release\x64;F:\VClibs\libpng-1.6.37\projects\vstudio\x64\Debug;F:\VClibs\SDL2\SDL2-2.0.20\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -125,7 +125,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;zlib.lib;opengl32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="include\CSC_CosmosWindowSDL.cpp" />
     <ClCompile Include="SDL_SavePNG\savepng.c" />
     <ClCompile Include="src\Brushes.cpp" />
     <ClCompile Include="src\CSC_CallbackTools.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="include\CSC_CoorSystem.h" />
     <ClInclude Include="include\CSC_CoorSystemSDL.h" />
     <ClInclude Include="include\CSC_CosmosDrawerSDL.h" />
+    <ClInclude Include="include\CSC_CosmosWindowSDL.h" />
     <ClInclude Include="include\CSC_Cosmovertor.h" />
     <ClInclude Include="include\WindowManager.h" />
     <ClInclude Include="include\CSC_CosmovertorSDL.h" />
