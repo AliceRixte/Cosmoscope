@@ -106,15 +106,13 @@ int main(int argc, char* argv[])
         sqrt(width * width + height * height) / 2.0, 100.0 };
     cosmoscope::Scheduler scheduler{ std::move(ftree) };
 
-    CosmosWindowSDL cosmosWindow{"Cosmoscope",width,height,cosmos_drawer,cosmovertor, scheduler};
+    WindowManager*  cosmosWindow = new CosmosWindowSDL{"Cosmoscope",width,height,scheduler, cosmovertor, cosmos_drawer};
     
-    while (cosmosWindow.IsWindowOpen()) {
-        cosmosWindow.ProcessEvents();
-        cosmosWindow.UpdateFrame();
+    while (cosmosWindow->IsWindowOpen()) {
+        cosmosWindow->ProcessEvents();
+        cosmosWindow->UpdateFrame();
     }
-
-    
-
+    delete cosmosWindow;
     SDL_Quit();
 
     return 0;

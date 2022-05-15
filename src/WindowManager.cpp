@@ -4,25 +4,17 @@
 #include <cmath>
 
 
-WindowManager::WindowManager(const char* window_name, int width, int height,
-    const cosmoscopeSDL::CosmosDrawerSDL& cosmos_drawer, const cosmoscopeSDL::CosmovertorSDL& cosmovertor,
-    const cosmoscope::Scheduler& scheduler) : 
-    m_cosmosDrawer(cosmos_drawer),
+WindowManager::WindowManager(const char* window_name, int width, int height) : 
+    m_window(NULL), m_renderer(NULL),
     m_isWindowOpen(true),
-    m_window(NULL), m_renderer(NULL), t(0), m_altKeyDown(false), m_pause(false),
-    m_snapQueue(2),
-    m_cosmovertor(cosmovertor),
-    m_scheduler(scheduler),
-    m_previousTick(0)
+    m_altKeyDown(false), m_pause(false)
 {
-
-    
     //main window  and renderer creation
     if (SDL_CreateWindowAndRenderer(width, height, SDL_WINDOW_RESIZABLE, &m_window, &m_renderer) < 0) {
         printf("Error in window/renderer creation: %s", SDL_GetError());
     }
     else {
-        SDL_SetWindowTitle(m_window, "Cosmoscope");
+        SDL_SetWindowTitle(m_window, window_name);
         SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
     }
 }
@@ -58,28 +50,6 @@ int WindowManager::ProcessEvents() {
     return 0;
 }
 
-int WindowManager::UpdateFrame() {
-    
-    // if the cosmoscope is not on pause
-    if (!m_pause) {
-        m_scheduler.ComputeSnaps(t, 1);
-        m_snapQueue.WriteSnap(m_cosmovertor.TreeSnapToSDL(m_scheduler.ReadSnaps()[0]));
-        m_cosmosDrawer.DrawSnap(m_snapQueue, m_renderer);
-        SDL_RenderPresent(m_renderer);
-        t++;
-
-
-        if (fmod(t, 100) < 0.5) {
-            std::cout <<"Total snaps" << t <<  "   SnapPS : " <<  100000.0 / (SDL_GetTicks() - m_previousTick) << std::endl;
-            
-            m_previousTick = SDL_GetTicks();
-        }
-    }
-
-    
-    SDL_Delay(0); 
-    return 0;
-}
  
 
 bool WindowManager::IsWindowOpen() const {
