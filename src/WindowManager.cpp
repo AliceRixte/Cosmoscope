@@ -12,7 +12,8 @@ WindowManager::WindowManager(const char* window_name, int width, int height,
     m_window(NULL), m_renderer(NULL), t(0), m_altKeyDown(false), m_pause(false),
     m_snapQueue(2),
     m_cosmovertor(cosmovertor),
-    m_scheduler(scheduler)
+    m_scheduler(scheduler),
+    m_previousTick(0)
 {
 
     //SDL initialisation
@@ -62,6 +63,7 @@ int WindowManager::ProcessEvents() {
 }
 
 int WindowManager::UpdateFrame() {
+    
     // if the cosmoscope is not on pause
     if (!m_pause) {
         m_scheduler.ComputeSnaps(t, 1);
@@ -69,13 +71,20 @@ int WindowManager::UpdateFrame() {
         m_cosmosDrawer.DrawSnap(m_snapQueue, m_renderer);
         SDL_RenderPresent(m_renderer);
         t++;
+
+
+        if (fmod(t, 100) < 0.5) {
+            std::cout <<"Total snaps" << t <<  "   SnapPS : " <<  100000.0 / (SDL_GetTicks() - m_previousTick) << std::endl;
+            
+            m_previousTick = SDL_GetTicks();
+        }
     }
+
     
-    //std::cout << "t : " << t << " Ticks : "<< SDL_GetTicks() << "  fps : " << t * 1000 / SDL_GetTicks() << std::endl;
-    SDL_Delay(1); 
+    SDL_Delay(0); 
     return 0;
 }
-
+ 
 
 bool WindowManager::IsWindowOpen() const {
     return m_isWindowOpen;

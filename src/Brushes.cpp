@@ -43,7 +43,7 @@ int DrawEllipse(SDL_Renderer* renderer, const cosmoscopeSDL::Point& p , double w
 	double plain_dist = 2 * c + (ellipse_dist - 2 * c) * plain_ratio;
 
 	
-	for (int x = std::ceil(p.get<0>() - a+5); x <= std::floor(p.get<0>() + a-5); x++) {
+	for (int x = std::ceil(p.get<0>() - a); x <= std::floor(p.get<0>() + a); x++) {
 		for (int y = std::ceil(p.get<1>() - b); y <= std::floor(p.get<1>() + b); y++) {
 			double dist = distance(f1x, f1y, static_cast<double>(x), static_cast<double>(y))
 				+ distance(f2x, f2y, static_cast<double>(x), static_cast<double>(y));
@@ -55,9 +55,36 @@ int DrawEllipse(SDL_Renderer* renderer, const cosmoscopeSDL::Point& p , double w
 			}
 			else if (dist <= ellipse_dist){
 				SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 
-					static_cast<Uint8>(color.a * pow((1.0 - (dist - plain_dist) / (ellipse_dist - plain_dist)), grad_steepness)));
+					static_cast<Uint8>(color.a * pow(1.0 - (dist - plain_dist) / (ellipse_dist - plain_dist), grad_steepness)));
 				SDL_RenderDrawPoint(renderer, x,y);
 			}			
+		}
+	}
+	return 0;
+}
+
+
+
+
+int DrawCircle(SDL_Renderer* renderer, const cosmoscopeSDL::Point& p, double radius, const SDL_Color& color, double plain_ratio, float grad_steepness) {
+	if (plain_ratio < 0.0 || plain_ratio > 1.0) {
+		return -1;
+	}
+
+	double plain_dist = radius * plain_ratio;
+
+	for (int x = std::ceil(p.get<0>() - radius); x <= std::floor(p.get<0>() + radius); x++) {
+		for (int y = std::ceil(p.get<1>() - radius); y <= std::floor(p.get<1>() + radius); y++) {
+			double dist = distance(p.get<0>(), p.get<1>(), static_cast<double>(x), static_cast<double>(y));
+			if (dist <= plain_dist) {
+				SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+				SDL_RenderDrawPoint(renderer, x, y);
+			}
+			else if (dist <= radius) {
+				SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b,
+					static_cast<Uint8>(color.a * pow(1.0 - (dist - plain_dist)/ (radius - plain_dist), grad_steepness)));
+				SDL_RenderDrawPoint(renderer, x, y);
+			}
 		}
 	}
 	return 0;

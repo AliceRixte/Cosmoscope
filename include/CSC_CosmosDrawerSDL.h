@@ -12,13 +12,16 @@
 namespace cosmoscopeSDL {
 	class CosmosDrawerSDL {
 	public:
-		CosmosDrawerSDL();
+		CosmosDrawerSDL(const SDL_Rect& draw_area);
 
 		void DrawSnap(const SnapQueueSDL& snap_queue, SDL_Renderer* renderer) const ;
 
 
 	private:
-
+		int m_minX;
+		int m_maxX;
+		int m_minY;
+		int m_maxY;
 	};
 }
 

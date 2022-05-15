@@ -53,6 +53,8 @@ private:
 	bool m_pause;
 
 
+
+
 	const cosmoscopeSDL::CosmosDrawerSDL& m_cosmosDrawer;
 
 	cosmoscopeSDL::SnapQueueSDL m_snapQueue;
@@ -60,6 +62,8 @@ private:
 	cosmoscope::Scheduler m_scheduler;
 
 	double t;
+
+	int m_previousTick;
 		
 		
 };

@@ -21,7 +21,7 @@ namespace cosmoscope {
 	}
 
 	CartesianPos polarToCartesian(const PolarPos& pos) {
-		return CartesianPos{ pos.r * sin(pos.th*TWOPI),pos.r * cos(pos.th*TWOPI) };
+		return CartesianPos{ pos.r * cos(pos.th * TWOPI),pos.r * sin(pos.th * TWOPI) };
 	}
 
 }

@@ -22,7 +22,7 @@ namespace cosmoscopeSDL {
 		/// @param angle_scale This is the angle measure of a complete 360 degrees rotation. 
 		/// In degrees, this should be 360, in radians, this should be 2*PI.
 		/// @param origin The location of the screen of the origin of the relative func tree
-		CosmovertorSDL(double length_scale, Point origin, double max_brush_size);
+		CosmovertorSDL(const Point& origin, double length_scale,  double max_brush_size);
 
 
 
@@ -73,10 +73,13 @@ namespace cosmoscopeSDL {
 
 	private :
 
+		Point m_origin;
+		SDL_Rect m_drawArea;
+
 		/// @brief This is the SDL length of  the virtual ``1.0`` Cosmscope length
 		double m_lengthScale;
 		double m_maxBrushSize;
-		Point m_origin;
+		
 
 
 		

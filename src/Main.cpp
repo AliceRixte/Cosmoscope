@@ -2,6 +2,7 @@
 
 #include "CSC_FuncTree.h"
 #include "WindowManager.h"
+#include "Brushes.h"
 
 #include "CallbackExamples.h"
 #include "CSC_CallbackTools.h"
@@ -44,8 +45,14 @@ int main(int argc, char* argv[])
     };
 
     cosmoscope::Color red{ 0.9,0.1,0.2,1.0};
-    cosmoscope::BrushStyle soft_brush{ 1.0,0.0 };
+    cosmoscope::Color green{ 0.1,0.9,0.2,1.0 };
+    cosmoscope::Color yellow{ 1.0,0.9,0.2,1.0 };
+    cosmoscope::BrushStyle soft_brush{ 0.7,0.0 };
     cosmoscope::BrushStyle hard_brush{ 1.0,0.9 };
+
+    cosmoscope::Style soft_red{ red,soft_brush };
+    cosmoscope::Style soft_green{ green,soft_brush };
+    cosmoscope::Style soft_yellow{ yellow,soft_brush };
 
     cosmoscope::FuncTree ftree;
 
@@ -53,19 +60,25 @@ int main(int argc, char* argv[])
    // ftree.AddMonochromeFunc(0,  createCircle(150.0,1/150.0), invis ible);
    //  ftree.AddMonochromeFunc(1, createCircle(60.0,-1.0),cosmoscope::Style{red,soft_brush});// &style1); 
 
-    float zoom = 5.0;
-    ftree.AddMonochromeFunc(-1, createCircle(0.1*zoom, 1.75), invisible);
-    ftree.AddMonochromeFunc(0,  createCircle(0.4*zoom,1/150.0), invisible);
-    ftree.AddMonochromeFunc(1, createCircle(0.4* zoom, -2.0), cosmoscope::Style{ red,soft_brush });// &style1); 
+    float zoom = 0.35;
+    float resolution = 10.0/128.0;
+    ftree.AddMonochromeFunc(-1, createCircle(1.0*zoom, 0.123456 *resolution), invisible);
+    ftree.AddPolychromeFunc(0,  createCircle(0.6 *zoom,1/5.0*resolution), styleRedBlue);
+    ftree.AddPolychromeFunc(1, createCircle(0.2 * zoom, -1 /5.0 * resolution), styleBlackWhite);
+    //ftree.AddMonochromeFunc(2, createCircle(0.3 * zoom, -1 / 32.0 * resolution), invisible);
+   // ftree.AddPolychromeFunc(2, createCircle(0.4 * zoom,8.752*128 * resolution), styleRedBlue);//cosmoscope::Style{ r,soft_brush });
    
     //ftree.AddMonochromeFunc(-1, createCircle(300,1/401.0), cosmoscope::Style{1.,0.,0.,1.,-1.});
     //ftree.AddPolychromeFunc(0, createCircle(190,1/170.0), &style3);
 
+    int padx = 0;
+    int pady = 0;
     int height = 1000;
     int width = 1000;
-    cosmoscopeSDL::CosmosDrawerSDL cosmos_drawer;
-    cosmoscopeSDL::CosmovertorSDL cosmovertor{sqrt(width * width + height * height) / 2.0,
-        cosmoscopeSDL::Point{ static_cast<float>(width / 2.0),static_cast<float>(height / 2.0) }, 100.0 };
+    SDL_Rect draw_area{ 0,0,width,height };
+    cosmoscopeSDL::CosmosDrawerSDL cosmos_drawer{draw_area};
+    cosmoscopeSDL::CosmovertorSDL cosmovertor {cosmoscopeSDL::Point{ width / 2.0 + padx, height / 2.0 + pady },
+        sqrt(width * width + height * height) / 2.0, 100.0 };
     cosmoscope::Scheduler scheduler{ std::move(ftree) };
 
     WindowManager windowManager{"Cosmoscope",width,height,cosmos_drawer,cosmovertor, scheduler};
@@ -74,6 +87,8 @@ int main(int argc, char* argv[])
         windowManager.ProcessEvents();
         windowManager.UpdateFrame();
     }
+
+    
 
 
     return 0;

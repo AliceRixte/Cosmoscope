@@ -3,10 +3,11 @@
 namespace cosmoscopeSDL {
 
 
-	CosmovertorSDL::CosmovertorSDL(double length_scale, Point origin, double max_brush_size) :
-		m_lengthScale(length_scale),
+	CosmovertorSDL::CosmovertorSDL(const Point& origin, double length_scale, double max_brush_size) :
 		m_origin(origin),
-		m_maxBrushSize(max_brush_size) {
+		m_lengthScale(length_scale),
+		m_maxBrushSize(max_brush_size)
+	{
 	}
 
 
@@ -20,8 +21,8 @@ namespace cosmoscopeSDL {
 
 	Point CosmovertorSDL::PositionToSDL(const cosmoscope::CartesianPos& pos) const {
 		return Point{
-			CosmosToDistance(pos.x) + m_origin.get<0>(),
-			CosmosToDistance(pos.y) + m_origin.get<1>()
+			m_origin.get<0>() + CosmosToDistance(pos.x) ,
+			m_origin.get<1>() - CosmosToDistance(pos.y)
 		};
 	}
 
