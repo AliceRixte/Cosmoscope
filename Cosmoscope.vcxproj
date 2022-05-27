@@ -145,14 +145,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="include\CSC_CosmosWindowSDL.cpp" />
-    <ClCompile Include="include\WindowManagerSDL.cpp" />
     <ClCompile Include="SDL_SavePNG\savepng.c" />
     <ClCompile Include="src\Brushes.cpp" />
     <ClCompile Include="src\CSC_CallbackTools.cpp" />
     <ClCompile Include="src\CSC_CallbackFuncs.cpp" />
     <ClCompile Include="src\CSC_CoorSystem.cpp" />
     <ClCompile Include="src\CSC_CosmosDrawerSDL.cpp" />
+    <ClCompile Include="src\CSC_CosmosWindowSDL.cpp" />
     <ClCompile Include="src\WindowManager.cpp" />
     <ClCompile Include="src\CSC_CosmovertorSDL.cpp" />
     <ClCompile Include="src\CSC_FuncTree.cpp" />
@@ -163,6 +162,7 @@
     <ClCompile Include="src\CSC_RelativeFunc.cpp" />
     <ClCompile Include="src\CSC_Style.cpp" />
     <ClCompile Include="src\CSC_Time.cpp" />
+    <ClCompile Include="src\WindowManagerSDL.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Brushes.h" />

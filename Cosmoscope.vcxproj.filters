@@ -90,11 +90,11 @@
     <ClCompile Include="src\CSC_CosmosDrawerSDL.cpp">
       <Filter>Source Files\CosmoscopeSDL</Filter>
     </ClCompile>
-    <ClCompile Include="include\CSC_CosmosWindowSDL.cpp">
-      <Filter>Source Files\CosmoscopeSDL</Filter>
-    </ClCompile>
-    <ClCompile Include="include\WindowManagerSDL.cpp">
+    <ClCompile Include="src\WindowManagerSDL.cpp">
       <Filter>Source Files\DrawSDL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CSC_CosmosWindowSDL.cpp">
+      <Filter>Source Files\CosmoscopeSDL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
