@@ -93,6 +93,9 @@
     <ClCompile Include="include\CSC_CosmosWindowSDL.cpp">
       <Filter>Source Files\CosmoscopeSDL</Filter>
     </ClCompile>
+    <ClCompile Include="include\WindowManagerSDL.cpp">
+      <Filter>Source Files\DrawSDL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\CSC_CallbackFuncs.h">
@@ -148,6 +151,9 @@
     </ClInclude>
     <ClInclude Include="include\CSC_CosmosWindowSDL.h">
       <Filter>Header Files\CosmoscopeSDL</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WindowManagerSDL.h">
+      <Filter>Header Files\DrawSDL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

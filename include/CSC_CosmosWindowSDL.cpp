@@ -8,9 +8,8 @@ namespace cosmoscopeSDL {
     CosmosWindowSDL::CosmosWindowSDL(const char* window_name, int width, int height,
         const cosmoscope::Scheduler& scheduler, const cosmoscopeSDL::CosmovertorSDL& cosmovertor,
         const cosmoscopeSDL::CosmosDrawerSDL& cosmos_drawer) :
-        WindowManager(window_name,width, height),
+        WindowManagerSDL(window_name,width, height),
         m_cosmosDrawer(cosmos_drawer),
-       // m_isWindowOpen(true),
         t(0), 
         m_snapQueue(2),
         m_cosmovertor(cosmovertor),
@@ -18,15 +17,6 @@ namespace cosmoscopeSDL {
         m_previousTick(0)
     {
 
-
-        //main window  and renderer creation
-        /*if (SDL_CreateWindowAndRenderer(width, height, SDL_WINDOW_RESIZABLE, &m_window, &m_renderer) < 0) {
-            printf("Error in window/renderer creation: %s", SDL_GetError());
-        }
-        else {
-            SDL_SetWindowTitle(m_window, "Cosmoscope");
-            SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
-        }*/
     }
 
 
@@ -54,14 +44,4 @@ namespace cosmoscopeSDL {
         SDL_Delay(0);
         return 0;
     }
-
-
-
-    
-
-    /*CosmosWindowSDL::~CosmosWindowSDL() {
-        SDL_DestroyWindow(m_window);
-        SDL_DestroyRenderer(m_renderer);
-    }*/
-
 }

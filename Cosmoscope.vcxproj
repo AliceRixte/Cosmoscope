@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="include\CSC_CosmosWindowSDL.cpp" />
+    <ClCompile Include="include\WindowManagerSDL.cpp" />
     <ClCompile Include="SDL_SavePNG\savepng.c" />
     <ClCompile Include="src\Brushes.cpp" />
     <ClCompile Include="src\CSC_CallbackTools.cpp" />
@@ -181,6 +182,7 @@
     <ClInclude Include="include\CSC_Scheduler.h" />
     <ClInclude Include="include\CSC_SnapQueueSDL.h" />
     <ClInclude Include="include\CSC_StyleSDL.h" />
+    <ClInclude Include="include\WindowManagerSDL.h" />
     <ClInclude Include="SDL_SavePNG\savepng.h" />
   </ItemGroup>
   <ItemGroup>

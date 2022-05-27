@@ -12,12 +12,12 @@
 #include "CSC_CosmosDrawerSDL.h"
 #include "CSC_Scheduler.h"
 
-#include "WindowManager.h"
+#include "WindowManagerSDL.h"
 
 namespace cosmoscopeSDL {
 
 	/// @brief This contains a whole cosmoscope with its own renderer and window
-	class CosmosWindowSDL : public WindowManager  {
+	class CosmosWindowSDL : public WindowManagerSDL  {
 	public:
 		
 		
