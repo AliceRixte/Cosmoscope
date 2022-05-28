@@ -151,6 +151,7 @@
     <ClCompile Include="src\CSC_CallbackFuncs.cpp" />
     <ClCompile Include="src\CSC_CoorSystem.cpp" />
     <ClCompile Include="src\CSC_CosmosDrawerSDL.cpp" />
+    <ClCompile Include="src\CSC_CosmosWindowGL.cpp" />
     <ClCompile Include="src\CSC_CosmosWindowSDL.cpp" />
     <ClCompile Include="src\WindowManager.cpp" />
     <ClCompile Include="src\CSC_CosmovertorSDL.cpp" />
@@ -162,6 +163,7 @@
     <ClCompile Include="src\CSC_RelativeFunc.cpp" />
     <ClCompile Include="src\CSC_Style.cpp" />
     <ClCompile Include="src\CSC_Time.cpp" />
+    <ClCompile Include="src\WIndowManagerGL.cpp" />
     <ClCompile Include="src\WindowManagerSDL.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +174,7 @@
     <ClInclude Include="include\CSC_CoorSystem.h" />
     <ClInclude Include="include\CSC_CoorSystemSDL.h" />
     <ClInclude Include="include\CSC_CosmosDrawerSDL.h" />
+    <ClInclude Include="include\CSC_CosmosWindowGL.h" />
     <ClInclude Include="include\CSC_CosmosWindowSDL.h" />
     <ClInclude Include="include\WindowManager.h" />
     <ClInclude Include="include\CSC_CosmovertorSDL.h" />
@@ -182,6 +185,7 @@
     <ClInclude Include="include\CSC_Scheduler.h" />
     <ClInclude Include="include\CSC_SnapQueueSDL.h" />
     <ClInclude Include="include\CSC_StyleSDL.h" />
+    <ClInclude Include="include\WindowManagerGL.h" />
     <ClInclude Include="include\WindowManagerSDL.h" />
     <ClInclude Include="SDL_SavePNG\savepng.h" />
   </ItemGroup>

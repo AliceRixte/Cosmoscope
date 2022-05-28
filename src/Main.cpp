@@ -6,13 +6,15 @@
 
 #include "CSC_FuncTree.h"
 #include "CSC_CosmosWindowSDL.h"
-//#include "Brushes.h"
+#include "CSC_CosmosWindowGL.h"
+
 
 #include "CallbackExamples.h"
 #include "CSC_CallbackTools.h"
 
 #include "boost/geometry.hpp"
 #include "boost/geometry/geometries/geometries.hpp"
+
 
 const GLint WIDTH = 1700, HEIGHT = 600;
 
@@ -23,140 +25,13 @@ using PolarPoint = boost::geometry::model::point<double, 3, boost::geometry::cs:
 
 using namespace cosmoscope;
 using namespace cosmoscopeSDL;
+using namespace cosmoscopeGL;
 
 int main(int argc, char* argv[])
 {
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
         printf("Erreur d'initialisation de la SDL : %s", SDL_GetError());
     }
-
-    //
-    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
-    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-    //SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
-
-    //SDL_Window* glwin = SDL_CreateWindow("CosmoscopeGL", 100, 100, WIDTH, HEIGHT, SDL_WINDOW_OPENGL);
-
-    //SDL_GLContext context = SDL_GL_CreateContext(glwin);
-
-    //const GLubyte* renderer = glGetString(GL_RENDERER); // get renderer string
-    //const GLubyte* version = glGetString(GL_VERSION); // version as a string
-    //printf("Renderer: %s\n", renderer);
-    //printf("OpenGL version supported %s\n", version);
-
-    //glewExperimental = GL_TRUE;
-
-    //if (GLEW_OK != glewInit()) {
-    //    std::cout << "Error in glew initialisation"<< std::endl;
-    //    return EXIT_FAILURE;
-    //}
-    //glViewport(0, 0, WIDTH, HEIGHT);
-
-    //unsigned int VBO;
-
-    //
-
-    //float triangle[] = {
-    //-0.5f, -0.5f, 0.0f,
-    // 0.5f, -0.5f, 0.0f,
-    // 0.0f,  0.5f, 0.0f
-    //};
-    //
-
-    //glGenBuffers(1, &VBO);
-    //glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    //glBufferData(GL_ARRAY_BUFFER, sizeof(triangle), triangle, GL_STATIC_DRAW);
-
-    //const char* vertexShaderSource = 
-    //    "#version 400\n"
-    //    "in vec3 vp;"
-    //    "void main() {"
-    //    "  gl_Position = vec4(vp, 1.0);"
-    //    "}"; 
-
-    //unsigned int vertexShader;
-    //vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    //glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-
-    //int success;
-    //char infoLog[512];
-    //
-    //glCompileShader(vertexShader);
-    //glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-
-    //if (!success) {
-    //    glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-    //    std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
-    //}
-
-    //const char* fragmentShaderSource =
-    //    "#version 330 core\n"
-    //    "out vec4 FragColor;"
-    //    "void main()"
-    //    "    {"
-    //    "FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);"
-    //    "}\0";
-
-    //unsigned int fragment_shader = glCreateShader(GL_FRAGMENT_SHADER);
-    //glShaderSource(fragment_shader, 1, &fragmentShaderSource, NULL);
-
-    //glCompileShader(fragment_shader);
-    //glGetShaderiv(fragment_shader, GL_COMPILE_STATUS, &success);
-    //if (!success) {
-    //    glGetShaderInfoLog(fragment_shader, 512, NULL, infoLog);
-    //    std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
-    //}
-
-    //unsigned int shaderProgram = glCreateProgram();
-
-    //glAttachShader(shaderProgram, vertexShader);
-    //glAttachShader(shaderProgram, fragment_shader);
-    //glLinkProgram(shaderProgram);
-
-    //glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-    //if (!success) {
-    //    glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-    //    std::cout << "ERROR::PROGRAM::LINK_FAILED\n" << infoLog << std::endl;
-    //}
-    //
-    ////glUseProgram(shaderProgram);
-    //glDeleteShader(vertexShader);
-    //glDeleteShader(fragment_shader);
-
-    //unsigned int VAO;
-    //glGenVertexArrays(1, &VAO);
-    //glBindVertexArray(VAO);
-
-    //glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-    //glEnableVertexAttribArray(0);
-
-    //SDL_Event event;
-    //bool isWindowOpen = true;
-    //while (isWindowOpen) {
-    //    while (SDL_PollEvent(&event)) {
-    //        switch (event.type) {
-    //        case SDL_WINDOWEVENT:
-    //            if (event.window.event == SDL_WINDOWEVENT_CLOSE) {
-    //                isWindowOpen = false; //window closing
-    //            }
-    //        }
-    //    }
-
-
-    //    glUseProgram(shaderProgram);
-    //    glBindVertexArray(VAO);
-    //    glDrawArrays(GL_POINTS, 0, 3);
-
-    //  /*  glClearColor(1.0, 0.0, 0.0, 0.0f);
-    //    glClear(GL_COLOR_BUFFER_BIT);
-    //    glClearColor(1.0, 1.0, 0.0, 0.0f);
-    //    glClear(GL_COLOR_BUFFER_BIT);*/
-
-    //    SDL_GL_SwapWindow(glwin);
-    //}
-
-    //SDL_GL_DeleteContext(context);
     
 
     using point = bg::model::point <double, 2, bg::cs::cartesian>;
@@ -222,7 +97,8 @@ int main(int argc, char* argv[])
         sqrt(width * width + height * height) / 2.0, 100.0 };
     cosmoscope::Scheduler scheduler{ std::move(ftree) };
 
-    WindowManager*  cosmosWindow = new CosmosWindowSDL{"Cosmoscope",width,height,scheduler, cosmovertor, cosmos_drawer};
+    //WindowManager*  cosmosWindow = new CosmosWindowSDL{"Cosmoscope",width,height,scheduler, cosmovertor, cosmos_drawer};
+    WindowManager*  cosmosWindow = new CosmosWindowGL{"Cosmoscope",width,height,scheduler, cosmovertor, cosmos_drawer};
     
     
     while (cosmosWindow->IsWindowOpen()) {
@@ -231,6 +107,7 @@ int main(int argc, char* argv[])
     }
     delete cosmosWindow;
     
+
 
     SDL_Quit();
 

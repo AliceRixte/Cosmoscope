@@ -40,6 +40,12 @@
     <Filter Include="Source Files\DrawSDL">
       <UniqueIdentifier>{3dec1231-1b59-4e22-9f22-4e3753ccc8aa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\CosmoscopeGL">
+      <UniqueIdentifier>{07a719a3-64ad-4a78-8e3b-eb5df85b8978}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\CosmoscopeGL">
+      <UniqueIdentifier>{cf4961a3-89b9-4801-8038-e9e4ac4f3788}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Main.cpp">
@@ -95,6 +101,12 @@
     </ClCompile>
     <ClCompile Include="src\CSC_CosmosWindowSDL.cpp">
       <Filter>Source Files\CosmoscopeSDL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WIndowManagerGL.cpp">
+      <Filter>Source Files\DrawSDL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CSC_CosmosWindowGL.cpp">
+      <Filter>Source Files\CosmoscopeGL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +166,12 @@
     </ClInclude>
     <ClInclude Include="include\WindowManagerSDL.h">
       <Filter>Header Files\DrawSDL</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WindowManagerGL.h">
+      <Filter>Header Files\DrawSDL</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CSC_CosmosWindowGL.h">
+      <Filter>Header Files\CosmoscopeGL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
