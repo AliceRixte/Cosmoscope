@@ -36,7 +36,7 @@ namespace cosmoscopeSDL {
 		explicit SnapQueueSDL(unsigned int history_size = 2);
 		void WriteSnap(const TreeSnapSDL& tree_snap);
 
-		TreeSnapSDL GetSnap(unsigned int snape_age) const;
+		TreeSnapSDL GetSnap(unsigned int snap_age) const;
 		int Size();
 
 

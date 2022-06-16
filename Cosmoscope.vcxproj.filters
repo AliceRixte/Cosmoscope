@@ -108,6 +108,9 @@
     <ClCompile Include="src\CSC_CosmosWindowGL.cpp">
       <Filter>Source Files\CosmoscopeGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\CosmicShader.cpp">
+      <Filter>Source Files\Cosmoscope</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\CSC_CallbackFuncs.h">
@@ -172,6 +175,18 @@
     </ClInclude>
     <ClInclude Include="include\CSC_CosmosWindowGL.h">
       <Filter>Header Files\CosmoscopeGL</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CSC_CosmicShader.h">
+      <Filter>Header Files\Cosmoscope</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CSC_CosmicCallback.h">
+      <Filter>Header Files\Cosmoscope</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CSC_CosmicObject.h">
+      <Filter>Header Files\Cosmoscope</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CSC_CosmosMachine.h">
+      <Filter>Header Files\Cosmoscope</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

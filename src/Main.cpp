@@ -61,7 +61,7 @@ int main(int argc, char* argv[])
     cosmoscope::Color white{ 1.0,1.0,1.0,0.5 };
     cosmoscope::Color green{ 0.1,0.9,0.2,1.0 };
     cosmoscope::Color yellow{ 1.0,0.9,0.2,1.0 };
-    cosmoscope::BrushStyle soft_brush{ 0.7,0.0 };
+    cosmoscope::BrushStyle soft_brush{ 0.1,0.0 };
     cosmoscope::BrushStyle hard_brush{ 1.0,0.9 };
 
     cosmoscope::Style soft_red{ red,soft_brush };
@@ -76,11 +76,11 @@ int main(int argc, char* argv[])
 
  
 
-    float zoom = 0.35;
-    float resolution = 0.4/128.0;
+    float zoom = 1.5;
+    float resolution = 90.0/128.0;
     ftree.AddTimedMonochromeFunc(-1,timeMultiplier(resolution), createCircle(1.0 * zoom, 0.1344567), invisible);
-    ftree.AddMonochromeFunc(0,  createCircle(0.6 *zoom,1/5.0), invisible);
-    ftree.AddTimedMonochromeFunc(1, timeMultiplier(4),createCircle(0.3 * zoom, -1 / 5.0),Style {white,soft_brush});
+    ftree.AddMonochromeFunc(0,  createCircle(0.6 *zoom,1/5.73), invisible);
+    ftree.AddTimedPolychromeFunc(1, timeMultiplier(4), createCircle(0.3 * zoom, -1 / 5.0), gradient(15,Color{0.0,0.0,0.0,});// Style{ white,soft_brush });
     //ftree.AddMonochromeFunc(2, createCircle(0.3 * zoom, -1 / 32.0 * resolution), invisible);
    // ftree.AddPolychromeFunc(2, createCircle(0.4 * zoom,8.752*128 * resolution), styleRedBlue);//cosmoscope::Style{ r,soft_brush });
    
@@ -97,8 +97,8 @@ int main(int argc, char* argv[])
         sqrt(width * width + height * height) / 2.0, 100.0 };
     cosmoscope::Scheduler scheduler{ std::move(ftree) };
 
-    //WindowManager*  cosmosWindow = new CosmosWindowSDL{"Cosmoscope",width,height,scheduler, cosmovertor, cosmos_drawer};
-    WindowManager*  cosmosWindow = new CosmosWindowGL{"Cosmoscope",width,height,scheduler, cosmovertor, cosmos_drawer};
+    WindowManager*  cosmosWindow = new CosmosWindowSDL{"Cosmoscope",width,height,scheduler, cosmovertor, cosmos_drawer};
+    //WindowManager*  cosmosWindow = new CosmosWindowGL{"Cosmoscope",width,height,scheduler, cosmovertor, cosmos_drawer};
     
     
     while (cosmosWindow->IsWindowOpen()) {

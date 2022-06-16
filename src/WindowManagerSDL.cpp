@@ -13,6 +13,8 @@ WindowManagerSDL::WindowManagerSDL(const char* window_name, int width, int heigh
     else {
         SDL_SetWindowTitle(m_window, window_name);
         SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
+        //SDL_SetRenderDrawColor(m_renderer, 255, 255,255 , 255);
+        SDL_RenderClear(m_renderer);
     }
 }
 

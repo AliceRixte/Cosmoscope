@@ -31,7 +31,7 @@ Style styleFrozen(Time t) {
 
 
 Style styleRedBlue(Time t) {
-    double freq = 20;
+    double freq = 15;
     double mod = std::fmod(t, freq);
     double grad = 0;
     if (mod < freq / 2.0) {
@@ -50,7 +50,7 @@ Style styleRedBlue(Time t) {
         grad2 = 2.0 * (freq2 - mod2) / freq2;
     }*/
     return Style{
-        Color{ grad,0.1,(1.0 - grad) * 0.8,1.0},// +0.5 * grad2},
+        Color{ grad, grad,1-grad,1.0},// Color{ grad,0.1,(1.0 - grad) * 0.8,1.0},// +0.5 * grad2},
         BrushStyle{0.5,0.0}
     };
 }

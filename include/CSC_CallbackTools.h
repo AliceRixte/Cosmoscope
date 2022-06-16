@@ -10,4 +10,5 @@
 namespace cosmoscope {
 	PolarCallback createCircle(double radius, double rotation_speed);
 	TimeCallback timeMultiplier(double time_factor);
+	StyleCallback gradient(double freq, Color color1, Color color2);
 }
