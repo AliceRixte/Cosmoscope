@@ -49,6 +49,7 @@ namespace cosmoscopeSDL {
 		double t;
 
 		int m_previousTick;
+		int m_firstTick;
 
 	};
 

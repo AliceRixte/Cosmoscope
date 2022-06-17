@@ -14,8 +14,8 @@ namespace cosmoscope {
 		void AddShader(std::string name, CosmicCallback ccb);
 		void NextStep();
 	private:
-		std::unordered_map <std::string, CosmicShader> shaders;
-		CosmicQueue objects;
+		std::unordered_map <std::string, CosmicShader> m_shaders;
+		std::vector<CosmicObject> m_previousStates;
 	};
 }
 

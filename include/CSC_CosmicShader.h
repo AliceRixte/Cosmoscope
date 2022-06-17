@@ -1,18 +1,18 @@
 #pragma once
 
-
+#include <boost/circular_buffer.hpp>
 #include "CSC_CosmicCallback.h"
+
 
 
 namespace cosmoscope {
 	class CosmicShader {
 	public:
-		CosmicShader(const CosmicCallback& ccb, int history_size);
-		void Compute(CosmicObject& object);
+		CosmicShader(int history_size);
+		void Compute(const CosmicObject& object, const std::unordered_map <std::string, CosmicShader>& ccbs);
 	private : 
 		int m_now;
-		std::vector<CosmicObject> m_history;
-		CosmicCallback m_cosmicCB;
+		boost::circular_buffer<CosmicObject> m_history;
 
 	};
 }

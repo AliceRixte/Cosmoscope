@@ -108,7 +108,7 @@
     <ClCompile Include="src\CSC_CosmosWindowGL.cpp">
       <Filter>Source Files\CosmoscopeGL</Filter>
     </ClCompile>
-    <ClCompile Include="src\CosmicShader.cpp">
+    <ClCompile Include="src\CSC_CosmicShader.cpp">
       <Filter>Source Files\Cosmoscope</Filter>
     </ClCompile>
   </ItemGroup>

@@ -147,7 +147,7 @@
   <ItemGroup>
     <ClCompile Include="SDL_SavePNG\savepng.c" />
     <ClCompile Include="src\Brushes.cpp" />
-    <ClCompile Include="src\CosmicShader.cpp" />
+    <ClCompile Include="src\CSC_CosmicShader.cpp" />
     <ClCompile Include="src\CSC_CallbackTools.cpp" />
     <ClCompile Include="src\CSC_CallbackFuncs.cpp" />
     <ClCompile Include="src\CSC_CoorSystem.cpp" />
