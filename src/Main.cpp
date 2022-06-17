@@ -74,13 +74,14 @@ int main(int argc, char* argv[])
    // ftree.AddMonochromeFunc(0,  createCircle(150.0,1/150.0), invis ible);
    //  ftree.AddMonochromeFunc(1, createCircle(60.0,-1.0),cosmoscope::Style{red,soft_brush});// &style1); 
 
- 
+    Color blueChitchou{ 0.1,0.6,0.9,1.0 };
+    Color redChatchou{ 1.0,0.15,0.25,1.0 };
 
-    float zoom = 1.5;
+    float zoom = 1;
     float resolution = 90.0/128.0;
-    ftree.AddTimedMonochromeFunc(-1,timeMultiplier(resolution), createCircle(1.0 * zoom, 0.1344567), invisible);
+    ftree.AddTimedMonochromeFunc(-1,timeMultiplier(resolution), createCircle(0.9 * zoom, 0.1344567), invisible);
     ftree.AddMonochromeFunc(0,  createCircle(0.6 *zoom,1/5.73), invisible);
-    ftree.AddTimedPolychromeFunc(1, timeMultiplier(4), createCircle(0.3 * zoom, -1 / 5.0), gradient(15,Color{0.0,0.0,0.0,});// Style{ white,soft_brush });
+    ftree.AddTimedPolychromeFunc(1, timeMultiplier(4), createCircle(0.3 * zoom, -1 / 5.0), gradient(15,redChatchou,blueChitchou));// Style{ white,soft_brush });
     //ftree.AddMonochromeFunc(2, createCircle(0.3 * zoom, -1 / 32.0 * resolution), invisible);
    // ftree.AddPolychromeFunc(2, createCircle(0.4 * zoom,8.752*128 * resolution), styleRedBlue);//cosmoscope::Style{ r,soft_brush });
    
@@ -89,8 +90,8 @@ int main(int argc, char* argv[])
 
     int padx = 0;
     int pady = 0;
-    int height = 1000;
-    int width = 1000;
+    int height = 3000;
+    int width = 3000;
     SDL_Rect draw_area{ 0,0,width,height };
     cosmoscopeSDL::CosmosDrawerSDL cosmos_drawer{draw_area};
     cosmoscopeSDL::CosmovertorSDL cosmovertor {cosmoscopeSDL::Point{ width / 2.0 + padx, height / 2.0 + pady },

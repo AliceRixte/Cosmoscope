@@ -14,7 +14,8 @@ namespace cosmoscopeSDL {
         m_snapQueue(2),
         m_cosmovertor(cosmovertor),
         m_scheduler(scheduler),
-        m_previousTick(0)
+        m_previousTick(0),
+        m_firstTick(SDL_GetTicks())
     {
 
     }
@@ -26,22 +27,34 @@ namespace cosmoscopeSDL {
 
         // if the cosmoscope is not on pause
         if (!m_pause) {
-            m_scheduler.ComputeSnaps(t, 1);
-            m_snapQueue.WriteSnap(m_cosmovertor.TreeSnapToSDL(m_scheduler.ReadSnaps()[0]));
-            m_cosmosDrawer.DrawSnap(m_snapQueue, m_renderer);
-            SDL_RenderPresent(m_renderer);
-            t++;
+
+            int nb_snap = 10;//0.2
+            m_scheduler.ComputeSnaps(t, nb_snap); //6 sec
+            std::vector<cosmoscope::TreeSnap> snaps = m_scheduler.ReadSnaps(); //0.3sec
+
+            for (int i = 0; i < nb_snap; i++) {//0.2 sec
+                m_snapQueue.WriteSnap(m_cosmovertor.TreeSnapToSDL(snaps[i])); //13sec
+                m_cosmosDrawer.DrawSnap(m_snapQueue, m_renderer);//80sec
+            }
 
 
-            if (fmod(t, 100) < 0.5) {
-                std::cout << "Total snaps" << t << "   SnapPS : " << 100000.0 / (SDL_GetTicks() - m_previousTick) << std::endl;
+            
+            if (fmod(t, 10000) < 0.5) { //0.5
+                SDL_RenderPresent(m_renderer);
+                std::cout << "Total snaps : " << t << "    Total time : " << (SDL_GetTicks() - m_firstTick) / 1000 << "secs"  <<
+                    "    SnapPS : " << static_cast<int>(10000.0*1000.0 / (SDL_GetTicks() - m_previousTick)) <<std::endl;
 
                 m_previousTick = SDL_GetTicks();
+               /* if (t > 1000000) {
+                    std::cout << "Million : " << (SDL_GetTicks() - m_firstTick) / 1000.0 << " secondes " << std::endl;
+                    exit(-1);
+                }*/
+                
             }
         }
 
 
-        SDL_Delay(0);
+        //SDL_Delay(0);
         return 0;
     }
 }

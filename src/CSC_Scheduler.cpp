@@ -14,10 +14,9 @@ namespace cosmoscope {
 	{
 
 	}
-	void Scheduler::ComputeSnaps(Time t, int nb_snaps) {
+	void Scheduler::ComputeSnaps(Time& t, int nb_snaps) {
 		for (int i = 0; i < nb_snaps; i++) {
-
-			m_snapBuf.push_back(m_ftree.Compute(t)); 
+			m_snapBuf.push_back(m_ftree.Compute(t++)); 
 		}
 	}
 

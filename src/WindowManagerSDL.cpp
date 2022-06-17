@@ -7,14 +7,21 @@ WindowManagerSDL::WindowManagerSDL(const char* window_name, int width, int heigh
     m_window(NULL), m_renderer(NULL)
 {
     //main window  and renderer creation
-    if (SDL_CreateWindowAndRenderer(width, height, SDL_WINDOW_RESIZABLE, &m_window, &m_renderer) < 0) {
+    m_window = SDL_CreateWindow(window_name, 20, 20, width, height, SDL_WINDOW_BORDERLESS);
+    if (!m_window) {
         std::cerr << "Error in window/renderer creation: " << SDL_GetError() << std::endl;
     }
     else {
-        SDL_SetWindowTitle(m_window, window_name);
-        SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
-        //SDL_SetRenderDrawColor(m_renderer, 255, 255,255 , 255);
-        SDL_RenderClear(m_renderer);
+        SDL_SetWindowSize(m_window, width, height);
+        m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
+        if (!m_renderer) {
+            std::cerr << "Error in window/renderer creation: " << SDL_GetError() << std::endl;
+        } else{
+
+            SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
+            //SDL_SetRenderDrawColor(m_renderer, 255, 255,255 , 255);
+            SDL_RenderClear(m_renderer);
+        }
     }
 }
 

@@ -26,7 +26,7 @@ namespace cosmoscope{
                       (1 - grad) * color1.g + grad * color2.g,
                       (1 - grad) * color1.b + grad * color2.b,
                       (1 - grad) * color1.a + grad * color2.a},
-                BrushStyle{0.5,0.0}
+                BrushStyle{0.1,0.0}
             };
         };
     }

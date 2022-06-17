@@ -23,7 +23,7 @@ namespace cosmoscope {
 		Scheduler(const FuncTree& func_tree);
 		Scheduler(FuncTree&& func_tree);
 
-		void ComputeSnaps(Time t , int nb_snaps);
+		void ComputeSnaps(Time& t , int nb_snaps);
 
 		std::vector<TreeSnap> ReadSnaps() ;
 
