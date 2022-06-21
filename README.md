@@ -5,6 +5,13 @@ The Cosmoscope aims to be a small and simple graphic programming language that a
 
 This concept is a wide generalization of the spirograph : every function traced by the spirograph can be traced by the cosmoscope but the cosmoscope can trace theoretically any computable 2D parametric function, using composition more as a tool rather than a constraint (contrarly to the spirograph).
 
+Dependencies
+-------------------
+* https://github.com/libsdl-org/SDL
+* https://github.com/driedfruit/SDL_SavePNG
+* https://github.com/nlohmann/json
+* https://github.com/boostorg/geometry
+
 Units
 --------
 
