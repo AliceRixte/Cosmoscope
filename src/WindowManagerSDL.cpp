@@ -1,13 +1,13 @@
 #include "WindowManagerSDL.h"
 
 #include <iostream>
-#include "savepng.h"
+#include "SDL_SavePNG/savepng.h"
 
 WindowManagerSDL::WindowManagerSDL(const char* window_name, int width, int height) :
     m_window(NULL), m_renderer(NULL)
 {
     //main window  and renderer creation
-    m_window = SDL_CreateWindow(window_name, 20, 20, width, height, SDL_WINDOW_BORDERLESS);
+    m_window = SDL_CreateWindow(window_name, 20, 20, width, height, 0);
     if (!m_window) {
         std::cerr << "Error in window/renderer creation: " << SDL_GetError() << std::endl;
     }
