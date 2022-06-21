@@ -4,6 +4,3 @@
 [submodule "SDL_SavePNG"]
 	path = include/SDL_SavePNG
 	url = git@github.com:driedfruit/SDL_SavePNG.git
-[submodule "include/include/SDL_SavePNG"]
-	path = include/include/SDL_SavePNG
-	url = git@github.com:driedfruit/SDL_SavePNG.git
