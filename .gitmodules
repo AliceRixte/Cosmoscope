@@ -1,0 +1,6 @@
+[submodule "json"]
+	path = json
+	url = git@github.com:nlohmann/json.git
+[submodule "SDL_SavePNG"]
+	path = SDL_SavePNG
+	url = git@github.com:driedfruit/SDL_SavePNG.git
