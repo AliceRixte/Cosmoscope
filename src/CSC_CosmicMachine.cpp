@@ -31,40 +31,25 @@ namespace cosmoscope {
 		m_shaders.insert({ name,CosmicShader(ccb,children,history_size) });
 	}
 
-	void CosmicMachine::NextStep(){//const std::string& initial_shader_name) {
+	void CosmicMachine::NextStep(){
 		if (!m_callStack.empty()) {
 			auto current_call = m_callStack.top();
 			std::unordered_map<std::string, CosmicShader>::iterator current_shader = m_shaders.find(current_call.first);
 			if (current_shader == m_shaders.end()) {
-				std::cerr << "The initial shader wasn't found." << std::endl;
+				std::cerr << "Shader \"" << current_call.first << "\" wasn't found" << std::endl;
 			}
 			else {
 				current_shader->second.Compute(*current_call.second, m_shaders, m_resultQueue, m_callStack);
 			}
 		}
-
-		/*std::unordered_map<std::string, CosmicShader>::iterator initial_shader;
-		if (initial_shader_name == "") {
-			initial_shader = m_shaders.find(m_initialShader);
-		}
-		else {
-			initial_shader = m_shaders.find(initial_shader_name);
-		}
-		
-		if (initial_shader == m_shaders.end()) {
-			std::cerr << "The initial shader wasn't found." << std::endl;
-		}
-		else {
-			initial_shader->second.Compute(m_currentState,m_shaders,m_resultQueue,m_callStack);
-		}*/
 	}
 
-	std::shared_ptr<CosmicState> CosmicMachine::ReadNextState() {
+	std::shared_ptr<const CosmicState> CosmicMachine::ReadNextState() {
 		if (m_resultQueue.empty()) {
 			return nullptr;
 		}
 		else {
-			std::shared_ptr<CosmicState> res = m_resultQueue.front();
+			std::shared_ptr<const CosmicState> res = m_resultQueue.front();
 			m_resultQueue.pop();
 			return res;
 		}

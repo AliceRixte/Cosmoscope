@@ -35,9 +35,9 @@ using namespace std;
 
 void testShader(CosmicState& state, const std::unordered_map <std::string, CosmicShader>&  shaders) {
     
-    if (shaders.at("main").OlderStateExists(1)) {
-        CosmicState older = shaders.at("main").GetOlderState(1);
-        state["t"] = older.value("t", 0.0) + 1;
+    if (shaders.at("main").OlderStateExists(0)) {
+        auto older = shaders.at("main").GetOlderState(0);
+        state["t"] = older->value("t", 0.0) + 1;
     }    
     cout << "now" << state << endl;
    
@@ -54,7 +54,8 @@ void sqrShader(CosmicState& state, const std::unordered_map <std::string, Cosmic
 int main(int argc, char* argv[])
 {
 
-    CosmicMachine machine{
+    CosmicMachine machine
+    {
         {
             {"t",0.0},
             {"pos",{
@@ -64,7 +65,7 @@ int main(int argc, char* argv[])
         }
     };
 
-    machine.AddShader("main", testShader, { "sqr" }, 2);
+    machine.AddShader("main", testShader, { "sqr" }, 1);
     machine.AddShader("sqr", sqrShader, {"main"});
     for (int i = 0; i < 10; i++) {
         machine.NextStep();

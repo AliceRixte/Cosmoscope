@@ -18,13 +18,13 @@ namespace cosmoscope {
 		CosmicShader(const CosmicCallback& cb, int history_size = 1);
 		CosmicShader(const CosmicCallback& cb, const std::vector<std::string>& children, int history_size = 1);
 		void Compute(const CosmicState& object, const std::unordered_map <std::string, CosmicShader>& shaders,
-					std::queue<std::shared_ptr<CosmicState> >& resultQueue, std::stack<std::pair<std::string, std::shared_ptr<CosmicState> > > & callStack );
-		const CosmicState& GetOlderState(int age) const ;
+					std::queue<std::shared_ptr<const CosmicState> >& resultQueue, std::stack<std::pair<std::string, std::shared_ptr<const CosmicState> > > & callStack );
+		std::shared_ptr<const CosmicState> GetOlderState(int age) const ;
 		bool OlderStateExists(int age) const;
 	private : 
 		CosmicCallback m_cb;
 		std::vector<std::string> m_childrenShaders;
-		boost::circular_buffer<CosmicState> m_history;
+		boost::circular_buffer<std::shared_ptr<const CosmicState> > m_history;
 
 	};
 }

@@ -24,34 +24,33 @@ namespace cosmoscope {
 		m_history{ history_size },
 		m_childrenShaders{children}
 	{
-		if (history_size < 1) {
-			std::cerr << "The history size is to small, putting it back to 1" << std::endl;
-			m_history.set_capacity(1);
-		}
 
 	}
 
 	void CosmicShader::Compute(const CosmicState& state, const std::unordered_map <std::string, CosmicShader>& shaders, 
-		std::queue< std::shared_ptr<CosmicState> >& resultQueue, std::stack<std::pair<std::string, std::shared_ptr<CosmicState> > >& callStack) {
-		if (m_history.capacity() > 0) {
-			m_history.push_back(state);
-		}
-		m_cb(m_history.back(),shaders);
-		std::shared_ptr<CosmicState> res = std::make_shared<CosmicState>(m_history.back());
+		std::queue< std::shared_ptr<const CosmicState> >& resultQueue, std::stack<std::pair<std::string, std::shared_ptr<const CosmicState> > >& callStack) {
+
+		std::shared_ptr<CosmicState> res = std::make_shared<CosmicState>(state);
+		m_cb(*res, shaders);
 		resultQueue.push(res);
+
+		if (m_history.capacity() > 0) {
+			m_history.push_back(res);
+		}
+
 		if (m_childrenShaders.size() > 0) {
 			
 			for (auto s : m_childrenShaders) {
 				callStack.push({ s, res });
 			}
-		}		
+		}	
 	}
 
 	bool CosmicShader::OlderStateExists(int age) const {
 		return age < m_history.size();
 	}
 
-	const CosmicState& CosmicShader::GetOlderState(int age) const {
+	std::shared_ptr<const CosmicState> CosmicShader::GetOlderState(int age) const {
 		
 		if (age < m_history.size()) {
 			return m_history[m_history.size() - 1 - age ];
