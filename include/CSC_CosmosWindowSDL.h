@@ -10,6 +10,7 @@
 #include "CSC_CosmovertorSDL.h"
 #include "CSC_CosmosDrawerSDL.h"
 #include "CSC_Scheduler.h"
+#include "CSC_CosmicMachine.h"
 
 #include "WindowManagerSDL.h"
 
