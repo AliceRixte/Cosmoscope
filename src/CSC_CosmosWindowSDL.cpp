@@ -36,20 +36,13 @@ namespace cosmoscopeSDL {
                 m_snapQueue.WriteSnap(m_cosmovertor.TreeSnapToSDL(snaps[i])); //13sec
                 m_cosmosDrawer.DrawSnap(m_snapQueue, m_renderer);//80sec
             }
-
-
             
             if (fmod(t, 10000) < 0.5) { //0.5
                 SDL_RenderPresent(m_renderer);
                 std::cout << "Total snaps : " << t << "    Total time : " << (SDL_GetTicks() - m_firstTick) / 1000 << "secs"  <<
                     "    SnapPS : " << static_cast<int>(10000.0*1000.0 / (SDL_GetTicks() - m_previousTick)) <<std::endl;
 
-                m_previousTick = SDL_GetTicks();
-               /* if (t > 1000000) {
-                    std::cout << "Million : " << (SDL_GetTicks() - m_firstTick) / 1000.0 << " secondes " << std::endl;
-                    exit(-1);
-                }*/
-                
+                m_previousTick = SDL_GetTicks();                
             }
         }
 

@@ -11,5 +11,4 @@ namespace cosmoscopeSDL {
 	StyleSDL::StyleSDL(SDL_Color c, BrushStyleSDL b, SDL_Color c2) :
 		color(c), brush(b), color2(c2) {
 
-	}
-}
+	}}

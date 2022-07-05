@@ -31,9 +31,6 @@
     <Filter Include="Header Files\SDL_SavePNG">
       <UniqueIdentifier>{56726aa1-8e93-4354-9ec0-3f93be745369}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\SDL_SavePNG">
-      <UniqueIdentifier>{a16d249a-a3cb-4451-89b9-cc6292dd596a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\DrawSDL">
       <UniqueIdentifier>{51c1dbce-6423-4380-b2b0-b1ae26b58796}</UniqueIdentifier>
     </Filter>
@@ -45,6 +42,9 @@
     </Filter>
     <Filter Include="Header Files\CosmoscopeGL">
       <UniqueIdentifier>{cf4961a3-89b9-4801-8038-e9e4ac4f3788}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SavePNG">
+      <UniqueIdentifier>{0c167b13-8254-494c-8645-77377e6bdc09}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -90,9 +90,6 @@
     <ClCompile Include="src\CSC_SnapQueueSDL.cpp">
       <Filter>Source Files\CosmoscopeSDL</Filter>
     </ClCompile>
-    <ClCompile Include="SDL_SavePNG\savepng.c">
-      <Filter>Source Files\SDL_SavePNG</Filter>
-    </ClCompile>
     <ClCompile Include="src\CSC_CosmosDrawerSDL.cpp">
       <Filter>Source Files\CosmoscopeSDL</Filter>
     </ClCompile>
@@ -110,6 +107,12 @@
     </ClCompile>
     <ClCompile Include="src\CSC_CosmicShader.cpp">
       <Filter>Source Files\Cosmoscope</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CSC_CosmicMachine.cpp">
+      <Filter>Source Files\Cosmoscope</Filter>
+    </ClCompile>
+    <ClCompile Include="include\SDL_SavePNG\savepng.c">
+      <Filter>Source Files\SavePNG</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -155,9 +158,6 @@
     <ClInclude Include="include\CSC_StyleSDL.h">
       <Filter>Header Files\CosmoscopeSDL</Filter>
     </ClInclude>
-    <ClInclude Include="SDL_SavePNG\savepng.h">
-      <Filter>Header Files\SDL_SavePNG</Filter>
-    </ClInclude>
     <ClInclude Include="include\CSC_CosmosDrawerSDL.h">
       <Filter>Header Files\CosmoscopeSDL</Filter>
     </ClInclude>
@@ -179,14 +179,11 @@
     <ClInclude Include="include\CSC_CosmicShader.h">
       <Filter>Header Files\Cosmoscope</Filter>
     </ClInclude>
-    <ClInclude Include="include\CSC_CosmicCallback.h">
+    <ClInclude Include="include\CSC_CosmicMachine.h">
       <Filter>Header Files\Cosmoscope</Filter>
     </ClInclude>
-    <ClInclude Include="include\CSC_CosmicObject.h">
-      <Filter>Header Files\Cosmoscope</Filter>
-    </ClInclude>
-    <ClInclude Include="include\CSC_CosmosMachine.h">
-      <Filter>Header Files\Cosmoscope</Filter>
+    <ClInclude Include="include\SDL_SavePNG\savepng.h">
+      <Filter>Header Files\SDL_SavePNG</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

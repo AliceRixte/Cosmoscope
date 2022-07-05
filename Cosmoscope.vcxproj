@@ -148,7 +148,6 @@
     <ClCompile Include="include\SDL_SavePNG\savepng.c" />
     <ClCompile Include="src\Brushes.cpp" />
     <ClCompile Include="src\CSC_CosmicMachine.cpp" />
-    <ClCompile Include="src\CSC_CosmicObject.cpp" />
     <ClCompile Include="src\CSC_CosmicShader.cpp" />
     <ClCompile Include="src\CSC_CallbackTools.cpp" />
     <ClCompile Include="src\CSC_CallbackFuncs.cpp" />
@@ -178,7 +177,6 @@
     <ClInclude Include="include\CSC_CoorSystem.h" />
     <ClInclude Include="include\CSC_CoorSystemSDL.h" />
     <ClInclude Include="include\CSC_CosmicShader.h" />
-    <ClInclude Include="include\CSC_CosmicObject.h" />
     <ClInclude Include="include\CSC_CosmosDrawerSDL.h" />
     <ClInclude Include="include\CSC_CosmosWindowGL.h" />
     <ClInclude Include="include\CSC_CosmosWindowSDL.h" />
