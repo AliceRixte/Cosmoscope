@@ -11,7 +11,9 @@ include_directories(${OPENGL_INCLUDE_DIR})
 message(STATUS "<<${OPENGL_INCLUDE_DIRS}>>")
 
 add_executable(SDL2Test main.cpp)
-target_link_libraries(SDL2Test ${SDL2_LIBRARIES} glad)
+target_link_libraries(SDL2Test ${SDL2_LIBRARIES} )
 target_link_libraries(SDL2Test ${OPENGL_LIBRARIES})
+target_link_libraries(SDL2Test
+    glad)
 
 #target_compile_features(SDL2Test PUBLIC cxx_std_20)
