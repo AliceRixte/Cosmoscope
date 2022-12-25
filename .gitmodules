@@ -1,6 +1,0 @@
-[submodule "json"]
-	path = include/json
-	url = git@github.com:nlohmann/json.git
-[submodule "SDL_SavePNG"]
-	path = include/SDL_SavePNG
-	url = git@github.com:driedfruit/SDL_SavePNG.git
