@@ -5,5 +5,7 @@ project(
     VERSION 0.1
     DESCRIPTION "Small CMake example built with VSCode")
 
+
 add_subdirectory(hello)
 add_subdirectory(apps)
+add_subdirectory(glad)
